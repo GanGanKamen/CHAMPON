@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Orca XML File Format -->
+<OrcaTrees ObjectTypeExpression="Full" BinaryEncodingType="Base64" FileVersion="3" FileRevision="0">
+  <OrcaTree OrcaName="(no name)">
+    <Orca OrcaName="atmcUserFile" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserFile">
+      <Orca OrcaName="WorkUnit_0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="WorkUnit_Yamada" orcaPath="CueSheetFolder/WorkUnit_Yamada" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="allStageGimmick" orcaPath="CueSheetFolder/WorkUnit_Yamada/allStageGimmick" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="Track_SE_jump" orcaPath="CueSheetFolder/WorkUnit_Yamada/allStageGimmick/SE_jump/Track_SE_jump" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="Track_SE_foot" orcaPath="CueSheetFolder/WorkUnit_Yamada/allStageGimmick/SE_foot/Track_SE_foot" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="Propeller" orcaPath="CueSheetFolder/WorkUnit_Yamada/Propeller" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="Track_SE_wind" orcaPath="CueSheetFolder/WorkUnit_Yamada/Propeller/SE_wind/Track_SE_wind" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="windVolume" orcaPath="CueSheetFolder/WorkUnit_Yamada/Propeller/SE_wind/windVolume" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="Track_BGM_plopeller_A" orcaPath="CueSheetFolder/WorkUnit_Yamada/Propeller/BGM_plopeller/Track_BGM_plopeller_A" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="Track_BGM_plopeller_B" orcaPath="CueSheetFolder/WorkUnit_Yamada/Propeller/BGM_plopeller/Track_BGM_plopeller_B" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="PBGM_B" orcaPath="CueSheetFolder/WorkUnit_Yamada/Propeller/BGM_plopeller/Track_BGM_plopeller_B/PBGM_B" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="Track_BGM_plopeller_C" orcaPath="CueSheetFolder/WorkUnit_Yamada/Propeller/BGM_plopeller/Track_BGM_plopeller_C" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="PBGM_C" orcaPath="CueSheetFolder/WorkUnit_Yamada/Propeller/BGM_plopeller/Track_BGM_plopeller_C/PBGM_C" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="Track_BGM_plopeller_D" orcaPath="CueSheetFolder/WorkUnit_Yamada/Propeller/BGM_plopeller/Track_BGM_plopeller_D" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="PBGM_D" orcaPath="CueSheetFolder/WorkUnit_Yamada/Propeller/BGM_plopeller/Track_BGM_plopeller_D/PBGM_D" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+    </Orca>
+  </OrcaTree>
+</OrcaTrees>
+<!-- Copyright (c) CRI Middleware Co.,LTD. -->
+<!-- end of document -->
