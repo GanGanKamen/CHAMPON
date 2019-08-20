@@ -6,16 +6,19 @@ namespace GanGanKamen
 {
     public class BossBalloon : MonoBehaviour
     {
+        public Sprite[] eyes;
+        [SerializeField] private SpriteRenderer bosseye;
         private PlayerMove player;
         public BossHand[] hands; //0:lefthand 1:righthand
         [SerializeField] private int lifes;
+        private int fullLifes;
 
         private SpriteRenderer sprite;
         private float recovery = 0;
 
         [SerializeField] private float attackProbability;
         private float attackCount;
-
+        
         public enum Status
         {
             StandBy,
@@ -28,6 +31,7 @@ namespace GanGanKamen
         {
             sprite = GetComponent<SpriteRenderer>();
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMove>();
+            bosseye.sprite = eyes[0];
         }
 
         // Update is called once per frame
@@ -80,7 +84,7 @@ namespace GanGanKamen
         {
             if (status == Status.Hit)
             {
-                sprite.color = Color.red;
+                sprite.color = Color.clear;
                 recovery += Time.deltaTime;
                 for(int i = 0; i < hands.Length; i++)
                 {
@@ -89,6 +93,7 @@ namespace GanGanKamen
                 if (recovery > 2f)
                 {
                     recovery = 0;
+                    bosseye.sprite = eyes[1];
                     for (int i = 0; i < hands.Length; i++)
                     {
                         hands[i].pattern = BossHand.Pattern.RandomWalk;
@@ -141,7 +146,7 @@ namespace GanGanKamen
                 }
                 status = Status.Hit;
                 lifes--;
-
+                bosseye.sprite = eyes[2];
             }
         }
     }

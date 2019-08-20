@@ -83,7 +83,6 @@ namespace GanGanKamen
                     break;
                 case Pattern.Kill:
                     Vector3 offest = Vector3.Scale((player.transform.position - transform.position), new Vector3(-1, -1, 0)).normalized;
-                    Debug.Log(offest);
                     distinationPos = deathZones.position + offest;
                     attackCount = 0;
                     moveSpeed = Time.deltaTime;
@@ -143,7 +142,7 @@ namespace GanGanKamen
                     moveSpeed = Time.deltaTime * 2;
                     break;
                 case Pattern.Stop:
-                    distinationPos = startPos;
+                    distinationPos = transform.position;
                     capsuleCollider.enabled = false;
                     break;
             }
