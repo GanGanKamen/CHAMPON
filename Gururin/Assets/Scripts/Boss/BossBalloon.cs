@@ -82,10 +82,17 @@ namespace GanGanKamen
             {
                 sprite.color = Color.red;
                 recovery += Time.deltaTime;
+                for(int i = 0; i < hands.Length; i++)
+                {
+                    hands[i].pattern = BossHand.Pattern.Stop;
+                }
                 if (recovery > 2f)
                 {
                     recovery = 0;
-                    status = Status.StandBy;
+                    for (int i = 0; i < hands.Length; i++)
+                    {
+                        hands[i].pattern = BossHand.Pattern.RandomWalk;
+                    }
                 }
             }
             else

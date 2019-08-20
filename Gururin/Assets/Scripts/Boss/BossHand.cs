@@ -28,6 +28,7 @@ namespace GanGanKamen
             RandomWalk,
             Stop,
             Kill,
+            ReadyToKill,
             Attack,
             GearTurn,
             Recovery
@@ -54,6 +55,8 @@ namespace GanGanKamen
             gameController = GameObject.Find("GameController").GetComponent<Gamecontroller>();
             capsuleCollider = GetComponent<CapsuleCollider2D>();
             handParent = transform.parent.gameObject;
+            distinationPos = new Vector2(Random.Range(moveRangeX.x, moveRangeX.y),
+                Random.Range(moveRangeY.x, moveRangeY.y));
             pattern = Pattern.RandomWalk;
             startPos = handParent.transform.position;
         }
@@ -68,10 +71,23 @@ namespace GanGanKamen
                     RandomWalk();
                     ColliderCancel();
                     break;
-                case Pattern.Kill:
+                case Pattern.ReadyToKill:
+                    distinationPos = startPos;
                     attackCount = 0;
-                    moveSpeed = Time.deltaTime / 2f;
+                    moveSpeed = Time.deltaTime;
                     if (Vector3.Distance(handParent.transform.position, distinationPos) < 0.5f)
+                    {
+                        pattern = Pattern.Kill;
+                    }
+                    ColliderCancel();
+                    break;
+                case Pattern.Kill:
+                    Vector3 offest = Vector3.Scale((player.transform.position - transform.position), new Vector3(-1, -1, 0)).normalized;
+                    Debug.Log(offest);
+                    distinationPos = deathZones.position + offest;
+                    attackCount = 0;
+                    moveSpeed = Time.deltaTime;
+                    if (Vector3.Distance(handParent.transform.position, distinationPos) < 0.2f)
                     {
                         pattern = Pattern.RandomWalk;
                         distinationPos = new Vector2(Random.Range(moveRangeX.x, moveRangeX.y),
@@ -97,7 +113,7 @@ namespace GanGanKamen
                 case Pattern.GearTurn:
                     distinationPos = floorGimickGear.transform.position + GearPosOffest;
                     ColliderCancel();
-                    if(floorGimickGear.moveFloor.isLimit == true)
+                    if (floorGimickGear.moveFloor.isLimit == true)
                     {
                         pattern = Pattern.RandomWalk;
                         distinationPos = new Vector2(Random.Range(moveRangeX.x, moveRangeX.y),
@@ -125,6 +141,10 @@ namespace GanGanKamen
                         pattern = Pattern.RandomWalk;
                     }
                     moveSpeed = Time.deltaTime * 2;
+                    break;
+                case Pattern.Stop:
+                    distinationPos = startPos;
+                    capsuleCollider.enabled = false;
                     break;
             }
 
@@ -190,8 +210,7 @@ namespace GanGanKamen
             player.transform.parent = this.transform;
             player.nowBossHand = this;
             hitPlayer = true;
-            pattern = Pattern.Kill;
-            distinationPos = deathZones.position;
+            pattern = Pattern.ReadyToKill;
 
         }
 
