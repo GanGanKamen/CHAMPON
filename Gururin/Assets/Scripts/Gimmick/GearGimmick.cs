@@ -22,6 +22,7 @@ public class GearGimmick : MonoBehaviour {
 
     private GanGanKamen.BossHand bossHand;
     private GanGanKamen.BossStageGear stageGear;
+    private WatchGear watchGear;
     // Start is called before the first frame update
     void Start() {
         source = GetComponent<CriAtomSource>();
@@ -39,6 +40,7 @@ public class GearGimmick : MonoBehaviour {
 
         if (GetComponent<GanGanKamen.BossHand>() != null) bossHand = GetComponent<GanGanKamen.BossHand>();
         if (GetComponent<GanGanKamen.BossStageGear>() != null) stageGear = GetComponent<GanGanKamen.BossStageGear>();
+        if (GetComponent<WatchGear>() != null) watchGear = GetComponent<WatchGear>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -129,6 +131,11 @@ public class GearGimmick : MonoBehaviour {
                     stageGear.GearTurn(false, true);
                 }
             }
+
+            if(watchGear != null)
+            {
+                watchGear.GearTurn(true);
+            }
         }
         else if (gameController.AxB.z > 0 && gameController.isPress && playerHit && moveGear[1])
         {
@@ -146,6 +153,10 @@ public class GearGimmick : MonoBehaviour {
                 {
                     stageGear.GearTurn(false, true);
                 }
+            }
+            if (watchGear != null)
+            {
+                watchGear.GearTurn(false);
             }
         }
         else
