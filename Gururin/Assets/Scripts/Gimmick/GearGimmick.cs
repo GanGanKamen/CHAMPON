@@ -66,7 +66,7 @@ public class GearGimmick : MonoBehaviour {
             playerMove.speed[0] = rotSpeed;
             //ぐるりんの移動を止める
             playerMove.isMove = false;
-
+            _gururinRb2d.velocity = Vector2.zero;
             //効果音
             source.Play();
 
@@ -81,11 +81,13 @@ public class GearGimmick : MonoBehaviour {
             _gururinRb2d.isKinematic = true;
             //ぐるりんの位置を固定
             //_gururinRb2d.position = gearPos.transform.position;
-            _gururinRb2d.MovePosition(gearPos.transform.position);
+           if(GetComponent<GanGanKamen.BossHand>()==null) _gururinRb2d.MovePosition(gearPos.transform.position);
             //ぐるりんの角度を固定
             _gururinRb2d.rotation = _gpQuaternion.eulerAngles.z;
 
             flagManager.moveStop = true;
+
+            _gururinRb2d.velocity = Vector2.zero;
         }
     }
 
