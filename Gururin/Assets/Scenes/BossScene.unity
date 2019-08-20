@@ -1724,7 +1724,7 @@ MonoBehaviour:
   thisGear: {fileID: 634964129}
   floorGimickGear: {fileID: 380748702}
   GearPosOffest: {x: -1, y: 0, z: 0}
-  bossBalloon: {fileID: 0}
+  bossBalloon: {fileID: 514458087}
   direction: 1
   pattern: 0
   hand: 1
@@ -6986,7 +6986,7 @@ MonoBehaviour:
   thisGear: {fileID: 4927021377892801499}
   floorGimickGear: {fileID: 1085287748}
   GearPosOffest: {x: 1, y: 0, z: 0}
-  bossBalloon: {fileID: 0}
+  bossBalloon: {fileID: 514458087}
   direction: -1
   pattern: 0
   hand: 0
