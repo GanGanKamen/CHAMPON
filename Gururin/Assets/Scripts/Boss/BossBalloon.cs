@@ -26,6 +26,8 @@ namespace GanGanKamen
             Hit
         }
         public Status status;
+
+        public Animator bossAnim;
         // Start is called before the first frame update
         void Start()
         {
@@ -90,7 +92,7 @@ namespace GanGanKamen
                 {
                     hands[i].pattern = BossHand.Pattern.Stop;
                 }
-                if (recovery > 2f)
+                if (recovery > 4f)
                 {
                     recovery = 0;
                     bosseye.sprite = eyes[1];
@@ -147,6 +149,7 @@ namespace GanGanKamen
                 status = Status.Hit;
                 lifes--;
                 bosseye.sprite = eyes[2];
+                bossAnim.SetTrigger("Down");
             }
         }
     }
