@@ -24,12 +24,12 @@ public class BalloonBreak : MonoBehaviour
         flagManager = GameObject.Find("FlagManager").GetComponent<FlagManager>();
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         //風船に当たったら割れるようにする
-        if (other.gameObject.CompareTag("Balloon"))
+        if (other.CompareTag("Balloon"))
         {
-            if(_ballonSpr.GetComponent<SpriteRenderer>().enabled == true)
+            if (_ballonSpr.GetComponent<SpriteRenderer>().enabled == true)
             {
                 _source.Play();
                 //ぐるりんの顔を驚き顔にする
