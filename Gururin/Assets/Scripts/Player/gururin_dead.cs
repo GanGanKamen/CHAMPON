@@ -18,7 +18,7 @@ public class gururin_dead : MonoBehaviour
     private CanvasGroup _gameOver;
     private FlagManager _flagManager;
     private CriAtomSource _gameOverSE, _electricSE;
-    private bool _SEPlay;
+    public bool _SEPlay;
     private Text _lifeCount;
 
     // Start is called before the first frame update
