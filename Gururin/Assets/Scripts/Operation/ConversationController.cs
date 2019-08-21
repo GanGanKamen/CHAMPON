@@ -101,6 +101,6 @@ public class ConversationController : MonoBehaviour
                 displaycount = 0;
             }
         }
-        textFeed[currentSentenceNum - 1] = false;
+        if(currentSentenceNum >0) textFeed[currentSentenceNum - 1] = false;
     }
 }
