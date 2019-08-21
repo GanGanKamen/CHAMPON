@@ -15,13 +15,13 @@ public class Sensitivity : MonoBehaviour
         senSlider = GetComponent<Slider>();
         
         //スライダーの最大値の設定
-        senSlider.maxValue = 1.5f;
+        senSlider.maxValue = 2.0f;
 
         //スライダーの最小値の設定
-        senSlider.minValue = 0.5f;
+        senSlider.minValue = 1.0f;
 
         //スライダーの現在値の設定
-        senSlider.value = 1.0f;
+        senSlider.value = 1.5f;
 
         config.sensitivity = senSlider.value;
     }
@@ -38,5 +38,11 @@ public class Sensitivity : MonoBehaviour
 
         Debug.Log("Sensitivity：" + senSlider.value);
         
+    }
+    public void OnClick()
+    {
+        senSlider.value = 1.5f;
+
+        config.sensitivity = senSlider.value;
     }
 }

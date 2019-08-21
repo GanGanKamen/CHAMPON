@@ -498,7 +498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7607348ebb6b0048945fccac3294f8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 0}
+  configCanvas: {fileID: 0}
   sceneChange: {fileID: 1237244514894956006}
 --- !u!114 &9163649697844661568
 MonoBehaviour:
@@ -582,7 +582,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &6143972447586887475
 MonoBehaviour:

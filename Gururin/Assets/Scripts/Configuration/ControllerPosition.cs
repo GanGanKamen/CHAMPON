@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ControllerPositon : MonoBehaviour
+public class ControllerPosition : MonoBehaviour
 {
     private Configuration config;
     Scrollbar posScrollbar;
@@ -49,5 +49,11 @@ public class ControllerPositon : MonoBehaviour
 
         Debug.Log("Controller Position：" + steps);
         
+    }
+    public void OnClick()
+    {
+        posScrollbar.value = 0.5f;
+        steps = 1;
+        config.controllerposition = steps;
     }
 }

@@ -84,6 +84,7 @@ public class Gamecontroller : MonoBehaviour
                 timercount = 0;
                 //コントローラーの活性化
                 controllerObject.SetActive(true);
+                controller.transform.rotation = Quaternion.identity;
 
                 //コントローラーの位置取得
                 mousePosition1 = Camera.main.ScreenToViewportPoint(Input.mousePosition);
@@ -119,6 +120,7 @@ public class Gamecontroller : MonoBehaviour
                     else if(controllerposition == 2)
                     {
                         mousePosition1.y = mousePosition1.y + 0.1f;
+                        controller.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180f);
                     }
                 }
                 

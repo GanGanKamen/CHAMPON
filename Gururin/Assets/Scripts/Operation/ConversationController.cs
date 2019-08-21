@@ -10,6 +10,7 @@ public class ConversationController : MonoBehaviour
 
     public GameObject Doctor;
     public GameObject TextUI;
+    public GameObject WhiteBack;
 
     public bool IsConversation, IsDescription;
     public bool sendtext = false;
@@ -36,6 +37,7 @@ public class ConversationController : MonoBehaviour
         feedout = false;
         Doctor.SetActive(false);
         TextUI.SetActive(false);
+        WhiteBack.SetActive(false);
     }
 
     void Update()
@@ -45,6 +47,7 @@ public class ConversationController : MonoBehaviour
             gameController.isCon = true;
             Doctor.SetActive(true);
             TextUI.SetActive(true);
+            WhiteBack.SetActive(true);
             if (Input.GetMouseButtonDown(0) && config.configbutton == false)
             {
                 mousePosition = Camera.main.ScreenToViewportPoint(Input.mousePosition);
@@ -64,6 +67,7 @@ public class ConversationController : MonoBehaviour
         else
         {
             gameController.isCon = false;
+            WhiteBack.SetActive(false);
         }
 
         if (IsDescription)

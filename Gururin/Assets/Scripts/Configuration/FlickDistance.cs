@@ -39,4 +39,10 @@ public class FlickDistance : MonoBehaviour
         Debug.Log("FlickDistance：" + disSlider.value);
         
     }
+    public void OnClick()
+    {
+        disSlider.value = 0.1f;
+
+        config.flickdistance = disSlider.value;
+    }
 }

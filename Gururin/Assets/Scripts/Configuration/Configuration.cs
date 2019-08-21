@@ -38,7 +38,7 @@ public class Configuration : MonoBehaviour
         configbuttonOpen.SetActive(false);
         configwindow.SetActive(false);
 
-        sensitivity = 1f;
+        sensitivity = 1.5f;
         flickdistance = 0.1f;
         controllerposition = 1;
     }
