@@ -7,6 +7,7 @@ public class BlockSwitch : MonoBehaviour
 
     public GameObject block, vCam;
     private bool blocking;
+    public float blendSpeed;
     private CriAtomSource _pushSE;
 
     // Start is called before the first frame update
@@ -22,21 +23,23 @@ public class BlockSwitch : MonoBehaviour
         {
             _pushSE.Play();
             blocking = true;
+            //block.SetActive(false);
+            //block.transform.position = new Vector3(1000, 0);
             StartCoroutine(VCam());
         }
     }
 
     IEnumerator VCam()
     {
-        //ガラス玉の位置にカメラを移動
+        //ブロックの位置にカメラを移動
         vCam.SetActive(true);
 
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(blendSpeed);
 
-        //ブロック出現
-        block.SetActive(true);
+        //ブロックを消す
+       block.transform.position = new Vector3(1000, 0);
 
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(blendSpeed);
 
         //カメラを元に戻す
         vCam.SetActive(false);
