@@ -23,6 +23,8 @@ public class GearGimmick : MonoBehaviour {
     private GanGanKamen.BossHand bossHand;
     private GanGanKamen.BossStageGear stageGear;
     private WatchGear watchGear;
+
+    [SerializeField] BossEvent bossEvent;
     // Start is called before the first frame update
     void Start() {
         source = GetComponent<CriAtomSource>();
@@ -120,7 +122,7 @@ public class GearGimmick : MonoBehaviour {
             flagManager.standFirm_Face = true;
             gear.transform.Rotate(new Vector3(0.0f, 0.0f, rotSpeed));
             _gururinRb2d.rotation += -rotSpeed;
-            if(stageGear != null)
+            if(stageGear != null)//ボスステージの歯車を回す
             {
                 if(stageGear.direction == 1)
                 {
@@ -132,9 +134,14 @@ public class GearGimmick : MonoBehaviour {
                 }
             }
 
-            if(watchGear != null)
+            if(watchGear != null)//時計歯車を回す
             {
                 watchGear.GearTurn(true);
+            }
+
+            if (playerMove.finishMode)//マスターギアを取る
+            {
+                bossEvent.finish.value += Time.deltaTime;
             }
         }
         else if (gameController.AxB.z > 0 && gameController.isPress && playerHit && moveGear[1])
@@ -143,7 +150,7 @@ public class GearGimmick : MonoBehaviour {
             flagManager.standFirm_Face = true;
             gear.transform.Rotate(new Vector3(0.0f, 0.0f, -rotSpeed));
             _gururinRb2d.rotation += rotSpeed;
-            if (stageGear != null)
+            if (stageGear != null)  //ボスステージの歯車を回す
             {
                 if (stageGear.direction == -1)
                 {
@@ -154,9 +161,13 @@ public class GearGimmick : MonoBehaviour {
                     stageGear.GearTurn(false, true);
                 }
             }
-            if (watchGear != null)
+            if (watchGear != null) //時計歯車を回す
             {
                 watchGear.GearTurn(false);
+            }
+            if (playerMove.finishMode) //マスターギアを取る
+            {
+                bossEvent.finish.value += Time.deltaTime;
             }
         }
         else

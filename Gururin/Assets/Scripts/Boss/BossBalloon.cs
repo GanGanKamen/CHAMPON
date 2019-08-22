@@ -10,7 +10,7 @@ namespace GanGanKamen
         [SerializeField] private SpriteRenderer bosseye;
         private PlayerMove player;
         public BossHand[] hands; //0:lefthand 1:righthand
-        [SerializeField] private int lifes;
+        public int lifes;
         private int fullLifes;
 
         private SpriteRenderer sprite;
@@ -18,7 +18,7 @@ namespace GanGanKamen
 
         [SerializeField] private float attackProbability;
         private float attackCount;
-        
+
         public enum Status
         {
             StandBy,
@@ -28,6 +28,10 @@ namespace GanGanKamen
         public Status status;
 
         public Animator bossAnim;
+
+        public bool isDead = false;
+
+        public GameObject bossCadaver;
         // Start is called before the first frame update
         void Start()
         {
@@ -39,10 +43,7 @@ namespace GanGanKamen
         // Update is called once per frame
         void Update()
         {
-            if (lifes == 0)
-            {
-                Debug.Log("Clear");
-            }
+
             DamageHit();
 
             StatusManager();
@@ -54,7 +55,7 @@ namespace GanGanKamen
             {
                 status = Status.StandBy;
             }
-            else if(status != Status.Hit)
+            else if (status != Status.Hit)
             {
                 status = Status.Action;
                 attackCount = 0;
@@ -84,11 +85,11 @@ namespace GanGanKamen
 
         private void DamageHit()
         {
-            if (status == Status.Hit)
+            if (status == Status.Hit && isDead == false)
             {
                 sprite.color = Color.clear;
                 recovery += Time.deltaTime;
-                for(int i = 0; i < hands.Length; i++)
+                for (int i = 0; i < hands.Length; i++)
                 {
                     hands[i].pattern = BossHand.Pattern.Stop;
                 }
@@ -147,10 +148,32 @@ namespace GanGanKamen
                     return;
                 }
                 status = Status.Hit;
-                lifes--;
                 bosseye.sprite = eyes[2];
-                bossAnim.SetTrigger("Down");
+                lifes--;
+                if (lifes == 0)
+                {
+                    StartCoroutine(Dead());
+                }
+
+                else
+                {
+                    bossAnim.SetTrigger("Down");
+                }
+
             }
+        }
+
+        private IEnumerator Dead()
+        {
+            Debug.Log("die");
+            isDead = true;
+            sprite.enabled = false;
+            bossAnim.SetTrigger("Dead");
+            yield return new WaitForSeconds(4f);
+            bossCadaver.SetActive(true);
+            transform.parent.gameObject.SetActive(false);
+            yield break;
+
         }
     }
 }

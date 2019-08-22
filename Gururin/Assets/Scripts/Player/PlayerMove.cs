@@ -26,6 +26,9 @@ public class PlayerMove : MonoBehaviour
     private FlagManager flagManager;
 
     public GanGanKamen.BossHand nowBossHand = null; //現在接触しているギミック
+    public Animator animator;　//ぐるりんのアニメーター　ボスイベント用
+    public GameObject balloon;
+    public bool finishMode = false; //ボスにとどめを刺す
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +40,8 @@ public class PlayerMove : MonoBehaviour
         setSpeed = true;
         isMove = true;
         isJump = false;
+
+        animator.enabled = false;
     }
 
     void OnTriggerStay2D(Collider2D other)
@@ -158,7 +163,7 @@ public class PlayerMove : MonoBehaviour
                 isRot[1] = false;
             }
 
-            if (isPress)
+            if (isPress && !finishMode)
             {
                 if (gearGimmickHit == false && isJump)
                 {
@@ -171,7 +176,7 @@ public class PlayerMove : MonoBehaviour
                     }
                     else if (gameController.flick_right)
                     {
-                        Vector2 jumpforce = new Vector2(0.3f / gameController.sensitivity , 1.0f);
+                        Vector2 jumpforce = new Vector2(0.3f / gameController.sensitivity, 1.0f);
                         _rb2d.AddForce(jumpforce * jumpSpeed);
                         _jumpSE.Play();
                         isJump = false;
