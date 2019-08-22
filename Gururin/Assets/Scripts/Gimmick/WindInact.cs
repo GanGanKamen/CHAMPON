@@ -12,7 +12,7 @@ public class WindInact : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.CompareTag("Wind") || other.CompareTag("Gimmick"))
+        if (other.CompareTag("Gimmick"))
         {
             offsetWind.offset = true;
         }
@@ -20,7 +20,7 @@ public class WindInact : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Wind") || other.CompareTag("Gimmick"))
+        if (other.CompareTag("Gimmick"))
         {
             offsetWind.offset = false;
         }

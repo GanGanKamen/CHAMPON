@@ -213,5 +213,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   balloonPrefab: {fileID: 4436587011956242941, guid: f38fec02768e0fc4c9c235ceb5f1f61b,
     type: 3}
-  dropDistance: -8
+  dropDistance: -2
   collision: 0

@@ -34,7 +34,7 @@ public class GlassEjectSwitch : MonoBehaviour
         var pos = glassPos.transform.position;
         glass.transform.position = new Vector3(pos.x, pos.y, pos.z);
 
-        yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSeconds(1.5f);
 
         //カメラを元に戻す
         vCam.SetActive(false);
