@@ -78,6 +78,7 @@ namespace GanGanKamen
                     if (Vector3.Distance(handParent.transform.position, distinationPos) < 0.5f)
                     {
                         pattern = Pattern.Kill;
+                        SoundManager.PlayS(handParent, "SE_propellerBOSSnakigoe1");
                     }
                     ColliderCancel();
                     break;
@@ -186,26 +187,11 @@ namespace GanGanKamen
                 distinationPos = new Vector2(Random.Range(moveRangeX.x, moveRangeX.y),
                 Random.Range(moveRangeY.x, moveRangeY.y));
             }
-            /*
-            attackCount += Time.deltaTime;
-            if (attackCount >= attackProbability)
-            {
-                attackCount = 0;
-                bool isAttack = bossBalloon.HandCheck(hand);
-                if (isAttack == true)
-                {
-                    pattern = Pattern.Attack;
-                }
-                
-                else
-                {
-                    pattern = Pattern.GearTurn;
-                }
-            }*/
         }
 
         public void AttachPlayer()
         {
+            player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             player.transform.parent = this.transform;
             player.nowBossHand = this;
             hitPlayer = true;
