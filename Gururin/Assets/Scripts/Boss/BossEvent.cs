@@ -37,7 +37,8 @@ public class BossEvent : MonoBehaviour
 
     public BossCadaver bossCadaver;
     [SerializeField] GameObject nextStage;
-    private bool goBack;
+    public bool goBack;
+    [SerializeField] GameObject lines;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -88,7 +89,10 @@ public class BossEvent : MonoBehaviour
         }
         stop = true;
         bossChara.gameObject.SetActive(true);
-        yield return new WaitForSeconds(6f);
+        virtualCameras[3].Priority = 11;
+        yield return new WaitForSeconds(5f);
+        virtualCameras[3].Priority = 1;
+        yield return new WaitForSeconds(2f);
         Vector2 force = new Vector2(0, 300f);
         player.GetComponent<Rigidbody2D>().AddForce(force);
         while(bossChara.hasDown == false)
@@ -101,12 +105,12 @@ public class BossEvent : MonoBehaviour
         {
             fans[i].windAct = true;
         }
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         for (int i = 0; i < wind.Length; i++)
         {
             wind[i].SetActive(true);
         }
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         windowText.text = textMessage[0];
         windowAnim.SetBool("Close", false);
         windowAnim.SetBool("Open", true);
@@ -131,7 +135,16 @@ public class BossEvent : MonoBehaviour
             yield return null;
         }
         gamecontroller.isCon = true;
-        yield return new WaitForSeconds(3f);
+        for (int i = 0; i < fans.Length; i++)
+        {
+            fans[i].windAct = fadeOut;
+        }
+        yield return new WaitForSeconds(0.5f);
+        for (int i = 0; i < wind.Length; i++)
+        {
+            wind[i].SetActive(false);
+        }
+        yield return new WaitForSeconds(2.5f);
         fader.gameObject.SetActive(true);
         yield return new WaitForSeconds(1f);
         fadeOut = true;
@@ -169,10 +182,18 @@ public class BossEvent : MonoBehaviour
         windowAnim.SetBool("Open", true);
         windowAnim.SetBool("Close", false);
 
+        yield return new WaitForSeconds(1f);
+        virtualCameras[1].Priority = 11;
+        virtualCameras[2].Priority = 1;
         yield return new WaitForSeconds(0.5f);
         gamecontroller.isCon = false;
         player.finishMode = true;
         finish.gameObject.SetActive(true);
+
+        virtualCameras[1].Priority = 11;
+        virtualCameras[2].Priority = 1;
+
+        lines.SetActive(true);
         while (finish.value < finish.maxValue)
         {
             yield return null;
@@ -184,7 +205,9 @@ public class BossEvent : MonoBehaviour
         gamecontroller.isCon = true;
         finish.gameObject.SetActive(false);
         bossCadaver.BreakUp();
-
+        lines.SetActive(false);
+        virtualCameras[1].Priority = 1;
+        virtualCameras[2].Priority = 11;
         yield return new WaitForSeconds(0.5f);
 
         goBack = true;
