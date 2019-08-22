@@ -32,6 +32,11 @@ public class SoundManager : MonoBehaviour
         soundObj.GetComponent<CriAtomSource>().Play();
     }
 
+    static public void PlayS(GameObject soundObj, string cuesheet, string cuename)
+    {
+        soundObj.GetComponent<CriAtomSource>().Play("cuename");
+    }
+
     static public void PlayS(GameObject soundObj, string soundName,int num) //CriAtomSourceコンポーネントが複数ある場合 numは0から
     {
         CriAtomSource[] atomSources = soundObj.GetComponents<CriAtomSource>();

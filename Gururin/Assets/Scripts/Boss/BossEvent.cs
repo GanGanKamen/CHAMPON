@@ -89,16 +89,20 @@ public class BossEvent : MonoBehaviour
         }
         stop = true;
         bossChara.gameObject.SetActive(true);
+        SoundManager.PlayS(bossChara.gameObject, "SE_propellerBOSSnakigoe1");
         virtualCameras[3].Priority = 11;
         yield return new WaitForSeconds(5f);
         virtualCameras[3].Priority = 1;
         yield return new WaitForSeconds(2f);
         Vector2 force = new Vector2(0, 300f);
         player.GetComponent<Rigidbody2D>().AddForce(force);
-        while(bossChara.hasDown == false)
+        SoundManager.PlayS(player.gameObject);
+        while (bossChara.hasDown == false)
         {
             yield return null;
         }
+        SoundManager.PlayS(bossChara.gameObject, "SE_propellerBOSSnakigoe2");
+        SoundManager.PlayS(bossChara.gameObject, "SE_ballonBreak");
         yield return new WaitForSeconds(3f);
         bossChara.Recovery();
         for(int i = 0; i < fans.Length; i++)
@@ -110,23 +114,29 @@ public class BossEvent : MonoBehaviour
         {
             wind[i].SetActive(true);
         }
+        SoundManager.PlayS(gameObject, "SE_wind", false);
         yield return new WaitForSeconds(0.5f);
         windowText.text = textMessage[0];
         windowAnim.SetBool("Close", false);
         windowAnim.SetBool("Open", true);
+        SoundManager.PlayS(gameObject, "SE_WindowOpen");
         yield return new WaitForSeconds(1f);
         while (!Input.GetMouseButtonDown(0))
         {
             yield return null;
         }
-        
+
         windowAnim.SetBool("Open", false);
         windowAnim.SetBool("Close", true);
+        SoundManager.PlayS(gameObject, "SE_WindowClose");
+
         MovieCutOut();
         while (Mathf.Abs(topBand.localPosition.y - topDis.y) > 1f)
         {
             yield return null;
         }
+
+        SoundManager.PlayS(gameObject);
         bossChara.gameObject.SetActive(false);
         boss.SetActive(true);
         gamecontroller.isCon = false;
@@ -135,6 +145,7 @@ public class BossEvent : MonoBehaviour
             yield return null;
         }
         gamecontroller.isCon = true;
+        SoundManager.StopS(gameObject);
         for (int i = 0; i < fans.Length; i++)
         {
             fans[i].windAct = fadeOut;
@@ -148,6 +159,7 @@ public class BossEvent : MonoBehaviour
         fader.gameObject.SetActive(true);
         yield return new WaitForSeconds(1f);
         fadeOut = true;
+        player.GetComponent<CriAtomSource>().enabled = false;
         player.transform.eulerAngles = new Vector3(0, 0, -90f);
         player.transform.position = new Vector3(3.5f, -1f, 0);
         player.balloon.SetActive(false);
@@ -170,8 +182,12 @@ public class BossEvent : MonoBehaviour
         virtualCameras[1].Priority = 11;
         yield return new WaitForSeconds(0.5f);
         player.animator.SetTrigger("Jump");
-        yield return new WaitForSeconds(2f);
+        SoundManager.PlayS(gameObject, "SE_jump");
+        yield return new WaitForSeconds(1f);
+        SoundManager.PlayS(gameObject, "SE_jump");
+        yield return new WaitForSeconds(1f);
         player.animator.SetTrigger("Kick");
+        
         virtualCameras[1].Priority = 1;
         yield return new WaitForSeconds(1f);
         virtualCameras[2].Priority = 11;
