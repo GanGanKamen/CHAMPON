@@ -3,17 +3,17 @@
  *  Project          : Gururin
  *  Tool Ver.        : Ver.3.41.10
  *  ACB  Ver.        : Ver.1.32.00
- *  File Path        : /Users/yamadachihiro/Documents/CRIWARE/CriAtomCraft/GururinADX2/Public/WorkUnit_Yamada
+ *  File Path        : /Users/yamadachihiro/Documents/Sourcetree/CHAMPON/GururinADX2/Public/WorkUnit_Yamada
  *  File Name        : Propeller.h
- *  File Size        : 853984 bytes
- *  Date Time        : 2019/08/19 21:03:56
+ *  File Size        : 1034624 bytes
+ *  Date Time        : 2019/08/23 00:10:10
  *  Target           : Public
- *  Cues             : 4
+ *  Cues             : 10
  *  CueSheet Comment : 
- *  Stream Awb Path  : /Users/yamadachihiro/Documents/CRIWARE/CriAtomCraft/GururinADX2/Public/WorkUnit_Yamada/Propeller.awb
+ *  Stream Awb Path  : /Users/yamadachihiro/Documents/Sourcetree/CHAMPON/GururinADX2/Public/WorkUnit_Yamada/Propeller.awb
  *===========================================================================*/
 
-#define CRI_PROPELLER_CUENUM (4)
+#define CRI_PROPELLER_CUENUM (10)
 
 /* AISAC Control List (AISAC Control ID) */
 #define CRI_PROPELLER_AISACCONTROL_PLOPELLER_WIND       ( 0) /*  */
@@ -26,6 +26,12 @@
 #define CRI_PROPELLER_SE_BALLONBREAK       ( 1) /*  */
 #define CRI_PROPELLER_BGM_PLOPELLER        ( 2) /*  */
 #define CRI_PROPELLER_SE_DENKIDAMAGE       ( 3) /*  */
+#define CRI_PROPELLER_SE_GLASSCRACK        ( 4) /*  */
+#define CRI_PROPELLER_SE_GLASSBREAK        ( 5) /*  */
+#define CRI_PROPELLER_SE_PROPELLERBOSSNAKIGOE1 ( 6) /*  */
+#define CRI_PROPELLER_SE_PROPELLERBOSSNAKIGOE2 ( 7) /*  */
+#define CRI_PROPELLER_SE_PROPELLERBOSSNAKIGOE3 ( 8) /*  */
+#define CRI_PROPELLER_BGM_PROPELLERBOSS    ( 9) /*  */
 
 /* Block List (Block Index) */
 
