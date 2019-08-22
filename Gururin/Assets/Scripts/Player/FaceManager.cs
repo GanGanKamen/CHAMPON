@@ -27,6 +27,12 @@ public class FaceManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        //顔を回転させないようにする
+        transform.rotation = Quaternion.Euler(0, 0, 0);
+    }
+
     private void FixedUpdate()
     {
         //歯車と噛み合って回っている時、踏ん張り顔にする
