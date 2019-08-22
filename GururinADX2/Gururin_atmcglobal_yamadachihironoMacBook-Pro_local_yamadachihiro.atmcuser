@@ -4,6 +4,7 @@
   <OrcaTree OrcaName="(no name)">
     <Orca OrcaName="atmcUserFile" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserFile">
       <Orca OrcaName="BusMapforCue" orcaPath="BusMap/BusMapforCue" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="Categories" orcaPath="Categories" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="System" orcaPath="Categories/System" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="SE" orcaPath="Categories/System/SE" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="GameOver" orcaPath="Categories/GameOver" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
