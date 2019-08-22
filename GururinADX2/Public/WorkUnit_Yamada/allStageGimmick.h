@@ -5,15 +5,15 @@
  *  ACB  Ver.        : Ver.1.32.00
  *  File Path        : /Users/yamadachihiro/Documents/Sourcetree/CHAMPON/GururinADX2/Public/WorkUnit_Yamada
  *  File Name        : allStageGimmick.h
- *  File Size        : 148832 bytes
- *  Date Time        : 2019/08/19 21:03:55
+ *  File Size        : 159552 bytes
+ *  Date Time        : 2019/08/23 00:10:08
  *  Target           : Public
- *  Cues             : 6
+ *  Cues             : 7
  *  CueSheet Comment : 
  *  Stream Awb Path  : /Users/yamadachihiro/Documents/Sourcetree/CHAMPON/GururinADX2/Public/WorkUnit_Yamada/allStageGimmick.awb
  *===========================================================================*/
 
-#define CRI_ALLSTAGEGIMMICK_CUENUM (6)
+#define CRI_ALLSTAGEGIMMICK_CUENUM (7)
 
 /* AISAC Control List (AISAC Control ID) */
 
@@ -24,6 +24,7 @@
 #define CRI_ALLSTAGEGIMMICK_SE_ITEM              ( 3) /*  */
 #define CRI_ALLSTAGEGIMMICK_SE_HIDAN             ( 5) /*  */
 #define CRI_ALLSTAGEGIMMICK_GINGLE_GAMECLEAR     ( 6) /*  */
+#define CRI_ALLSTAGEGIMMICK_SE_TURNGEAR          ( 7) /*  */
 
 /* Block List (Block Index) */
 
