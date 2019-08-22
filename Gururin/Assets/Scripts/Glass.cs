@@ -5,15 +5,17 @@ using UnityEngine;
 public class Glass : MonoBehaviour
 {
 
-    private Rigidbody2D _rb2d;
     public GameObject balloonPrefab;
     public float dropDistance;
     public bool collision;
+    private Rigidbody2D _rb2d;
+    private CriAtomSource _breakSE;
 
     // Start is called before the first frame update
     void Start()
     {
         _rb2d = GetComponent<Rigidbody2D>();
+        _breakSE = GetComponent<CriAtomSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -21,6 +23,7 @@ public class Glass : MonoBehaviour
         if (other.CompareTag("Jump"))
         {
             collision = true;
+            _breakSE.Play();
         }
     }
 
@@ -36,7 +39,8 @@ public class Glass : MonoBehaviour
     void Update()
     {
         //if (collision && _rb2d.velocity.y < dropDistance)
-        if(collision)
+        //JumpColliderに接触したとき
+        if (collision)
         {
             var pos = transform.position;
             var balloon = Instantiate(balloonPrefab);

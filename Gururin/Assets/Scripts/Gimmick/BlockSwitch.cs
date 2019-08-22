@@ -33,7 +33,7 @@ public class BlockSwitch : MonoBehaviour
 
     IEnumerator VCam()
     {
-        //コントローラー操作を封じる
+        //コントローラーの操作を封じる
         _gameController.isCon = true;
         //ブロックの位置にカメラを移動
         vCam.SetActive(true);
@@ -45,7 +45,7 @@ public class BlockSwitch : MonoBehaviour
 
         yield return new WaitForSeconds(blendSpeed);
 
-        //コントローラー操作を許可
+        //コントローラーの操作を許可
         _gameController.isCon = false;
         //カメラを元に戻す
         vCam.SetActive(false);

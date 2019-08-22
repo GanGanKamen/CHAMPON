@@ -16,6 +16,7 @@ public class RemainingLife : MonoBehaviour
     void Start()
     {
         //ぐるりんの残機 タイトル画面に戻ってきたら全機回復
+        //難易度に応じて適宜変更
         life = 6;
         maxLife = life;
     }
