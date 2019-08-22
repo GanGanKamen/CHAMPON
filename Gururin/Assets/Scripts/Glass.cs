@@ -35,12 +35,8 @@ public class Glass : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_rb2d.velocity.y < -8.0f)
-        {
-            Debug.Log(_rb2d.velocity.y);
-        }
-
-        if (collision && _rb2d.velocity.y < dropDistance)
+        //if (collision && _rb2d.velocity.y < dropDistance)
+        if(collision)
         {
             var pos = transform.position;
             var balloon = Instantiate(balloonPrefab);

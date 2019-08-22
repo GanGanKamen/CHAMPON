@@ -7,10 +7,12 @@ public class GlassEjectSwitch : MonoBehaviour
 
     public GameObject glassBall, glassPos, vCam;
     private CriAtomSource _pushSE;
+    private Gamecontroller _gameController;
 
     private void Start()
     {
         _pushSE = GameObject.Find("SE_item(CriAtomSource)").GetComponent<CriAtomSource>();
+        _gameController = GameObject.Find("GameController").GetComponent<Gamecontroller>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -24,6 +26,8 @@ public class GlassEjectSwitch : MonoBehaviour
 
     IEnumerator VCam()
     {
+        //コントローラー操作を封じる
+        _gameController.isCon = true;
         //ガラス玉の位置にカメラを移動
         vCam.SetActive(true);
 
@@ -36,6 +40,8 @@ public class GlassEjectSwitch : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
 
+        //コントローラー操作を許可
+        _gameController.isCon = false;
         //カメラを元に戻す
         vCam.SetActive(false);
 

@@ -9,12 +9,14 @@ public class BlockSwitch : MonoBehaviour
     private bool blocking;
     public float blendSpeed;
     private CriAtomSource _pushSE;
+    private Gamecontroller _gameController;
 
     // Start is called before the first frame update
     void Start()
     {
         blocking = false;
         _pushSE = GameObject.Find("SE_item(CriAtomSource)").GetComponent<CriAtomSource>();
+        _gameController = GameObject.Find("GameController").GetComponent<Gamecontroller>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -31,6 +33,8 @@ public class BlockSwitch : MonoBehaviour
 
     IEnumerator VCam()
     {
+        //コントローラー操作を封じる
+        _gameController.isCon = true;
         //ブロックの位置にカメラを移動
         vCam.SetActive(true);
 
@@ -41,6 +45,8 @@ public class BlockSwitch : MonoBehaviour
 
         yield return new WaitForSeconds(blendSpeed);
 
+        //コントローラー操作を許可
+        _gameController.isCon = false;
         //カメラを元に戻す
         vCam.SetActive(false);
 
