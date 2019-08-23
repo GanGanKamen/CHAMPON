@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// ぐるりんの動き全般
@@ -165,41 +166,80 @@ public class PlayerMove : MonoBehaviour
 
             if (isPress && !finishMode)
             {
-                if (gearGimmickHit == false && isJump)
+                if (SceneManager.GetActiveScene().name != "BossScene")
                 {
-                    if (gameController.flick_right == false && gameController.flick_left == false)
+                    if (gearGimmickHit == false && isJump)
                     {
-                        _rb2d.AddForce(Vector2.up * jumpSpeed);
-                        _jumpSE.Play();
-                        isJump = false;
-                        gameController.isFlick = false;
+                        if (gameController.flick_right == false && gameController.flick_left == false)
+                        {
+                            _rb2d.AddForce(Vector2.up * jumpSpeed);
+                            _jumpSE.Play();
+                            isJump = false;
+                            gameController.isFlick = false;
+                        }
+                        else if (gameController.flick_right)
+                        {
+                            Vector2 jumpforce = new Vector2(0.3f / gameController.sensitivity, 1.0f);
+                            _rb2d.AddForce(jumpforce * jumpSpeed);
+                            _jumpSE.Play();
+                            isJump = false;
+                            gameController.isFlick = false;
+                        }
+                        else if (gameController.flick_left)
+                        {
+                            Vector2 jumpforce = new Vector2(-0.3f / gameController.sensitivity, 1.0f);
+                            _rb2d.AddForce(jumpforce * jumpSpeed);
+                            _jumpSE.Play();
+                            isJump = false;
+                            gameController.isFlick = false;
+                        }
                     }
-                    else if (gameController.flick_right)
+                    else if (gearGimmickHit)
                     {
-                        Vector2 jumpforce = new Vector2(0.3f / gameController.sensitivity, 1.0f);
-                        _rb2d.AddForce(jumpforce * jumpSpeed);
-                        _jumpSE.Play();
-                        isJump = false;
-                        gameController.isFlick = false;
-                    }
-                    else if (gameController.flick_left)
-                    {
-                        Vector2 jumpforce = new Vector2(-0.3f / gameController.sensitivity, 1.0f);
-                        _rb2d.AddForce(jumpforce * jumpSpeed);
-                        _jumpSE.Play();
-                        isJump = false;
-                        gameController.isFlick = false;
+                        //Gearと噛み合っているときにジャンプのみすると後方へジャンプ
+                        //移動操作を行いながらジャンプすると移動分の距離が加算される = 後方ジャンプになる？
+                        //左方向のみが後方ならばこのままでよいが、右方向へバックジャンプする場合は要改良
+                        Vector2 force = new Vector2(-200.0f, 0.0f);
+                        _rb2d.AddForce(force);
+                        isMove = true;
                     }
                 }
-                else if (gearGimmickHit)
+                else
                 {
-                    //Gearと噛み合っているときにジャンプのみすると後方へジャンプ
-                    //移動操作を行いながらジャンプすると移動分の距離が加算される = 後方ジャンプになる？
-                    //左方向のみが後方ならばこのままでよいが、右方向へバックジャンプする場合は要改良
-                    Vector2 force = new Vector2(-200.0f, 0.0f);
-                    _rb2d.AddForce(force);
-                    isMove = true;
+                    if (gearGimmickHit == false && isJump)
+                    {
+                        if (gameController.flick_up)
+                        {
+                            _rb2d.AddForce(Vector2.up * jumpSpeed);
+                            _jumpSE.Play();
+                            isJump = false;
+                            gameController.isFlick = false;
+                        }
+                        if (gameController.flick_down)
+                        {
+                            _rb2d.AddForce(Vector2.down * jumpSpeed);
+                            _jumpSE.Play();
+                            isJump = false;
+                            gameController.isFlick = false;
+                        }
+                        if (gameController.flick_right)
+                        {
+                            _rb2d.AddForce(Vector2.right * jumpSpeed);
+                            _jumpSE.Play();
+                            isJump = false;
+                            gameController.isFlick = false;
+                        }
+                        if (gameController.flick_left)
+                        {
+                            _rb2d.AddForce(Vector2.left * jumpSpeed);
+                            _jumpSE.Play();
+                            isJump = false;
+                            gameController.isFlick = false;
+                        }
+                    }
+
                 }
+
 
                 isPress = false;
             }

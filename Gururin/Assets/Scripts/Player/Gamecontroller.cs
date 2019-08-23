@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class Gamecontroller : MonoBehaviour
 {
@@ -234,10 +236,21 @@ public class Gamecontroller : MonoBehaviour
                     }
                 }
 
-                if (playerMove.isJump && flick_up) //jampcountがjamp以下の時にジャンプする
+                if (SceneManager.GetActiveScene().name == "BossScene")
                 {
-                    playerMove.isPress = true;
+                    if (playerMove.isJump && (flick_up || flick_down || flick_right || flick_left))
+                    {
+                        playerMove.isPress = true;
+                    }
                 }
+                else
+                {
+                    if (playerMove.isJump && flick_up)//ジャンプ
+                    {
+                        playerMove.isPress = true;
+                    }
+                }
+
 
                 //angleの値を初期化
                 angle = 0;
