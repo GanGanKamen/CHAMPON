@@ -27,6 +27,7 @@ namespace GanGanKamen
         {
             RandomWalk,
             Stop,
+            Stay,
             Kill,
             ReadyToKill,
             Attack,
@@ -47,6 +48,7 @@ namespace GanGanKamen
         [SerializeField] private float attackProbability;
         private float attackCount;
         private CapsuleCollider2D capsuleCollider;
+        private PolygonCollider2D gearColider;
 
         // Start is called before the first frame update
         void Start()
@@ -54,6 +56,7 @@ namespace GanGanKamen
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMove>();
             gameController = GameObject.Find("GameController").GetComponent<Gamecontroller>();
             capsuleCollider = GetComponent<CapsuleCollider2D>();
+            gearColider = thisGear.gear.GetComponent<PolygonCollider2D>();
             handParent = transform.parent.gameObject;
             distinationPos = new Vector2(Random.Range(moveRangeX.x, moveRangeX.y),
                 Random.Range(moveRangeY.x, moveRangeY.y));
@@ -71,10 +74,19 @@ namespace GanGanKamen
                     RandomWalk();
                     ColliderCancel();
                     break;
+                case Pattern.Stay:
+                    distinationPos = transform.position;
+                    attackCount += Time.deltaTime;
+                    moveSpeed = 0;
+                    if(attackCount >= 0.2f)
+                    {
+                        pattern = Pattern.ReadyToKill;
+                    }
+                    break;
                 case Pattern.ReadyToKill:
                     distinationPos = startPos;
                     attackCount = 0;
-                    moveSpeed = Time.deltaTime;
+                    moveSpeed = Time.deltaTime * 2f;
                     if (Vector3.Distance(handParent.transform.position, distinationPos) < 0.5f)
                     {
                         pattern = Pattern.Kill;
@@ -86,7 +98,7 @@ namespace GanGanKamen
                     Vector3 offest = Vector3.Scale((player.transform.position - transform.position), new Vector3(-1, -1, 0)).normalized;
                     distinationPos = deathZones.position + offest;
                     attackCount = 0;
-                    moveSpeed = Time.deltaTime;
+                    moveSpeed = Time.deltaTime * 1.5f;
                     if (Vector3.Distance(handParent.transform.position, distinationPos) < 0.2f)
                     {
                         pattern = Pattern.RandomWalk;
@@ -135,6 +147,7 @@ namespace GanGanKamen
                 case Pattern.Recovery:
                     distinationPos = startPos;
                     capsuleCollider.enabled = false;
+                    gearColider.enabled = false;
                     if (Vector3.Distance(handParent.transform.position, distinationPos) < 0.2f && player.isJump == true
                         && bossBalloon.status != BossBalloon.Status.Hit)
                     {
@@ -145,6 +158,7 @@ namespace GanGanKamen
                 case Pattern.Stop:
                     distinationPos = transform.position;
                     capsuleCollider.enabled = false;
+                    gearColider.enabled = false;
                     break;
             }
 
@@ -177,6 +191,7 @@ namespace GanGanKamen
             {
                 capsuleCollider.enabled = true;
             }
+            gearColider.enabled = true;
         }
 
         private void RandomWalk()
@@ -195,7 +210,8 @@ namespace GanGanKamen
             player.transform.parent = this.transform;
             player.nowBossHand = this;
             hitPlayer = true;
-            pattern = Pattern.ReadyToKill;
+            attackCount = 0;
+            pattern = Pattern.Stay;
 
         }
 

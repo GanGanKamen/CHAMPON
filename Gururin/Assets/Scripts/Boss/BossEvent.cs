@@ -41,6 +41,8 @@ public class BossEvent : MonoBehaviour
     [SerializeField] GameObject lines;
 
     public GameObject bgmObj;
+
+    public BoxCollider2D[] deadZones;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -91,14 +93,14 @@ public class BossEvent : MonoBehaviour
         }
         stop = true;
         bossChara.gameObject.SetActive(true);
-        SoundManager.PlayS(bossChara.gameObject, "SE_propellerBOSSnakigoe1");
+        //SoundManager.PlayS(bossChara.gameObject, "SE_propellerBOSSnakigoe1");
         virtualCameras[3].Priority = 11;
         yield return new WaitForSeconds(5f);
         virtualCameras[3].Priority = 1;
         yield return new WaitForSeconds(2f);
         Vector2 force = new Vector2(0, 300f);
         player.GetComponent<Rigidbody2D>().AddForce(force);
-        SoundManager.PlayS(player.gameObject);
+        SoundManager.PlayS(player.gameObject, "SE_jump");
         while (bossChara.hasDown == false)
         {
             yield return null;
@@ -146,7 +148,10 @@ public class BossEvent : MonoBehaviour
         {
             yield return null;
         }
-        int nowLife = RemainingLife.life;
+        for(int i=0;i< deadZones.Length; i++)
+        {
+            deadZones[i].enabled = false;
+        }
         gamecontroller.isCon = true;
         SoundManager.StopS(bgmObj);
         for (int i = 0; i < fans.Length; i++)
@@ -173,7 +178,7 @@ public class BossEvent : MonoBehaviour
         {
             yield return null;
         }
-        if (nowLife != RemainingLife.life) yield break;
+
         MovieCutIn();
         while (Mathf.Abs(topBand.localPosition.y - topDis.y) > 1f)
         {
@@ -186,18 +191,20 @@ public class BossEvent : MonoBehaviour
         virtualCameras[1].Priority = 11;
         yield return new WaitForSeconds(0.5f);
         player.animator.SetTrigger("Jump");
+        /*
         SoundManager.PlayS(gameObject, "allStageGimmick", "SE_jump");
         yield return new WaitForSeconds(1f);
         SoundManager.PlayS(gameObject, "allStageGimmick", "SE_turnGear");
         yield return new WaitForSeconds(1f);
-
+        */
+        yield return new WaitForSeconds(2f);
         player.animator.SetTrigger("Kick");
         virtualCameras[1].Priority = 1;
         yield return new WaitForSeconds(1f);
         virtualCameras[2].Priority = 11;
         player.animator.enabled = false;
 
-        window.localPosition = Vector3.zero;
+        window.localPosition = new Vector3(0,-50,0);
         windowText.text = textMessage[1];
         windowAnim.SetBool("Open", true);
         windowAnim.SetBool("Close", false);
@@ -229,7 +236,7 @@ public class BossEvent : MonoBehaviour
         virtualCameras[1].Priority = 1;
         virtualCameras[2].Priority = 11;
         yield return new WaitForSeconds(0.5f);
-        SoundManager.PlayS(gameObject, "allStageGimmick", "SE_jump");
+        //SoundManager.PlayS(gameObject, "allStageGimmick", "SE_jump");
         goBack = true;
     }
 

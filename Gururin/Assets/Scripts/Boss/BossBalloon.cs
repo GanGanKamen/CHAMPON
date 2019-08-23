@@ -159,12 +159,12 @@ namespace GanGanKamen
 
                 else
                 {
-                    StartCoroutine(Down());
+                    bossAnim.SetTrigger("Down");
                 }
 
             }
         }
-
+        /*
         private IEnumerator Down()
         {
             bossAnim.SetTrigger("Down");
@@ -172,16 +172,18 @@ namespace GanGanKamen
             yield return new WaitForSeconds(0.4f);
             SoundManager.PlayS(gameObject, "SE_glassCrack");
             yield break;
-        }
+        }*/
 
         private IEnumerator Dead()
         {
             isDead = true;
             sprite.enabled = false;
             bossAnim.SetTrigger("Dead");
+            yield return new WaitForSeconds(4f);
+            /*
             yield return new WaitForSeconds(2f);
             SoundManager.PlayS(gameObject, "SE_glassBreak");
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(2f);*/
             bossCadaver.SetActive(true);
             transform.parent.gameObject.SetActive(false);
             yield break;
