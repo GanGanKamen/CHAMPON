@@ -11,10 +11,10 @@ public class Tutorial4Sentence : MonoBehaviour
     void Start()
     {
         sentences[0] = "あんなに高い所に扉が！";
-        sentences[1] = "足場もないし、どうしたらいいかなぁ...";
-        sentences[2] = "あっ！ よく見たら天井にデコボコがあるね！";
+        sentences[1] = "足場もないし、どうしたら いいかなぁ...";
+        sentences[2] = "あっ！ よく見たら天井にデコボコが あるね！";
         sentences[3] = "ぐるりんは天井のデコボコに くっつけるんだ！";
-        sentences[4] = "まずはデコボコにくっついて そこから画面をぐるぐるすれば進めるよ！";
+        sentences[4] = "まずはデコボコにくっついて そこから画面をぐるぐるすれば 進めるよ！";
     }
 
     // Update is called once per frame

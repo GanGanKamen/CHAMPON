@@ -17,7 +17,7 @@ public class gururin_dead : MonoBehaviour
     private float _cameraBlend;
     private CanvasGroup _gameOver;
     private FlagManager _flagManager;
-    private CriAtomSource _gameOverSE, _electricSE;
+    private CriAtomSource _gameOverSE;
     public bool _SEPlay;
     private Text _lifeCount;
 
@@ -29,7 +29,6 @@ public class gururin_dead : MonoBehaviour
         _flagManager = GameObject.Find("FlagManager").GetComponent<FlagManager>();
         _lifeCount = GameObject.Find("LifeCount").GetComponent<Text>();
 
-        //_electricSE = GameObject.Find("SE_denkiDamage(CriAtomSource)").GetComponent<CriAtomSource>();
         _gameOverSE = GameObject.Find("SE_hidan(CriAtomSource)").GetComponent<CriAtomSource>();
 
         if(GameObject.Find("Data")!=null) data = GameObject.Find("Data").GetComponent<Data>();
@@ -42,11 +41,18 @@ public class gururin_dead : MonoBehaviour
     void Update()
     {
         _lifeCount.text = " " + RemainingLife.life;
+
+        //コライダーを非表示にする(即死ゾーンの重複を避けるため)
+        if (_flagManager.deadZoneCol)
+        {
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        }
     }
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
+            _flagManager.deadZoneCol = true;
             //カメラのブレンド速度を変化させる
             _cinemachineBrain.m_DefaultBlend.m_Time = 0.7f;
             //カメラをぐるりんに近づける

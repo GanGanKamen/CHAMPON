@@ -27,10 +27,12 @@ public class TransformFixed : MonoBehaviour
         {
             //効果音
             _gearMesh.Play();
+            //ぐるりんのRigidBody2Dを取得
+            var _gururinRb2d = other.GetComponent<Rigidbody2D>();
             //ぐるりんの位置を固定
-            other.transform.position = gearPos.transform.position;
+            _gururinRb2d.position = gearPos.transform.position;
             //ぐるりんの角度を固定
-            other.transform.rotation = gearPos.transform.rotation;
+            _gururinRb2d.rotation = gearPos.transform.rotation.eulerAngles.z;
             //ぐるりんの動きを止める
             flagManager.moveStop = true;
             flagManager.VGcol = true;
