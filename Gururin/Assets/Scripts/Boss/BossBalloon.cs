@@ -97,7 +97,7 @@ namespace GanGanKamen
                 {
                     recovery = 0;
                     bosseye.sprite = eyes[1];
-                    SoundManager.PlayS(gameObject, "SE_propellerBOSSnakigoe1");
+                    SoundManager.PlayS(bossAnim.gameObject, "SE_propellerBOSSnakigoe1");
                     for (int i = 0; i < hands.Length; i++)
                     {
                         hands[i].pattern = BossHand.Pattern.RandomWalk;
@@ -159,29 +159,30 @@ namespace GanGanKamen
 
                 else
                 {
-                    StartCoroutine(Down());
+                    bossAnim.SetTrigger("Down");
                 }
 
             }
         }
-
+        /*
         private IEnumerator Down()
         {
-            bossAnim.SetTrigger("Down");
+            
             SoundManager.PlayS(gameObject, "SE_propellerBOSSnakigoe2");
             yield return new WaitForSeconds(0.4f);
             SoundManager.PlayS(gameObject, "SE_glassCrack");
             yield break;
-        }
+        }*/
 
         private IEnumerator Dead()
         {
             isDead = true;
             sprite.enabled = false;
             bossAnim.SetTrigger("Dead");
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(4f);
+            /*
             SoundManager.PlayS(gameObject, "SE_glassBreak");
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(2f);*/
             bossCadaver.SetActive(true);
             transform.parent.gameObject.SetActive(false);
             yield break;
