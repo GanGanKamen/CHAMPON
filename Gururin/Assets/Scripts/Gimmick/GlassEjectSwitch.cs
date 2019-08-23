@@ -8,19 +8,31 @@ public class GlassEjectSwitch : MonoBehaviour
     public GameObject glassBall, glassPos, vCam;
     private CriAtomSource _pushSE;
     private Gamecontroller _gameController;
+    private bool _eject;
 
     private void Start()
     {
         _pushSE = GameObject.Find("SE_item(CriAtomSource)").GetComponent<CriAtomSource>();
         _gameController = GameObject.Find("GameController").GetComponent<Gamecontroller>();
+
+        _eject = false;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("Player") && _eject == false)
+        {
+            _eject = true;
+            _pushSE.Play();
+            StartCoroutine(VCam());
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            _pushSE.Play();
-            StartCoroutine(VCam());
+            _eject = false;
         }
     }
 
