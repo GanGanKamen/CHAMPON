@@ -208,6 +208,32 @@ public class PlayerMove : MonoBehaviour
                 {
                     if (gearGimmickHit == false && isJump)
                     {
+                        if (gameController.flick_right == false && gameController.flick_left == false)
+                        {
+                            _rb2d.AddForce(Vector2.up * jumpSpeed);
+                            _jumpSE.Play();
+                            isJump = false;
+                            gameController.isFlick = false;
+                        }
+                        else if (gameController.flick_right)
+                        {
+                            Vector2 jumpforce = new Vector2(0.3f / gameController.sensitivity, 1.0f);
+                            _rb2d.AddForce(jumpforce * jumpSpeed);
+                            _jumpSE.Play();
+                            isJump = false;
+                            gameController.isFlick = false;
+                        }
+                        else if (gameController.flick_left)
+                        {
+                            Vector2 jumpforce = new Vector2(-0.3f / gameController.sensitivity, 1.0f);
+                            _rb2d.AddForce(jumpforce * jumpSpeed);
+                            _jumpSE.Play();
+                            isJump = false;
+                            gameController.isFlick = false;
+                        }
+                    }
+                    else if (gearGimmickHit == false && isJump == false)
+                    {
                         if (gameController.flick_up)
                         {
                             _rb2d.AddForce(Vector2.up * jumpSpeed);
