@@ -100,7 +100,8 @@ public class gururin_dead : MonoBehaviour
         }
         else if(RemainingLife.life == 0)
         {
-            data.destroy = true;
+            //データを使わないときは消しておかないとタイトルに戻らない
+            //data.destroy = true;
             SceneManager.LoadScene("Title");
         }
     }
