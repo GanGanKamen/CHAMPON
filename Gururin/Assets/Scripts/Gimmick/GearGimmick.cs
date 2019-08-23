@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GearGimmick : MonoBehaviour {
 
@@ -179,12 +180,26 @@ public class GearGimmick : MonoBehaviour {
     //isPressが押された後(Update後)に判定
     private void LateUpdate()
     {
-        if (playerMove.isPress && playerHit)
+        if (SceneManager.GetActiveScene().name != "BossScene")
         {
-            _gururinRb2d.isKinematic = false;
-            //歯車のColliderを消す
-            StartCoroutine(Col());
+            if (playerMove.isPress && playerHit)
+            {
+                _gururinRb2d.isKinematic = false;
+                //歯車のColliderを消す
+                StartCoroutine(Col());
+            }
         }
+        else
+        {
+            if (gameController.isFlick && playerHit)
+            {
+                _gururinRb2d.isKinematic = false;
+                //歯車のColliderを消す
+                StartCoroutine(Col());
+            }
+        }
+
+        
     }
 
     IEnumerator Col()
