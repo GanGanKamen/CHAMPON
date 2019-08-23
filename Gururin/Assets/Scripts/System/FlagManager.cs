@@ -15,6 +15,7 @@ public class FlagManager : MonoBehaviour
     public bool surprise_Face; //驚き顔
     public bool velXFixed;
     public bool stageClear;
+    public bool deadZoneCol; //即死ゾーンのコライダーの表示切替
 
     // Start is called before the first frame update
     void Start()

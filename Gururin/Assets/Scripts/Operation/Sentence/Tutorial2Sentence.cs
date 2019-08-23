@@ -11,8 +11,8 @@ public class Tutorial2Sentence : MonoBehaviour
     void Start()
     {
         sentences[0] = "むむっ！前方に高い壁を発見！";
-        sentences[1] = "でもよかったよ！足場があるね！ この足場は下からすり抜けられるんだ！";
-        sentences[2] = "さあ！ジャンプで飛び越えていこう！";
+        sentences[1] = "でもよかったよ！ 足場があるね！この足場は下から すり抜けられるんだ！";
+        sentences[2] = "さあ！ジャンプで飛び越えて いこう！";
     }
 
     // Update is called once per frame

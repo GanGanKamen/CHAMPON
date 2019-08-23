@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5758304127926832634}
   - component: {fileID: 8450430747208654583}
   m_Layer: 0
-  m_Name: Wind (1)
+  m_Name: Wind_Permeation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 165684461403249261}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.006249999, y: 0.06, z: 1}
+  m_LocalScale: {x: 0.059999995, y: 0.059999995, z: 1}
   m_Children: []
   m_Father: {fileID: 8531214184313288652}
   m_RootOrder: 1
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 25.550648, y: 5.12}
+  m_Size: {x: 2.5, y: 5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -316,7 +316,7 @@ Transform:
   m_GameObject: {fileID: 6099603406777971934}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.006249999, y: 0.06, z: 1}
+  m_LocalScale: {x: 0.059999995, y: 0.059999995, z: 1}
   m_Children: []
   m_Father: {fileID: 8531214184313288652}
   m_RootOrder: 0
@@ -363,7 +363,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 25.550648, y: 5.12}
+  m_Size: {x: 2.5, y: 5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -449,7 +449,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 0.15, y: 0.15}
   m_EdgeRadius: 0
 --- !u!249 &832990284386125331
 AreaEffector2D:

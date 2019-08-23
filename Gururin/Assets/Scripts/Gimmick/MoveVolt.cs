@@ -6,12 +6,6 @@ public class MoveVolt : MonoBehaviour
 {
 
     public float moveSpeed;
-    private gururin_dead _dead;
-
-    private void Start()
-    {
-        _dead = GetComponent<gururin_dead>();
-    }
 
     //"Max" か "Min"にぶつかったら上下を逆にする
     void OnTriggerEnter2D(Collider2D other)
@@ -29,10 +23,6 @@ public class MoveVolt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(_dead._SEPlay == true)
-        {
-            moveSpeed = 0.0f;
-        }
         gameObject.transform.Translate(0.0f, moveSpeed, 0.0f);
     }
 }
