@@ -2,22 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WindArea : MonoBehaviour
+public class AreaSound : MonoBehaviour
 {
 
     private bool _sourceStart;
-    private CriAtomSource _source;
-    private string aisacControllerName = "Plopeller_wind";
-    public float currentControlValue = 0.0f;
+    public float upVolume, maxVolume;
+    public CriAtomSource _source;
 
     // Start is called before the first frame update
     void Start()
     {
-        _source = GetComponent<CriAtomSource>();
         _sourceStart = false;
-        //SEの音量
-        _source.volume = 0.2f;
-        currentControlValue = 0.0f;
+        _source.volume = 0.0f;
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -42,18 +38,18 @@ public class WindArea : MonoBehaviour
     {
         if (_sourceStart)
         {
-            currentControlValue += 0.005f;
-            if (currentControlValue >= 1.0f)
+            _source.volume += upVolume;
+            if (_source.volume >= maxVolume)
             {
-                currentControlValue = 1.0f;
+                _source.volume = maxVolume;
             }
         }
         else if (_sourceStart == false)
         {
-            currentControlValue -= 0.01f;
-            if (currentControlValue <= 0.0f)
+            _source.volume -= 0.005f;
+            if (_source.volume <= 0.0f)
             {
-                currentControlValue = 0.0f;
+                _source.volume  = 0.0f;
                 _source.Stop();
             }
         }
