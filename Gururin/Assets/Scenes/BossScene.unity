@@ -6901,11 +6901,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MovieCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 1946987891184199801, guid: 8669c6dc93cbd2843a5bd46de7af6463,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1946987891184199804, guid: 8669c6dc93cbd2843a5bd46de7af6463,
         type: 3}
       propertyPath: gamecontroller
