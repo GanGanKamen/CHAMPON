@@ -5,8 +5,8 @@
  *  ACB  Ver.        : Ver.1.32.00
  *  File Path        : /Users/yamadachihiro/Documents/Sourcetree/CHAMPON/GururinADX2/Public/WorkUnit_Yamada
  *  File Name        : Propeller.h
- *  File Size        : 1034624 bytes
- *  Date Time        : 2019/08/23 00:10:10
+ *  File Size        : 1034784 bytes
+ *  Date Time        : 2019/08/23 19:15:45
  *  Target           : Public
  *  Cues             : 10
  *  CueSheet Comment : 
