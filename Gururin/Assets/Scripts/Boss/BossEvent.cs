@@ -40,10 +40,7 @@ public class BossEvent : MonoBehaviour
     public bool goBack;
     [SerializeField] GameObject lines;
 
-    public BoxCollider2D[] deadzones;
-
     public GameObject bgmObj;
-
     // Start is called before the first frame update
     private void Awake()
     {
@@ -94,13 +91,14 @@ public class BossEvent : MonoBehaviour
         }
         stop = true;
         bossChara.gameObject.SetActive(true);
+        SoundManager.PlayS(bossChara.gameObject, "SE_propellerBOSSnakigoe1");
         virtualCameras[3].Priority = 11;
         yield return new WaitForSeconds(5f);
         virtualCameras[3].Priority = 1;
         yield return new WaitForSeconds(2f);
         Vector2 force = new Vector2(0, 300f);
         player.GetComponent<Rigidbody2D>().AddForce(force);
-        SoundManager.PlayS(player.gameObject, "SE_jump");
+        SoundManager.PlayS(player.gameObject);
         while (bossChara.hasDown == false)
         {
             yield return null;
@@ -123,7 +121,7 @@ public class BossEvent : MonoBehaviour
         windowText.text = textMessage[0];
         windowAnim.SetBool("Close", false);
         windowAnim.SetBool("Open", true);
-
+        SoundManager.PlayS(gameObject, "Operation", "SE_WindowOpen");
         yield return new WaitForSeconds(1f);
         while (!Input.GetMouseButtonDown(0))
         {
@@ -132,7 +130,7 @@ public class BossEvent : MonoBehaviour
 
         windowAnim.SetBool("Open", false);
         windowAnim.SetBool("Close", true);
-
+        SoundManager.PlayS(gameObject, "Operation", "SE_WindowClose");
 
         MovieCutOut();
         while (Mathf.Abs(topBand.localPosition.y - topDis.y) > 1f)
@@ -148,10 +146,7 @@ public class BossEvent : MonoBehaviour
         {
             yield return null;
         }
-        for(int i = 0; i < deadzones.Length; i++)
-        {
-            deadzones[i].enabled = false;
-        }
+        int nowLife = RemainingLife.life;
         gamecontroller.isCon = true;
         SoundManager.StopS(bgmObj);
         for (int i = 0; i < fans.Length; i++)
@@ -178,7 +173,7 @@ public class BossEvent : MonoBehaviour
         {
             yield return null;
         }
-
+        if (nowLife != RemainingLife.life) yield break;
         MovieCutIn();
         while (Mathf.Abs(topBand.localPosition.y - topDis.y) > 1f)
         {
@@ -191,13 +186,11 @@ public class BossEvent : MonoBehaviour
         virtualCameras[1].Priority = 11;
         yield return new WaitForSeconds(0.5f);
         player.animator.SetTrigger("Jump");
-        /*
         SoundManager.PlayS(gameObject, "allStageGimmick", "SE_jump");
-
+        yield return new WaitForSeconds(1f);
         SoundManager.PlayS(gameObject, "allStageGimmick", "SE_turnGear");
         yield return new WaitForSeconds(1f);
-        */
-        yield return new WaitForSeconds(2f);
+
         player.animator.SetTrigger("Kick");
         virtualCameras[1].Priority = 1;
         yield return new WaitForSeconds(1f);
@@ -208,7 +201,7 @@ public class BossEvent : MonoBehaviour
         windowText.text = textMessage[1];
         windowAnim.SetBool("Open", true);
         windowAnim.SetBool("Close", false);
-
+        SoundManager.PlayS(gameObject, "Operation", "SE_WindowOpen");
         yield return new WaitForSeconds(1f);
         virtualCameras[1].Priority = 11;
         virtualCameras[2].Priority = 1;
@@ -228,11 +221,10 @@ public class BossEvent : MonoBehaviour
         nextStage.SetActive(true);
         windowAnim.SetBool("Open", false);
         windowAnim.SetBool("Close", true);
-
+        SoundManager.PlayS(gameObject, "Operation", "SE_WindowClose");
         gamecontroller.isCon = true;
         finish.gameObject.SetActive(false);
         bossCadaver.BreakUp();
-        SoundManager.PlayS(gameObject, "Propeller", "SE_glassBreak");
         lines.SetActive(false);
         virtualCameras[1].Priority = 1;
         virtualCameras[2].Priority = 11;
