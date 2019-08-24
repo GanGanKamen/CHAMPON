@@ -218,6 +218,8 @@ public class BossEvent : MonoBehaviour
         finish.gameObject.SetActive(true);
 
         virtualCameras[1].Priority = 11;
+        virtualCameras[1].Follow = null;
+        virtualCameras[1].LookAt = null;
         virtualCameras[2].Priority = 1;
 
         lines.SetActive(true);

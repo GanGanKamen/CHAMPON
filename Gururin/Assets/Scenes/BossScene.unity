@@ -5899,6 +5899,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2048594209}
     m_Modifications:
+    - target: {fileID: 7432124947213667219, guid: 738cda8aea5c3bf43b05a26c128b029b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8391607417779318029, guid: 738cda8aea5c3bf43b05a26c128b029b,
         type: 3}
       propertyPath: m_Name
@@ -5974,11 +5979,11 @@ PrefabInstance:
       propertyPath: reloadScene.m_SceneName
       value: BossScene
       objectReference: {fileID: 0}
-    - target: {fileID: 7432124947213667219, guid: 738cda8aea5c3bf43b05a26c128b029b,
+    - target: {fileID: 7432124947494863424, guid: 738cda8aea5c3bf43b05a26c128b029b,
         type: 3}
-      propertyPath: m_RootOrder
-      value: 20
-      objectReference: {fileID: 0}
+      propertyPath: vCam
+      value: 
+      objectReference: {fileID: 1188016414}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 738cda8aea5c3bf43b05a26c128b029b, type: 3}
 --- !u!4 &2001335503 stripped
@@ -6194,8 +6199,8 @@ Transform:
   - {fileID: 374503667}
   - {fileID: 1191790990}
   - {fileID: 3039632055579579598}
-  - {fileID: 156933468}
   - {fileID: 2001335503}
+  - {fileID: 156933468}
   - {fileID: 1744369082}
   - {fileID: 1467136521}
   m_Father: {fileID: 0}
