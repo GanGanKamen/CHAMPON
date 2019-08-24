@@ -7,7 +7,6 @@ using UnityEngine;
 /// </summary>
 
 
-//音が重なって聞こえるので要改修
 public class PropellerAisacController : MonoBehaviour
 {
 
@@ -16,7 +15,7 @@ public class PropellerAisacController : MonoBehaviour
     private string aisacControllerName_C = "piopellerBGM_C";
     private string aisacControllerName_D = "piopellerBGM_D";
     //public bool[] _playLimit;
-    public float[]currentControlValue;
+    public float[] currentControlValue;
     [SerializeField] RotationCounter[] rotationCounter;
 
     private void Awake()
@@ -27,15 +26,14 @@ public class PropellerAisacController : MonoBehaviour
         currentControlValue[0] = 0.0f;
         currentControlValue[1] = 0.0f;
         currentControlValue[2] = 0.0f;
-
-        source.SetAisacControl(aisacControllerName_B, currentControlValue[0]);
-        source.SetAisacControl(aisacControllerName_C, currentControlValue[1]);
-        source.SetAisacControl(aisacControllerName_D, currentControlValue[2]);
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        source.SetAisacControl(aisacControllerName_B, currentControlValue[0]);
+        source.SetAisacControl(aisacControllerName_C, currentControlValue[1]);
+        source.SetAisacControl(aisacControllerName_D, currentControlValue[2]);
         //ステージ開始時にBGMを鳴らす
         //source.Play();
     }
