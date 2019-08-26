@@ -55,12 +55,9 @@ public class GearGimmick : MonoBehaviour {
             {
                 gameController.isPress = false;
             }
-            ///接触時に即動かせるようにしてしまうとvelocity = Vector2.zero;する前に動かせてしまってずれるので
-            ///接触してから一定時間(0.2f～0.3fぐらい？)コントローラーを動かなくするコルーチンを実装する(予定)
-
-            //ぐるりんとGearの接触を感知
-            playerHit = true;
+            //ぐるりんとStopColliderの接触を感知
             playerMove.gearGimmickHit = true;
+            playerHit = true;
 
             //Playerの回転を許可
             rotParm = true;

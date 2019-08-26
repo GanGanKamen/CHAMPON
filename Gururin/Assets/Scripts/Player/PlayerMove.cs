@@ -103,16 +103,20 @@ public class PlayerMove : MonoBehaviour
             speed[1] = 0.0f;
         }
 
-        //右へ移動
-        if (gameController.AxB.z < 0 && gameController.isPress && isMove)
+        //GearGimmickと接触していないとき
+        if (gearGimmickHit == false)
         {
-            isRot[0] = true;
-        }
+            //右へ移動
+            if (gameController.AxB.z < 0 && gameController.isPress && isMove)
+            {
+                isRot[0] = true;
+            }
 
-        //左へ移動
-        else if (gameController.AxB.z > 0 && gameController.isPress && isMove)
-        {
-            isRot[1] = true;
+            //左へ移動
+            else if (gameController.AxB.z > 0 && gameController.isPress && isMove)
+            {
+                isRot[1] = true;
+            }
         }
     }
 

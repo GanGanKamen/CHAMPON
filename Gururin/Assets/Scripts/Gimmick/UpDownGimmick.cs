@@ -10,6 +10,7 @@ public class UpDownGimmick : MonoBehaviour
 {
 
     private float _rotSpeed;
+    public bool speed;
 
     [SerializeField] Gamecontroller gameController;
     [SerializeField] GearGimmick gearGimmick;
@@ -17,7 +18,14 @@ public class UpDownGimmick : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _rotSpeed = gearGimmick.rotSpeed / 100.0f;
+        if (speed == false)
+        {
+            _rotSpeed = gearGimmick.rotSpeed / 100.0f;
+        }
+        else
+        {
+            _rotSpeed = gearGimmick.rotSpeed / -100.0f;
+        }
     }
 
     //"Max" か "Min"にぶつかったら歯車を停止
