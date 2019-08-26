@@ -176,9 +176,14 @@ namespace GanGanKamen
 
         private IEnumerator Dead()
         {
+            player.transform.parent = null;
             isDead = true;
             sprite.enabled = false;
             bossAnim.SetTrigger("Dead");
+            for(int i = 0; i < hands.Length; i++)
+            {
+                hands[i].pattern = BossHand.Pattern.Stop;
+            }
             yield return new WaitForSeconds(4f);
             /*
             yield return new WaitForSeconds(2f);
