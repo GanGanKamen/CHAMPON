@@ -19,6 +19,7 @@ public class SceneChange : MonoBehaviour
     private bool _volumeDown;
     private float _volume;
 
+    public SceneObject[] bossScenes;
     // Start is called before the first frame update
     void Start()
     {
@@ -72,7 +73,16 @@ public class SceneChange : MonoBehaviour
 
     void GameStart()
     {
-        
+        bool isBoss = false;
+        foreach(SceneObject scene in bossScenes)
+        {
+            if(scene.ToString() == changeScene.ToString())
+            {
+                isBoss = true;
+            }
+        }
+
+        if (isBoss) RemainingLife.beforeBossLife = RemainingLife.life;
         SceneManager.LoadScene(changeScene);
         button = false;
     }

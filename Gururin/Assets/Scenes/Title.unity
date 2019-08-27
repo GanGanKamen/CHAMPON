@@ -571,6 +571,7 @@ MonoBehaviour:
   changeScene:
     m_SceneName: Tutorial-1
   button: 0
+  bossScenes: []
 --- !u!4 &483576971
 Transform:
   m_ObjectHideFlags: 0
@@ -1420,6 +1421,7 @@ MonoBehaviour:
   changeScene:
     m_SceneName: Propeller-1
   button: 0
+  bossScenes: []
 --- !u!4 &1045273776
 Transform:
   m_ObjectHideFlags: 0
@@ -1466,6 +1468,8 @@ MonoBehaviour:
   changeScene:
     m_SceneName: BossScene
   button: 0
+  bossScenes:
+  - m_SceneName: BossScene
 --- !u!4 &1319719843
 Transform:
   m_ObjectHideFlags: 0

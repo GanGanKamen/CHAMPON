@@ -45,6 +45,8 @@ public class BossEvent : MonoBehaviour
     public BoxCollider2D[] deadZones;
 
     IEnumerator canSkipEvent;
+
+    [SerializeField] private GameObject skipButton;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -55,6 +57,8 @@ public class BossEvent : MonoBehaviour
         bottomDis = bottomStart;
         fadeAlpha = 1;
         canSkipEvent = BossStart();
+        if (RemainingLife.life == RemainingLife.beforeBossLife) skipButton.SetActive(false);
+        else skipButton.SetActive(true);
     }
 
     void Start()
@@ -176,7 +180,7 @@ public class BossEvent : MonoBehaviour
         windowAnim.SetBool("Open", false);
         windowAnim.SetBool("Close", true);
         SoundManager.PlayS(gameObject, "Operation", "SE_WindowClose");
-
+        skipButton.SetActive(false);
         MovieCutOut();
         while (Mathf.Abs(topBand.localPosition.y - topDis.y) > 1f)
         {

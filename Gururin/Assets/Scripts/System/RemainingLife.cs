@@ -11,6 +11,7 @@ public class RemainingLife : MonoBehaviour
 
     public static int life;
     public static int maxLife;
+    public static int beforeBossLife;
 
     // Start is called before the first frame update
     void Start()
