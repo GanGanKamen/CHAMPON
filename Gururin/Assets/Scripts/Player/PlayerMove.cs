@@ -170,7 +170,7 @@ public class PlayerMove : MonoBehaviour
 
             if (isPress && !finishMode)
             {
-                if (SceneManager.GetActiveScene().name != "BossScene")
+                if (nowBossHand != null)
                 {
                     if (gearGimmickHit == false && isJump)
                     {

@@ -236,7 +236,7 @@ public class Gamecontroller : MonoBehaviour
                     }
                 }
 
-                if (SceneManager.GetActiveScene().name == "BossScene")
+                if (playerMove.nowBossHand!=null)
                 {
                     if (playerMove.isJump && (flick_up || flick_down || flick_right || flick_left))
                     {

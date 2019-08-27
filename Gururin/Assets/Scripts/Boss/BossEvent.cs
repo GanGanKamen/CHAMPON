@@ -43,6 +43,8 @@ public class BossEvent : MonoBehaviour
     public GameObject bgmObj;
 
     public BoxCollider2D[] deadZones;
+
+    IEnumerator canSkipEvent;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -52,11 +54,13 @@ public class BossEvent : MonoBehaviour
         topDis = topStart;
         bottomDis = bottomStart;
         fadeAlpha = 1;
+        canSkipEvent = BossStart();
     }
 
     void Start()
     {
-        StartCoroutine(StartEvent());
+        StartCoroutine(canSkipEvent);
+        StartCoroutine(BossClear());
     }
 
     // Update is called once per frame
@@ -87,7 +91,42 @@ public class BossEvent : MonoBehaviour
         }
     }
 
-    private IEnumerator StartEvent()
+    public void SkipButton()
+    {
+        StartCoroutine(Skip());
+    }
+
+    private IEnumerator Skip()
+    {
+        StopCoroutine(canSkipEvent);
+        canSkipEvent = null;
+        virtualCameras[3].Priority = 1;
+        stop = true;
+        bossChara.gameObject.SetActive(false);
+        for (int i = 0; i < fans.Length; i++)
+        {
+            fans[i].windAct = true;
+        }
+        for (int i = 0; i < wind.Length; i++)
+        {
+            wind[i].SetActive(true);
+        }
+        windowAnim.SetBool("Open", false);
+        windowAnim.SetBool("Close", true);
+        SoundManager.StopS(gameObject);
+        MovieCutOut();
+        while (Mathf.Abs(topBand.localPosition.y - topDis.y) > 1f)
+        {
+            yield return null;
+        }
+        stop = true;
+        gamecontroller.isCon = false;//nextFade
+        boss.SetActive(true);//nextFade
+        SoundManager.PlayS(bgmObj);//nextFade
+        yield break;
+    }
+
+    private IEnumerator BossStart()
     {
         gamecontroller.isCon = true;
         MovieCutIn();
@@ -143,16 +182,21 @@ public class BossEvent : MonoBehaviour
         {
             yield return null;
         }
-
+        stop = true;
         SoundManager.PlayS(bgmObj);
         bossChara.gameObject.SetActive(false);
         boss.SetActive(true);
         gamecontroller.isCon = false;
-        while(bossBalloon.lifes > 0)
+        yield break;
+    }
+
+    private IEnumerator BossClear()
+    {
+        while (bossBalloon.lifes > 0)
         {
             yield return null;
         }
-        for(int i=0;i< deadZones.Length; i++)
+        for (int i = 0; i < deadZones.Length; i++)
         {
             deadZones[i].enabled = false;
         }
@@ -178,7 +222,7 @@ public class BossEvent : MonoBehaviour
         player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 
         yield return null;
-        while(fadeOut == true)
+        while (fadeOut == true)
         {
             yield return null;
         }
@@ -208,7 +252,7 @@ public class BossEvent : MonoBehaviour
         virtualCameras[2].Priority = 11;
         player.animator.enabled = false;
 
-        window.localPosition = new Vector3(0,-50,0);
+        window.localPosition = new Vector3(0, -50, 0);
         windowText.text = textMessage[1];
         windowAnim.SetBool("Open", true);
         windowAnim.SetBool("Close", false);

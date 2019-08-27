@@ -180,7 +180,7 @@ public class GearGimmick : MonoBehaviour {
     //isPressが押された後(Update後)に判定
     private void LateUpdate()
     {
-        if (SceneManager.GetActiveScene().name != "BossScene")
+        if (playerMove.nowBossHand != null)
         {
             if (playerMove.isPress && playerHit)
             {
