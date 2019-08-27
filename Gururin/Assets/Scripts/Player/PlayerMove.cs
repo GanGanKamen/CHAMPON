@@ -144,13 +144,13 @@ public class PlayerMove : MonoBehaviour
         }
         else
         {
-            if (isRot[0])
+            if (isRot[0]&&!finishMode)
             {
                 Vector2 force = new Vector2(speed[0], speed[1]);
                 _rb2d.AddForce(force);
                 isRot[0] = false;
             }
-            else if (isRot[1])
+            else if (isRot[1]&&!finishMode)
             {
                 //左右のラックに張り付いていないとき
                 if (flagManager.isMove_VG[1] == false && flagManager.isMove_VG[2] == false)
