@@ -73,6 +73,7 @@ public class GearGimmick : MonoBehaviour {
             source.Play();
 
             if (bossHand != null) bossHand.AttachPlayer();
+            Debug.Log("Enter");
         }
     }
 
@@ -106,6 +107,8 @@ public class GearGimmick : MonoBehaviour {
 
             other.GetComponent<PlayerMove>().nowBossHand = null;
             if (bossHand != null) bossHand.Separate();
+
+            Debug.Log("Exit");
         }
     }
 

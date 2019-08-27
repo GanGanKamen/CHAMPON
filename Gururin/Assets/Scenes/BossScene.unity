@@ -6639,6 +6639,16 @@ PrefabInstance:
       propertyPath: bossEvent
       value: 
       objectReference: {fileID: 525626831}
+    - target: {fileID: 272355903003477811, guid: d1676ddce94b66043aa81e6a7190365c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 272355903003477811, guid: d1676ddce94b66043aa81e6a7190365c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1676ddce94b66043aa81e6a7190365c, type: 3}
 --- !u!1001 &287770861993924240

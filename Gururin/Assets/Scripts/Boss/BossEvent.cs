@@ -81,6 +81,10 @@ public class BossEvent : MonoBehaviour
         {
             player.transform.position += new Vector3(0, Time.deltaTime * 5f, 0);
         }
+        if (player.finishMode)
+        {
+            player.transform.position = new Vector3(2.3f, -0.9f, 0);
+        }
     }
 
     private IEnumerator StartEvent()
@@ -232,6 +236,7 @@ public class BossEvent : MonoBehaviour
         windowAnim.SetBool("Close", true);
         SoundManager.PlayS(gameObject, "Operation", "SE_WindowClose");
         gamecontroller.isCon = true;
+        player.finishMode = false;
         finish.gameObject.SetActive(false);
         bossCadaver.BreakUp();
         lines.SetActive(false);
