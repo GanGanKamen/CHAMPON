@@ -22,7 +22,7 @@ public class Tutorial4Sentence : MonoBehaviour
     {
         for (int i = 0; i < sentences.Length; i++)
         {
-            conversationController.sentences[i] = sentences[i];
+            //conversationController.sentences[i] = sentences[i];
         }
     }
 }

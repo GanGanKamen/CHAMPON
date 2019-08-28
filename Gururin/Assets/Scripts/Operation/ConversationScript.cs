@@ -25,7 +25,7 @@ public class ConversationScript : MonoBehaviour
         if (conversationController.IsConversation || conversationController.IsDescription)
         {
             this.GetComponent<Text>().text =
-                conversationController.sentences[conversationController.currentSentenceNum];
+                conversationController.sentences[conversationController.currentSentenceNum].TextOutPut();
 
             if (IsStart && conversationController.IsConversation)
             {

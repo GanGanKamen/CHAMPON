@@ -21,9 +21,10 @@ public class SentenceScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         for (int i = 0; i < sentences.Length; i++)
         {
             conversationController.sentences[i] = sentences[i];
-        }
+        }*/
     }
 }

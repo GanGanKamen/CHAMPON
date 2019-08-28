@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ConversationController : MonoBehaviour
 {
-    public string[] sentences; // 文章を格納する
+    public LanguageText[] sentences; // 文章を格納する
     [SerializeField] Text Text;   // uiTextへの参照
 
     public GameObject Doctor;
@@ -42,6 +42,7 @@ public class ConversationController : MonoBehaviour
 
     void Update()
     {
+        Text.text = sentences[currentSentenceNum].TextOutPut();
         if (IsConversation)
         {
             gameController.isCon = true;

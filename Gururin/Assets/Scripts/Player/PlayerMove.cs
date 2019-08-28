@@ -42,7 +42,7 @@ public class PlayerMove : MonoBehaviour
         isMove = true;
         isJump = false;
 
-        animator.enabled = false;
+        if(animator!=null) animator.enabled = false;
     }
 
     void OnTriggerStay2D(Collider2D other)
