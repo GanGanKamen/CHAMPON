@@ -45,10 +45,6 @@ public class Configuration : MonoBehaviour
         {
             configwindow = GameObject.Find("ConfigWindow");
         }
-        if(titleback == null)
-        {
-            titleback = GameObject.Find("TitleBackButton");
-        }
         
 
         //SE追加
@@ -71,7 +67,19 @@ public class Configuration : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(flagManager == null)
+        if (SceneManager.GetActiveScene().name != "Title" && titleback == null)
+        {
+            titleback = GameObject.Find("TitleBackButton");
+            if (configbuttonOpen.activeSelf == false)
+            {
+                titleback.SetActive(false);
+            }
+        }
+        else if(SceneManager.GetActiveScene().name == "Title")
+        {
+            titleback = null;
+        }
+        if (flagManager == null)
         {
             flagManager = GameObject.Find("FlagManager").GetComponent<FlagManager>();
         }
@@ -87,14 +95,9 @@ public class Configuration : MonoBehaviour
             configwindow.SetActive(true);
             configbutton = true;
 
-            if (SceneManager.GetActiveScene().name == "Title")
-            {
-                titleback.SetActive(false);
-            }
-            else
-            {
-                titleback.SetActive(true);
-            }
+            titleback.SetActive(true);
+
+            
         }
         else
         {
@@ -103,6 +106,8 @@ public class Configuration : MonoBehaviour
             configbuttonOpen.SetActive(false);
             configwindow.SetActive(false);
             configbutton = false;
+
+            titleback.SetActive(false);
         }
     }
 
