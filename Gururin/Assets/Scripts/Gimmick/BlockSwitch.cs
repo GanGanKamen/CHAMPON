@@ -5,7 +5,7 @@ using UnityEngine;
 public class BlockSwitch : MonoBehaviour
 {
 
-    public GameObject hideBlock, appearBlock, vCam;
+    public GameObject hideBlock, fan, vCam;
     private bool blocking;
     public float blendSpeed;
     private CriAtomSource _pushSE;
@@ -42,9 +42,15 @@ public class BlockSwitch : MonoBehaviour
 
         //ブロックを消す
        hideBlock.transform.position = new Vector3(1000, 0);
+        /*
         if(appearBlock != null)
         {
             appearBlock.SetActive(true);
+        }
+        */
+        if(fan != null)
+        {
+            fan.SetActive(false);
         }
 
         yield return new WaitForSeconds(blendSpeed);
