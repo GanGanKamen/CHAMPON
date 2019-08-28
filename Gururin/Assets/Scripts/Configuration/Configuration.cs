@@ -4,10 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Configuration : MonoBehaviour
-{ 
+{
+    public static Configuration instance;
+
     public GameObject configbuttonOpen;
     public GameObject configbuttonClose;
     public GameObject configwindow;
+    public GameObject titleback;
 
     public float sensitivity, flickdistance;
     public int controllerposition;
@@ -20,19 +23,41 @@ public class Configuration : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+
+        if (configbuttonClose == null)
+        {
+            configbuttonClose = GameObject.Find("ConfigButton_Close");
+        }
+        if(configbuttonOpen == null)
+        {
+            configbuttonOpen = GameObject.Find("ConfigButton_Open");
+        }
+        if(configwindow == null)
+        {
+            configwindow = GameObject.Find("ConfigWindow");
+        }
+        if(titleback == null)
+        {
+            titleback = GameObject.Find("TitleBackButton");
+        }
         
-        configbuttonClose = GameObject.Find("ConfigButton_Close");
-        configbuttonOpen = GameObject.Find("ConfigButton_Open");
-        configwindow = GameObject.Find("ConfigWindow");
 
         //SE追加
         _open = GameObject.Find("SE_WindowOpen(CriAtomSource)").GetComponent<CriAtomSource>();
         _close = GameObject.Find("SE_WindowClose(CriAtomSource)").GetComponent<CriAtomSource>();
 
         // イベントにイベントハンドラーを追加
-        SceneManager.sceneLoaded += SceneLoaded;
-
-        DontDestroyOnLoad(this.gameObject);
+        //SceneManager.sceneLoaded += SceneLoaded;
+        
 
         configbuttonClose.SetActive(true);
         configbuttonOpen.SetActive(false);
@@ -40,32 +65,41 @@ public class Configuration : MonoBehaviour
 
         sensitivity = 1.5f;
         flickdistance = 0.1f;
-        controllerposition = 1;
+        controllerposition = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (configbuttonClose == null)
+        if(flagManager == null)
         {
-            configbuttonClose = GameObject.Find("ConfigButton_Close");
+            flagManager = GameObject.Find("FlagManager").GetComponent<FlagManager>();
         }
     }
 
     public void Method()
     {
-        if (configbuttonClose.activeSelf)
+        if (configbuttonOpen.activeSelf ==false)
         {
             _open.Play();
-            configbuttonClose.SetActive(false);
+            //configbuttonClose.SetActive(false);
             configbuttonOpen.SetActive(true);
             configwindow.SetActive(true);
             configbutton = true;
+
+            if (SceneManager.GetActiveScene().name == "Title")
+            {
+                titleback.SetActive(false);
+            }
+            else
+            {
+                titleback.SetActive(true);
+            }
         }
         else
         {
             _close.Play();
-            configbuttonClose.SetActive(true);
+            //configbuttonClose.SetActive(true);
             configbuttonOpen.SetActive(false);
             configwindow.SetActive(false);
             configbutton = false;
@@ -73,12 +107,16 @@ public class Configuration : MonoBehaviour
     }
 
     //第一引数(遷移後のシーン),第二引数(シーンの読み込みモード(Single or Additive))
-    void SceneLoaded(Scene nextScene, LoadSceneMode mode)
+    /*void SceneLoaded(Scene nextScene, LoadSceneMode mode)
     {
 
         if (nextScene.name == "Title")
         {
-            //Destroy(this.gameObject);
+            _close.Play();
+            configbuttonClose.SetActive(true);
+            configbuttonOpen.SetActive(false);
+            configwindow.SetActive(false);
+            configbutton = false;
         }
         else if(nextScene.name == "Result")
         {
@@ -88,5 +126,5 @@ public class Configuration : MonoBehaviour
         {
             flagManager = GameObject.Find("FlagManager").GetComponent<FlagManager>();
         }
-    }
+    }*/
 }

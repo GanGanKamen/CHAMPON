@@ -112,6 +112,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &11936416 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6412078160888465523, guid: c967e085e87aefc4ca5dfa42f5b40d0a,
+    type: 3}
+  m_PrefabInstance: {fileID: 303926852}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &75113744
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,6 +452,16 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6412078159651177691, guid: c967e085e87aefc4ca5dfa42f5b40d0a,
+        type: 3}
+      propertyPath: configbuttonClose
+      value: 
+      objectReference: {fileID: 11936416}
+    - target: {fileID: 4430842456114264714, guid: c967e085e87aefc4ca5dfa42f5b40d0a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c967e085e87aefc4ca5dfa42f5b40d0a, type: 3}
 --- !u!1 &419207481
@@ -660,7 +676,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7607348ebb6b0048945fccac3294f8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  configCanvas: {fileID: 0}
   sceneChange: {fileID: 483576970}
 --- !u!114 &539302474
 MonoBehaviour:
@@ -826,7 +841,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7607348ebb6b0048945fccac3294f8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  configCanvas: {fileID: 0}
   sceneChange: {fileID: 1045273775}
 --- !u!114 &544001233
 MonoBehaviour:
@@ -1297,7 +1311,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7607348ebb6b0048945fccac3294f8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  configCanvas: {fileID: 0}
   sceneChange: {fileID: 1319719842}
 --- !u!114 &962231862
 MonoBehaviour:

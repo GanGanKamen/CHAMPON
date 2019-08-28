@@ -16,10 +16,10 @@ public class ConfigButtonScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (config == null)
+        /*if (config == null)
         {
             config = GameObject.Find("ConfigCanvas").GetComponent<Configuration>();
-        }
+        }*/
     }
 
     public void OnClick()
