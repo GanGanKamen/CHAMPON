@@ -175,6 +175,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6412078160888465523, guid: c967e085e87aefc4ca5dfa42f5b40d0a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6412078159651177690, guid: c967e085e87aefc4ca5dfa42f5b40d0a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -355,11 +360,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6412078160888465523, guid: c967e085e87aefc4ca5dfa42f5b40d0a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6412078161297104687, guid: c967e085e87aefc4ca5dfa42f5b40d0a,
         type: 3}
       propertyPath: m_IsActive
@@ -445,6 +445,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6412078159651177691, guid: c967e085e87aefc4ca5dfa42f5b40d0a,
+        type: 3}
+      propertyPath: configbuttonClose
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4430842456114264714, guid: c967e085e87aefc4ca5dfa42f5b40d0a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6204310585973808428, guid: c967e085e87aefc4ca5dfa42f5b40d0a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c967e085e87aefc4ca5dfa42f5b40d0a, type: 3}
@@ -660,7 +675,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7607348ebb6b0048945fccac3294f8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  configCanvas: {fileID: 0}
   sceneChange: {fileID: 483576970}
 --- !u!114 &539302474
 MonoBehaviour:
@@ -826,7 +840,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7607348ebb6b0048945fccac3294f8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  configCanvas: {fileID: 0}
   sceneChange: {fileID: 1045273775}
 --- !u!114 &544001233
 MonoBehaviour:
@@ -1297,7 +1310,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7607348ebb6b0048945fccac3294f8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  configCanvas: {fileID: 0}
   sceneChange: {fileID: 1319719842}
 --- !u!114 &962231862
 MonoBehaviour:
