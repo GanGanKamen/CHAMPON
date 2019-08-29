@@ -119,10 +119,10 @@ public class ConversationController : MonoBehaviour
     {
         int wordCound = 0;
         Text.text = "";
-        char newLine = ' ';
+        Debug.Log(sentences[currentSentenceNum].TextOutPut());
         while(wordCound < sentences[currentSentenceNum].TextOutPut().Length)
         {
-            if(sentences[currentSentenceNum].TextOutPut()[wordCound] == ' ')
+            if(sentences[currentSentenceNum].TextOutPut()[wordCound] == '　')
             {
                 Text.text += "\n";
             }
@@ -130,12 +130,12 @@ public class ConversationController : MonoBehaviour
             wordCound++;
             yield return new WaitForSeconds(textWaitTime);
         }
+        yield break;
     }
     
     private void OnClick()
     {
-        StopCoroutine(nowNobel);
-        nowNobel = null; nowNobel = NovelText();
+     
         mousePosition = Camera.main.ScreenToViewportPoint(Input.mousePosition);
         if (!(mousePosition.x > 0.94f && mousePosition.y > 0.91f ||
             mousePosition.x < 0.19f && mousePosition.y < 0.09f))
@@ -144,7 +144,14 @@ public class ConversationController : MonoBehaviour
             {
                 if (sentences.Length - 1 >= currentSentenceNum)
                 {
-                    feedout = true;
+                    var finalText = sentences[currentSentenceNum].TextOutPut().Replace("　", "\n");
+                    if (Text.text != finalText)
+                    {
+                        StopCoroutine(nowNobel);
+                        nowNobel = null; nowNobel = NovelText();
+                        Text.text = finalText;
+                    }
+                    else feedout = true;
                 }
             }
         }
