@@ -16,7 +16,7 @@ public class ConversationController : MonoBehaviour
     public bool sendtext = false;
     public bool feedin = false, feedout = false;
     public int currentSentenceNum = 0; //現在表示している文章番号
-    private int preSentenceNum = -1;
+    [SerializeField]private int preSentenceNum = 0;
     private int displaycount = 0;
 
     public Vector2 mousePosition;
@@ -43,6 +43,7 @@ public class ConversationController : MonoBehaviour
         WhiteBack.SetActive(false);
 
         nowNobel = NovelText();
+        //StartCoroutine(nowNobel);
     }
 
     void Update()
@@ -111,6 +112,7 @@ public class ConversationController : MonoBehaviour
         {
             preSentenceNum = currentSentenceNum;
             //Text.text = sentences[currentSentenceNum].TextOutPut();
+            if (currentSentenceNum == 6) OnClick();
             StartCoroutine(nowNobel);
         }
     }
@@ -119,7 +121,7 @@ public class ConversationController : MonoBehaviour
     {
         int wordCound = 0;
         Text.text = "";
-        Debug.Log(sentences[currentSentenceNum].TextOutPut());
+        Debug.Log(currentSentenceNum);
         while(wordCound < sentences[currentSentenceNum].TextOutPut().Length)
         {
             if(sentences[currentSentenceNum].TextOutPut()[wordCound] == '　')
@@ -130,6 +132,7 @@ public class ConversationController : MonoBehaviour
             wordCound++;
             yield return new WaitForSeconds(textWaitTime);
         }
+        nowNobel = null; nowNobel = NovelText();
         yield break;
     }
     
@@ -174,6 +177,15 @@ public class ConversationController : MonoBehaviour
                 LanguageSwitch.language = LanguageSwitch.Language.ChineseHant;
                 break;
         }
-        //OnClick();
+
+
+
+
+
+
+
+
+
+        OnClick();
     }
 }
