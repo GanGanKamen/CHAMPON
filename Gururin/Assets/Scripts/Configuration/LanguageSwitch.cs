@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LanguageSwitch : MonoBehaviour
+public class LanguageSwitch : Configuration
 {
     static public int LanguageNum = 4;
 
