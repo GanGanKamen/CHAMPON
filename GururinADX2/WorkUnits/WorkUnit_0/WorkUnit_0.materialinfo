@@ -33,6 +33,21 @@
           <Orca OrcaName="SE_propellerBOSSnakigoe2.wav" BitsPerSamples="24" Channels="1" EncodeFileSize="22943" ReloopEnd="68477" ResamplingRate="48000" SampleFrames="68477" SamplingRate="48000" SourceFileSize="205511" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
           <Orca OrcaName="SE_propellerBOSSnakigoe3.wav" BitsPerSamples="24" Channels="1" EncodeFileSize="64204" ReloopEnd="192000" ResamplingRate="48000" SampleFrames="192000" SamplingRate="48000" SourceFileSize="576080" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
           <Orca OrcaName="SE_turnGear.wav" BitsPerSamples="24" Channels="1" EncodeFileSize="10667" ReloopEnd="31006" ResamplingRate="48000" SampleFrames="31006" SamplingRate="48000" SourceFileSize="93062" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+          <Orca OrcaName="re_SE_hakaseWord.wav" BitsPerSamples="24" Channels="1" EncodeFileSize="4188" ReloopEnd="12000" ResamplingRate="48000" SampleFrames="12000" SamplingRate="48000" SourceFileSize="36080" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+        </Orca>
+        <Orca OrcaName="retake" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveformSubFolder">
+          <Orca OrcaName="re_SE_GearMesh-01.wav" BitsPerSamples="24" Channels="1" EncodeFileSize="44767" ReloopEnd="133499" ResamplingRate="48000" SampleFrames="133499" SamplingRate="48000" SourceFileSize="400577" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+          <Orca OrcaName="re_SE_foot.wav" BitsPerSamples="24" Channels="1" EncodeFileSize="2142" ReloopEnd="6000" ResamplingRate="48000" SampleFrames="6000" SamplingRate="48000" SourceFileSize="18080" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+          <Orca OrcaName="re_SE_jump-02.wav" BitsPerSamples="24" Channels="1" EncodeFileSize="4188" ReloopEnd="120000" ResamplingRate="48000" SampleFrames="120000" SamplingRate="48000" SourceFileSize="360080" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+          <Orca OrcaName="re_SE_start.wav" BitsPerSamples="24" Channels="1" EncodeFileSize="45790" ReloopEnd="136500" ResamplingRate="48000" SampleFrames="136500" SamplingRate="48000" SourceFileSize="409580" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+          <Orca OrcaName="title_kari.wav" BitsPerSamples="24" Channels="2" EncodeFileSize="815768" ReloopEnd="1224000" ResamplingRate="48000" SampleFrames="1224000" SamplingRate="48000" SourceFileSize="7344080" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+          <Orca OrcaName="re_tutoriaru.wav" BitsPerSamples="24" Channels="2" EncodeFileSize="808266" ReloopEnd="1212632" ResamplingRate="48000" SampleFrames="1212632" SamplingRate="48000" SourceFileSize="7275872" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+          <Orca OrcaName="re_SE_footPuni.wav" BitsPerSamples="24" Channels="1" EncodeFileSize="2142" ReloopEnd="5999" ResamplingRate="48000" SampleFrames="5999" SamplingRate="48000" SourceFileSize="18077" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+          <Orca OrcaName="re_SE_GearTurn.wav" BitsPerSamples="24" Channels="1" EncodeFileSize="12372" ReloopEnd="36000" ResamplingRate="48000" SampleFrames="36000" SamplingRate="48000" SourceFileSize="108080" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+          <Orca OrcaName="re_SE_GearTurn2-02.wav" BitsPerSamples="24" Channels="1" EncodeFileSize="32150" ReloopEnd="96000" ResamplingRate="48000" SampleFrames="96000" SamplingRate="48000" SourceFileSize="288080" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+          <Orca OrcaName="re_SE_GearTurn2-03.wav" BitsPerSamples="24" Channels="1" EncodeFileSize="32150" ReloopEnd="96000" ResamplingRate="48000" SampleFrames="96000" SamplingRate="48000" SourceFileSize="288080" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+          <Orca OrcaName="re_SE_GearTurn2-04.wav" BitsPerSamples="24" Channels="1" EncodeFileSize="32150" ReloopEnd="96000" ResamplingRate="48000" SampleFrames="96000" SamplingRate="48000" SourceFileSize="288080" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+          <Orca OrcaName="re_SE_GearTurn2gori.wav" BitsPerSamples="24" Channels="1" EncodeFileSize="16123" ReloopEnd="48000" ResamplingRate="48000" SampleFrames="48000" SamplingRate="48000" SourceFileSize="144080" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
         </Orca>
       </Orca>
     </Orca>
