@@ -24,8 +24,8 @@ public class ConversationScript : MonoBehaviour
     {
         if (conversationController.IsConversation || conversationController.IsDescription)
         {
-            this.GetComponent<Text>().text =
-                conversationController.sentences[conversationController.currentSentenceNum];
+            /*this.GetComponent<Text>().text =
+                conversationController.sentences[conversationController.currentSentenceNum].TextOutPut();*/
 
             if (IsStart && conversationController.IsConversation)
             {
@@ -53,6 +53,7 @@ public class ConversationScript : MonoBehaviour
                         conversationController.currentSentenceNum++;
                         conversationController.feedout = false;
                         conversationController.feedin = true;
+                        Debug.Log("a");
                     }
                     else if (conversationController.sentences.Length - 1 == conversationController.currentSentenceNum)
                     {
@@ -67,6 +68,7 @@ public class ConversationScript : MonoBehaviour
                     {
                         conversationController.currentSentenceNum++;
                         conversationController.feedout = false;
+                        Debug.Log("b");
                     }
                     else if (conversationController.sentences.Length - 1 == conversationController.currentSentenceNum)
                     {

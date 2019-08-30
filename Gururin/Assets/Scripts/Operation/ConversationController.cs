@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ConversationController : MonoBehaviour
 {
-    public string[] sentences; // 文章を格納する
+    public LanguageText[] sentences; // 文章を格納する
     [SerializeField] Text Text;   // uiTextへの参照
 
     public GameObject Doctor;
@@ -16,6 +16,7 @@ public class ConversationController : MonoBehaviour
     public bool sendtext = false;
     public bool feedin = false, feedout = false;
     public int currentSentenceNum = 0; //現在表示している文章番号
+    public int preSentenceNum = 0;
     private int displaycount = 0;
 
     public Vector2 mousePosition;
@@ -25,6 +26,8 @@ public class ConversationController : MonoBehaviour
     public Configuration config;
     public Gamecontroller gameController;
 
+    [SerializeField] private float textWaitTime = 0.1f;
+    private IEnumerator nowNobel;
     void Start()
     {
         config = GameObject.Find("ConfigCanvas").GetComponent<Configuration>();
@@ -38,10 +41,16 @@ public class ConversationController : MonoBehaviour
         Doctor.SetActive(false);
         TextUI.SetActive(false);
         WhiteBack.SetActive(false);
+
+        nowNobel = NovelText();
+        //StartCoroutine(nowNobel);
     }
 
     void Update()
     {
+
+        //Text.text = sentences[currentSentenceNum].TextOutPut();
+        TextSwitch();
         if (IsConversation)
         {
             gameController.isCon = true;
@@ -50,18 +59,8 @@ public class ConversationController : MonoBehaviour
             WhiteBack.SetActive(true);
             if (Input.GetMouseButtonDown(0) && config.configbutton == false)
             {
-                mousePosition = Camera.main.ScreenToViewportPoint(Input.mousePosition);
-                if (!(mousePosition.x > 0.94f && mousePosition.y > 0.91f ||
-                    mousePosition.x < 0.19f && mousePosition.y < 0.09f))
-                {
-                    if (!feedin && !feedout)
-                    {
-                        if (sentences.Length - 1 >= currentSentenceNum)
-                        {
-                            feedout = true;
-                        }
-                    }
-                }
+                Debug.Log("Click");
+                OnClick();
             }
         }
         else
@@ -106,5 +105,58 @@ public class ConversationController : MonoBehaviour
             }
         }
         if(currentSentenceNum >0) textFeed[currentSentenceNum - 1] = false;
+    }
+
+    private void TextSwitch()
+    {
+        if (preSentenceNum != currentSentenceNum)
+        {
+            preSentenceNum = currentSentenceNum;
+            //Text.text = sentences[currentSentenceNum].TextOutPut();
+            if (currentSentenceNum == 6) OnClick();
+            StartCoroutine(nowNobel);
+        }
+    }
+
+    private IEnumerator NovelText()
+    {
+        int wordCound = 0;
+        Text.text = "";
+        while(wordCound < sentences[currentSentenceNum].TextOutPut().Length)
+        {
+            if(sentences[currentSentenceNum].TextOutPut()[wordCound] == '　')
+            {
+                Text.text += "\n";
+            }
+            else Text.text += sentences[currentSentenceNum].TextOutPut()[wordCound];
+            wordCound++;
+            yield return new WaitForSeconds(textWaitTime);
+        }
+        nowNobel = null; nowNobel = NovelText();
+        yield break;
+    }
+    
+    private void OnClick()
+    {
+     
+        mousePosition = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+        if (!(mousePosition.x > 0.94f && mousePosition.y > 0.91f ||
+            mousePosition.x < 0.19f && mousePosition.y < 0.09f))
+        {
+            if (!feedin && !feedout)
+            {
+                if (sentences.Length - 1 >= currentSentenceNum)
+                {
+                    var finalText = sentences[currentSentenceNum].TextOutPut().Replace("　", "\n");
+                    if (Text.text != finalText)
+                    {
+                        StopCoroutine(nowNobel);
+                        nowNobel = null; nowNobel = NovelText();
+                        Text.text = finalText;
+                    }
+                    else feedout = true;
+                }
+            }
+        }
     }
 }

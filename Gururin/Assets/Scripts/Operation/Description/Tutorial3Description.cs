@@ -31,7 +31,7 @@ public class Tutorial3Description : MonoBehaviour
             flagManager.pressParm = false;
 
             conversationController.IsConversation = true;
-
+            conversationController.preSentenceNum--;
             vcamChange = true;
 
         }
@@ -55,7 +55,7 @@ public class Tutorial3Description : MonoBehaviour
 
             //さらにテキストが送られたとき
             //if(テキストが送られたときに出すフラグ2 == true)
-            if (conversationController.textFeed[2] || conversationController.textFeed[4])
+            if (conversationController.textFeed[2] || conversationController.textFeed[3])
             {
                 //カメラの位置を元に戻す
                 for (int i = 0; i < vcam.Length; i++)

@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+//using UnityEngine.SceneManagement;
 
 public class ButtonScript : MonoBehaviour
 {
     //public Data data;
-    public GameObject configCanvas;
+    //public GameObject configCanvas;
 
     public SceneChange sceneChange;
 
@@ -18,15 +18,18 @@ public class ButtonScript : MonoBehaviour
     private int _cnt;
     private float _volume;
 
+    private Configuration config;
     // Start is called before the first frame update
     void Start()
     {
         //if (GameObject.Find("Data") != null) data = GameObject.Find("Data").GetComponent<Data>();
-        configCanvas = GameObject.Find("ConfigCanvas");
+        //configCanvas = GameObject.Find("ConfigCanvas");
         _startSE = GetComponent<CriAtomSource>();
 
         _volume = 1.0f;
         _fadeOut = false;
+
+        config = GameObject.Find("ConfigCanvas").GetComponent<Configuration>();
     }
 
     // Update is called once per frame
@@ -56,13 +59,14 @@ public class ButtonScript : MonoBehaviour
         //data.destroy = true;
         Debug.Log("x");
 
-        if(SceneManager.GetActiveScene().name == "Title")
+        config.configbutton = false;
+        /*if(SceneManager.GetActiveScene().name == "Title")
         {
 
         }
         else
         {
-            Destroy(configCanvas);
-        }
+            //Destroy(configCanvas);
+        }*/
     }
 }

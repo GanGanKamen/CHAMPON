@@ -32,7 +32,7 @@ public class StartConversation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (conversationController.textFeed[4])
+        if (conversationController.textFeed[1])
         {
             
             conversationController.IsConversation = false;

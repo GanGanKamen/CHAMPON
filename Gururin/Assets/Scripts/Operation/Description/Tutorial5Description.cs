@@ -30,7 +30,7 @@ public class Tutorial5Description : MonoBehaviour
             flagManager.pressParm = false;
 
             conversationController.IsConversation = true;
-
+            conversationController.preSentenceNum--;
             vcamChange = true;
         }
     }
@@ -44,7 +44,7 @@ public class Tutorial5Description : MonoBehaviour
             vcam.SetActive(true);
 
             //テキストが送られたとき
-            if (conversationController.textFeed[3])
+            if (conversationController.textFeed[2])
             {
                 //カメラの位置を元に戻す
                 vcam.SetActive(false);

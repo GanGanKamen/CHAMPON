@@ -9,6 +9,7 @@ public class PropellerGearGimmick : MonoBehaviour
     public GameObject gearPos;  //ぐるりんの位置
     public bool playerHit;  //ぐるりんとの接触判定
     public bool[] moveGear; //歯車とぐるりんの回転方向
+    public bool jumpDirection; //ぐるりんが歯車から離れるときのジャンプ方向、True:左方向 False:右方向
 
     public bool click;
     public bool rotFlag; //歯車の回転方向の固定、trueなら左回転、falseなら右回転
@@ -43,6 +44,9 @@ public class PropellerGearGimmick : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            //FlagManagerのほうのジャンプ方向を上書き、PlayerMove側に伝える
+            flagManager.gururinJumpDirection = jumpDirection;
+
             //ぐるりんとGearの接触を感知
             playerHit = true;
             playerMove.gearGimmickHit = true;
@@ -85,7 +89,6 @@ public class PropellerGearGimmick : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerHit = false;
-            playerMove.gearGimmickHit = false;
             playerMove.isMove = true;
             playerMove.setSpeed = true;
             rotationCounter.minusCount = true;
