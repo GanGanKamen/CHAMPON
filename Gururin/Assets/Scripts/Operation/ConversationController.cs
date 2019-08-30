@@ -59,7 +59,7 @@ public class ConversationController : MonoBehaviour
             WhiteBack.SetActive(true);
             if (Input.GetMouseButtonDown(0) && config.configbutton == false)
             {
-                Debug.Log("Click");
+                SoundManager.PlayS(gameObject, "SE_tap");
                 OnClick();
             }
         }
@@ -104,7 +104,7 @@ public class ConversationController : MonoBehaviour
                 displaycount = 0;
             }
         }
-        if(currentSentenceNum >0) textFeed[currentSentenceNum - 1] = false;
+        if (currentSentenceNum > 0) textFeed[currentSentenceNum - 1] = false;
     }
 
     private void TextSwitch()
@@ -122,23 +122,28 @@ public class ConversationController : MonoBehaviour
     {
         int wordCound = 0;
         Text.text = "";
-        while(wordCound < sentences[currentSentenceNum].TextOutPut().Length)
+        while (wordCound < sentences[currentSentenceNum].TextOutPut().Length)
         {
-            if(sentences[currentSentenceNum].TextOutPut()[wordCound] == '　')
+            if (sentences[currentSentenceNum].TextOutPut()[wordCound] == '　')
             {
                 Text.text += "\n";
             }
-            else Text.text += sentences[currentSentenceNum].TextOutPut()[wordCound];
+            else
+            {
+                Text.text += sentences[currentSentenceNum].TextOutPut()[wordCound];
+                SoundManager.PlayS(gameObject, "SE_hakaseTalk");
+            }
+            
             wordCound++;
             yield return new WaitForSeconds(textWaitTime);
         }
         nowNobel = null; nowNobel = NovelText();
         yield break;
     }
-    
+
     private void OnClick()
     {
-     
+
         mousePosition = Camera.main.ScreenToViewportPoint(Input.mousePosition);
         if (!(mousePosition.x > 0.94f && mousePosition.y > 0.91f ||
             mousePosition.x < 0.19f && mousePosition.y < 0.09f))

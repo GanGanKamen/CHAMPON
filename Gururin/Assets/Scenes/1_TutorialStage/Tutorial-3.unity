@@ -14571,6 +14571,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 21, y: 8.01}
   m_EdgeRadius: 0
+--- !u!1 &1691099617 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 887596266, guid: 1d23db258f755c54c9ceaed9ea0b6a4b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2037860719}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1691099618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691099617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1e631c3b9947b54c823c6853a05529c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playOnStart: 0
+  _cueName: SE_hakaseTalk
+  _cueSheet: Operation
+  _use3dPositioning: 1
+  _loop: 0
+  _volume: 1
+  _pitch: 0
+  _androidUseLowLatencyVoicePool: 0
+  need_to_player_update_all: 1
 --- !u!1001 &1762491937
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14835,7 +14862,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 2037860719}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1691099617}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a6c7e2411dff1d458eeec8a9da6d6b1, type: 3}
