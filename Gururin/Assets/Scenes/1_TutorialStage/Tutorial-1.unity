@@ -20296,7 +20296,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 2012643414}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2012643415}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a6c7e2411dff1d458eeec8a9da6d6b1, type: 3}
@@ -20415,7 +20415,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 887596269, guid: 1d23db258f755c54c9ceaed9ea0b6a4b, type: 3}
       propertyPath: textWaitTime
-      value: 0.05
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 5838971808317639739, guid: 1d23db258f755c54c9ceaed9ea0b6a4b,
         type: 3}
@@ -20472,35 +20472,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100938619, guid: 1d23db258f755c54c9ceaed9ea0b6a4b, type: 3}
+      propertyPath: messages.Array.data[1]
+      value: "Good!... Hey, look at!There is a step!\u3000You should flick to jump
+        over it."
+      objectReference: {fileID: 0}
+    - target: {fileID: 581169478, guid: 1d23db258f755c54c9ceaed9ea0b6a4b, type: 3}
+      propertyPath: messages.Array.data[1]
+      value: "Touch the screen and drawing a circle\u3000to move."
+      objectReference: {fileID: 0}
+    - target: {fileID: 884162263, guid: 1d23db258f755c54c9ceaed9ea0b6a4b, type: 3}
+      propertyPath: messages.Array.data[1]
+      value: "I see you are in the box now.\u3000Anyway let\u2019s go ahead."
+      objectReference: {fileID: 0}
+    - target: {fileID: 936835050, guid: 1d23db258f755c54c9ceaed9ea0b6a4b, type: 3}
+      propertyPath: messages.Array.data[1]
+      value: "GuRu-Rin! Guru-Rin! Are you okey?\u3000This is Doctor!!"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d23db258f755c54c9ceaed9ea0b6a4b, type: 3}
---- !u!1 &2012643415 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 887596266, guid: 1d23db258f755c54c9ceaed9ea0b6a4b,
-    type: 3}
-  m_PrefabInstance: {fileID: 2012643414}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2012643416
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2012643415}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1e631c3b9947b54c823c6853a05529c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playOnStart: 0
-  _cueName: SE_hakaseTalk
-  _cueSheet: Operation
-  _use3dPositioning: 1
-  _loop: 0
-  _volume: 1
-  _pitch: 0
-  _androidUseLowLatencyVoicePool: 0
-  need_to_player_update_all: 1
 --- !u!4 &2063758694 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6856219112942254722, guid: 983db2638aa70f247b3b0618a9cd17a4,

@@ -7,11 +7,12 @@ public class Tutorial3Description : MonoBehaviour
 
     public GameObject[] vcam;
     private bool vcamChange;
-    
+
     private FlagManager flagManager;
 
     public ConversationController conversationController;
 
+    public int num;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +32,15 @@ public class Tutorial3Description : MonoBehaviour
             flagManager.pressParm = false;
 
             conversationController.IsConversation = true;
-            conversationController.preSentenceNum--;
+            if (num == 1)
+            {
+                conversationController.preSentenceNum--;
+            }
+            else if (num == 2)
+            {
+                conversationController.StopAll();
+                conversationController.currentSentenceNum++;
+            }
             vcamChange = true;
 
         }
@@ -55,7 +64,7 @@ public class Tutorial3Description : MonoBehaviour
 
             //さらにテキストが送られたとき
             //if(テキストが送られたときに出すフラグ2 == true)
-            if (conversationController.textFeed[2] || conversationController.textFeed[3])
+            /*if (conversationController.textFeed[2]|| conversationController.textFeed[3])
             {
                 //カメラの位置を元に戻す
                 for (int i = 0; i < vcam.Length; i++)
@@ -63,7 +72,24 @@ public class Tutorial3Description : MonoBehaviour
                     vcam[i].SetActive(false);
                 }
                 conversationController.IsConversation = false;
+                vcamChange = false;
+                flagManager.velXFixed = false;
+                //ぐるりんの移動を許可
+                flagManager.moveStop = false;
+                //GameControllerを表示する
+                flagManager.pressParm = true;
 
+                //このオブジェクトを非表示にする
+                gameObject.SetActive(false);
+            }*/
+            if (conversationController.textFeed[2])
+            {
+                //カメラの位置を元に戻す
+                for (int i = 0; i < vcam.Length; i++)
+                {
+                    vcam[i].SetActive(false);
+                }
+                conversationController.IsConversation = false;
                 vcamChange = false;
                 flagManager.velXFixed = false;
                 //ぐるりんの移動を許可

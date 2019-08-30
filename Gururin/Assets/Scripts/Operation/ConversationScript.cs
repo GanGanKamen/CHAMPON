@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ConversationScript : MonoBehaviour
 {
@@ -38,7 +39,7 @@ public class ConversationScript : MonoBehaviour
         {
             conversationController.textFeed
                 [conversationController.currentSentenceNum] = true;
-            
+
 
             if (canvasGroup.alpha > 0)
             {
@@ -46,7 +47,7 @@ public class ConversationScript : MonoBehaviour
             }
             else
             {
-                if(conversationController.IsConversation)
+                if (conversationController.IsConversation)
                 {
                     if (conversationController.sentences.Length - 1 > conversationController.currentSentenceNum)
                     {
@@ -58,7 +59,7 @@ public class ConversationScript : MonoBehaviour
                     else if (conversationController.sentences.Length - 1 == conversationController.currentSentenceNum)
                     {
                         conversationController.feedout = false;
-                        
+
                         conversationController.IsConversation = false;
                     }
                 }
@@ -66,7 +67,8 @@ public class ConversationScript : MonoBehaviour
                 {
                     if (conversationController.sentences.Length - 1 > conversationController.currentSentenceNum)
                     {
-                        conversationController.currentSentenceNum++;
+                        conversationController.StopAll();
+                        if(SceneManager.GetActiveScene().name == "Tutorial-1") conversationController.currentSentenceNum++;
                         conversationController.feedout = false;
                         Debug.Log("b");
                     }
@@ -89,7 +91,7 @@ public class ConversationScript : MonoBehaviour
                 conversationController.feedin = false;
             }
         }
-        if(!conversationController.IsConversation)
+        if (!conversationController.IsConversation)
         {
             IsStart = true;
         }

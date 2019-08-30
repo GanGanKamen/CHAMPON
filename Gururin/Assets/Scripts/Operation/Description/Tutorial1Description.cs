@@ -25,8 +25,7 @@ public class Tutorial1Description : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             conversationController.IsDescription = true;
-
-            if(conversationController.IsConversation == false)
+            if (conversationController.IsConversation == false)
             {
                 if(start)
                 {
@@ -44,6 +43,7 @@ public class Tutorial1Description : MonoBehaviour
             conversationController.feedout = true;
             conversationController.IsDescription = false;
             this.gameObject.SetActive(false);
+
         }
     }
 

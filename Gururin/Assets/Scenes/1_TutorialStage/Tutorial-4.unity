@@ -132,6 +132,14 @@ PrefabInstance:
       propertyPath: textFeed.Array.size
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 887596269, guid: 1d23db258f755c54c9ceaed9ea0b6a4b, type: 3}
+      propertyPath: preSentenceNum
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 887596269, guid: 1d23db258f755c54c9ceaed9ea0b6a4b, type: 3}
+      propertyPath: textWaitTime
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 5838971808317639739, guid: 1d23db258f755c54c9ceaed9ea0b6a4b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -189,15 +197,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 581169478, guid: 1d23db258f755c54c9ceaed9ea0b6a4b, type: 3}
       propertyPath: messages.Array.data[0]
-      value: "\u305D\u3046\u3060\u3063\u305F!\u5929\u4E95\u306E\u30C7\u30B3\u30DC\u30B3\u306B\u304F\u3063\u3064\u3051\u3070\u3000\u5730\u9762\u3068\u540C\u3058\u3088\u3046\u306B\u9032\u3081\u308B\u3088!"
+      value: "\u305D\u3046\u3060!\u5929\u4E95\u306E\u30C7\u30B3\u30DC\u30B3\u306B\u304F\u3063\u3064\u3051\u3070\u3000\u5730\u9762\u3068\u540C\u3058\u3088\u3046\u306B\u9032\u3081\u308B\u304B\u3082!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 581169478, guid: 1d23db258f755c54c9ceaed9ea0b6a4b, type: 3}
+      propertyPath: messages.Array.data[1]
+      value: Well! Maybe you should attach to the ceiling!
       objectReference: {fileID: 0}
     - target: {fileID: 884162263, guid: 1d23db258f755c54c9ceaed9ea0b6a4b, type: 3}
       propertyPath: messages.Array.data[0]
       value: "\u8DB3\u5834\u3082\u306A\u3044\u3057\u3001\u3000\u3042\u308B\u306E\u306F\u5929\u4E95\u306E\u30C7\u30B3\u30DC\u30B3\u304B\u30FB\u30FB\u30FB"
       objectReference: {fileID: 0}
+    - target: {fileID: 884162263, guid: 1d23db258f755c54c9ceaed9ea0b6a4b, type: 3}
+      propertyPath: messages.Array.data[1]
+      value: "Nothing to clamb, but the ceiling\u3000is uneven..."
+      objectReference: {fileID: 0}
     - target: {fileID: 936835050, guid: 1d23db258f755c54c9ceaed9ea0b6a4b, type: 3}
       propertyPath: messages.Array.data[0]
       value: "\u3042\u3093\u306A\u306B\u9AD8\u3044\u6240\u306B\u6249\u304C\uFF01"
+      objectReference: {fileID: 0}
+    - target: {fileID: 936835050, guid: 1d23db258f755c54c9ceaed9ea0b6a4b, type: 3}
+      propertyPath: messages.Array.data[1]
+      value: The place that the gate is very high in!
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d23db258f755c54c9ceaed9ea0b6a4b, type: 3}

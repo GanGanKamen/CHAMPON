@@ -626,6 +626,10 @@ PrefabInstance:
       propertyPath: textFeed.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 887596269, guid: 1d23db258f755c54c9ceaed9ea0b6a4b, type: 3}
+      propertyPath: textWaitTime
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 5838971808317639739, guid: 1d23db258f755c54c9ceaed9ea0b6a4b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -685,9 +689,17 @@ PrefabInstance:
       propertyPath: messages.Array.data[0]
       value: "\u3067\u3082\u3088\u304B\u3063\u305F\u3088!\u3053\u306E\u8DB3\u5834\u306F\u3000\u4E0B\u304B\u3089\u30B8\u30E3\u30F3\u30D7\u3067\u3059\u308A\u629C\u3051\u3089\u308C\u308B\u3093\u3060\uFF01"
       objectReference: {fileID: 0}
+    - target: {fileID: 884162263, guid: 1d23db258f755c54c9ceaed9ea0b6a4b, type: 3}
+      propertyPath: messages.Array.data[1]
+      value: "Well! You can use the slip-through floor\u3000to climb."
+      objectReference: {fileID: 0}
     - target: {fileID: 936835050, guid: 1d23db258f755c54c9ceaed9ea0b6a4b, type: 3}
       propertyPath: messages.Array.data[0]
       value: "\u3080\u3080\u3063\uFF01\u3000\u524D\u65B9\u306B\u9AD8\u3044\u58C1\u3092\u767A\u898B\uFF01"
+      objectReference: {fileID: 0}
+    - target: {fileID: 936835050, guid: 1d23db258f755c54c9ceaed9ea0b6a4b, type: 3}
+      propertyPath: messages.Array.data[1]
+      value: "hmm!\u3000The wall is too high."
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d23db258f755c54c9ceaed9ea0b6a4b, type: 3}

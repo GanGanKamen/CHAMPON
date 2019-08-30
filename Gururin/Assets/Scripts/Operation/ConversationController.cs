@@ -59,8 +59,15 @@ public class ConversationController : MonoBehaviour
             WhiteBack.SetActive(true);
             if (Input.GetMouseButtonDown(0) && config.configbutton == false)
             {
-                SoundManager.PlayS(gameObject, "SE_tap");
-                OnClick();
+                
+
+                mousePosition = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+                if (!(mousePosition.x > 0.94f && mousePosition.y > 0.91f ||
+                    mousePosition.x < 0.19f && mousePosition.y < 0.09f))
+                {
+                    SoundManager.PlayS(gameObject, "SE_tap");
+                    OnClick();
+                }
             }
         }
         else
@@ -113,7 +120,6 @@ public class ConversationController : MonoBehaviour
         {
             preSentenceNum = currentSentenceNum;
             //Text.text = sentences[currentSentenceNum].TextOutPut();
-            if (currentSentenceNum == 6) OnClick();
             StartCoroutine(nowNobel);
         }
     }
@@ -141,27 +147,28 @@ public class ConversationController : MonoBehaviour
         yield break;
     }
 
-    private void OnClick()
+    public void OnClick()
     {
-
-        mousePosition = Camera.main.ScreenToViewportPoint(Input.mousePosition);
-        if (!(mousePosition.x > 0.94f && mousePosition.y > 0.91f ||
-            mousePosition.x < 0.19f && mousePosition.y < 0.09f))
+        if (!feedin && !feedout)
         {
-            if (!feedin && !feedout)
+            if (sentences.Length - 1 >= currentSentenceNum)
             {
-                if (sentences.Length - 1 >= currentSentenceNum)
+                var finalText = sentences[currentSentenceNum].TextOutPut().Replace("　", "\n");
+                if (Text.text != finalText)
                 {
-                    var finalText = sentences[currentSentenceNum].TextOutPut().Replace("　", "\n");
-                    if (Text.text != finalText)
-                    {
-                        StopCoroutine(nowNobel);
-                        nowNobel = null; nowNobel = NovelText();
-                        Text.text = finalText;
-                    }
-                    else feedout = true;
+                    StopCoroutine(nowNobel);
+                    nowNobel = null; nowNobel = NovelText();
+                    Text.text = finalText;
                 }
+                else feedout = true;
             }
         }
+    }
+
+    public void StopAll()
+    {
+        StopCoroutine(nowNobel);
+        nowNobel = null; nowNobel = NovelText();
+        Text.text = "";
     }
 }
