@@ -9,6 +9,7 @@ public class GearGimmick : MonoBehaviour {
     public GameObject gearPos;  //ぐるりんの位置
     public bool playerHit;  //ぐるりんとの接触判定
     public bool[] moveGear; //歯車とぐるりんの回転方向
+    public bool jumpDirection; //ぐるりんが歯車から離れるときのジャンプ方向、True:左方向 False:右方向
 
     public bool rotParm;
     public float rotSpeed; //歯車とぐるりんの回転速度
@@ -51,6 +52,11 @@ public class GearGimmick : MonoBehaviour {
         if (other.CompareTag("Player"))
         {
             if (other.GetComponent<PlayerMove>().nowBossHand != null) return;
+            else if (other.GetComponent<PlayerMove>().nowBossHand == null)
+            {
+                //FlagManagerのほうのジャンプ方向を上書き、PlayerMove側に伝える
+                flagManager.gururinJumpDirection = jumpDirection;
+            }
             if (gameController.isPress)
             {
                 gameController.isPress = false;
@@ -100,7 +106,6 @@ public class GearGimmick : MonoBehaviour {
         {
             _gururinRb2d.isKinematic = false;
             playerHit = false;
-            playerMove.gearGimmickHit = false;
             playerMove.isMove = true;
             playerMove.setSpeed= true;
             flagManager.moveStop = false;
