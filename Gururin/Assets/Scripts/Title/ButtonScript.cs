@@ -18,6 +18,7 @@ public class ButtonScript : MonoBehaviour
     private int _cnt;
     private float _volume;
 
+    private Configuration config;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +28,8 @@ public class ButtonScript : MonoBehaviour
 
         _volume = 1.0f;
         _fadeOut = false;
+
+        config = GameObject.Find("ConfigCanvas").GetComponent<Configuration>();
     }
 
     // Update is called once per frame
@@ -56,6 +59,7 @@ public class ButtonScript : MonoBehaviour
         //data.destroy = true;
         Debug.Log("x");
 
+        config.configbutton = false;
         /*if(SceneManager.GetActiveScene().name == "Title")
         {
 

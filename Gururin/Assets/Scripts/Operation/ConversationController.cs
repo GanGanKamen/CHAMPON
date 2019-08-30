@@ -16,7 +16,7 @@ public class ConversationController : MonoBehaviour
     public bool sendtext = false;
     public bool feedin = false, feedout = false;
     public int currentSentenceNum = 0; //現在表示している文章番号
-    [SerializeField]private int preSentenceNum = 0;
+    public int preSentenceNum = 0;
     private int displaycount = 0;
 
     public Vector2 mousePosition;
@@ -59,6 +59,7 @@ public class ConversationController : MonoBehaviour
             WhiteBack.SetActive(true);
             if (Input.GetMouseButtonDown(0) && config.configbutton == false)
             {
+                Debug.Log("Click");
                 OnClick();
             }
         }
@@ -121,7 +122,6 @@ public class ConversationController : MonoBehaviour
     {
         int wordCound = 0;
         Text.text = "";
-        Debug.Log(currentSentenceNum);
         while(wordCound < sentences[currentSentenceNum].TextOutPut().Length)
         {
             if(sentences[currentSentenceNum].TextOutPut()[wordCound] == '　')
@@ -158,34 +158,5 @@ public class ConversationController : MonoBehaviour
                 }
             }
         }
-    }
-
-    public void LanSwitchText(int lan)
-    {
-        switch (lan)
-        {
-            case 0:
-                LanguageSwitch.language = LanguageSwitch.Language.Japanese;
-                break;
-            case 1:
-                LanguageSwitch.language = LanguageSwitch.Language.English;
-                break;
-            case 2:
-                LanguageSwitch.language = LanguageSwitch.Language.ChineseHans;
-                break;
-            case 3:
-                LanguageSwitch.language = LanguageSwitch.Language.ChineseHant;
-                break;
-        }
-
-
-
-
-
-
-
-
-
-        OnClick();
     }
 }
