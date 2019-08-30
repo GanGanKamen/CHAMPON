@@ -281,6 +281,7 @@ public class PlayerMove : MonoBehaviour
                     {
                         Vector2 force = new Vector2(-150.0f, 150.0f);
                         _rb2d.AddForce(force);
+                        _jumpSE.Play();
                         isMove = true;
                         gearGimmickHit = false;
                     }
@@ -289,6 +290,7 @@ public class PlayerMove : MonoBehaviour
                     {
                         Vector2 force = new Vector2(150.0f, 150.0f);
                         _rb2d.AddForce(force);
+                        _jumpSE.Play();
                         isMove = true;
                         gearGimmickHit = false;
                     }
