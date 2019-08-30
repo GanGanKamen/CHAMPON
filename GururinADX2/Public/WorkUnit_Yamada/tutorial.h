@@ -5,8 +5,8 @@
  *  ACB  Ver.        : Ver.1.32.00
  *  File Path        : /Users/yamadachihiro/Documents/Sourcetree/CHAMPON/GururinADX2/Public/WorkUnit_Yamada
  *  File Name        : tutorial.h
- *  File Size        : 6272 bytes
- *  Date Time        : 2019/08/11 20:07:44
+ *  File Size        : 812224 bytes
+ *  Date Time        : 2019/08/28 14:16:04
  *  Target           : Public
  *  Cues             : 1
  *  CueSheet Comment : 
