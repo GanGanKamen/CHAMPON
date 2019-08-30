@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+//using UnityEngine.SceneManagement;
 
 public class ButtonScript : MonoBehaviour
 {
     //public Data data;
-    public GameObject configCanvas;
+    //public GameObject configCanvas;
 
     public SceneChange sceneChange;
 
@@ -22,7 +22,7 @@ public class ButtonScript : MonoBehaviour
     void Start()
     {
         //if (GameObject.Find("Data") != null) data = GameObject.Find("Data").GetComponent<Data>();
-        configCanvas = GameObject.Find("ConfigCanvas");
+        //configCanvas = GameObject.Find("ConfigCanvas");
         _startSE = GetComponent<CriAtomSource>();
 
         _volume = 1.0f;
@@ -56,13 +56,13 @@ public class ButtonScript : MonoBehaviour
         //data.destroy = true;
         Debug.Log("x");
 
-        if(SceneManager.GetActiveScene().name == "Title")
+        /*if(SceneManager.GetActiveScene().name == "Title")
         {
 
         }
         else
         {
-            Destroy(configCanvas);
-        }
+            //Destroy(configCanvas);
+        }*/
     }
 }
