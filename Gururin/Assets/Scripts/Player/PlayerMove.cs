@@ -17,6 +17,7 @@ public class PlayerMove : MonoBehaviour
     public bool[] isRot; //移動(回転)方向
     public bool isPress; //ジャンプ入力
     public bool isJump; //ジャンプ許可
+    public bool attach;
 
     private Rigidbody2D _rb2d;
     private CriAtomSource _jumpSE; //ジャンプの効果音
@@ -118,6 +119,18 @@ public class PlayerMove : MonoBehaviour
                 isRot[1] = true;
             }
         }
+
+        if(attach == false && nowBossHand == null)
+        {
+            gearGimmickHit = false;
+            attach = true;
+            Debug.Log("noAttach");
+        }
+        else if (attach && nowBossHand != null)
+        {
+            attach = false;
+            Debug.Log("attach");
+        }
     }
 
     void FixedUpdate()
@@ -198,15 +211,6 @@ public class PlayerMove : MonoBehaviour
                             gameController.isFlick = false;
                         }
                     }
-                    else if (gearGimmickHit)
-                    {
-                        //Gearと噛み合っているときにジャンプのみすると後方へジャンプ
-                        //移動操作を行いながらジャンプすると移動分の距離が加算される = 後方ジャンプになる？
-                        //左方向のみが後方ならばこのままでよいが、右方向へバックジャンプする場合は要改良
-                        Vector2 force = new Vector2(-200.0f, 0.0f);
-                        _rb2d.AddForce(force);
-                        isMove = true;
-                    }
                 }
                 else
                 {
@@ -267,7 +271,27 @@ public class PlayerMove : MonoBehaviour
                             gameController.isFlick = false;
                         }
                     }
+                }
 
+                //BossHand以外の歯車と噛み合っているとき
+                if (gearGimmickHit && attach)
+                {
+                    //左方向に離れる
+                    if (flagManager.gururinJumpDirection)
+                    {
+                        Vector2 force = new Vector2(-150.0f, 150.0f);
+                        _rb2d.AddForce(force);
+                        isMove = true;
+                        gearGimmickHit = false;
+                    }
+                    //右方向に離れる
+                    else
+                    {
+                        Vector2 force = new Vector2(150.0f, 150.0f);
+                        _rb2d.AddForce(force);
+                        isMove = true;
+                        gearGimmickHit = false;
+                    }
                 }
 
 
