@@ -33,7 +33,7 @@ public class VariableGravity : MonoBehaviour
         if (other.CompareTag("Wall_U"))
         {
             //重力変化
-            Physics2D.gravity = new Vector2(0.0f, 9.81f);
+            Physics2D.gravity = new Vector2(0.0f, 25.0f);
 
             //速度再設定
             playerMove.speed[0] = 5.0f;
@@ -155,6 +155,7 @@ public class VariableGravity : MonoBehaviour
                 {
                     Vector2 force = new Vector2(playerMove.jumpSpeed * -1.0f, playerMove.speed[1]);
                     _rb2d.AddForce(force);
+                    _jumpSE.Play();
                     gameController.isFlick = false;
                 }
 
@@ -163,10 +164,10 @@ public class VariableGravity : MonoBehaviour
                 {
                     Vector2 force = new Vector2(playerMove.jumpSpeed, playerMove.speed[1]);
                     _rb2d.AddForce(force);
+                    _jumpSE.Play();
                     gameController.isFlick = false;
                 }
 
-                _jumpSE.Play();
                 Physics2D.gravity = new Vector2(0.0f, -9.81f);
                 playerMove.isMove = true;
             }
@@ -174,6 +175,7 @@ public class VariableGravity : MonoBehaviour
             if (flagManager.isMove_VG[0] && gameController.flick_down)
             {
                 _rb2d.AddForce(Vector2.down * playerMove. jumpSpeed);
+                _jumpSE.Play();
                 gameController.isFlick = false;
             }
 

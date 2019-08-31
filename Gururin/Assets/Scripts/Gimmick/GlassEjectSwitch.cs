@@ -8,12 +8,14 @@ public class GlassEjectSwitch : MonoBehaviour
     public GameObject glassBall, glassPos, vCam;
     private CriAtomSource _pushSE;
     private Gamecontroller _gameController;
+    private Vector3 _pos;
     private bool _eject;
 
     private void Start()
     {
         _pushSE = GameObject.Find("SE_item(CriAtomSource)").GetComponent<CriAtomSource>();
         _gameController = GameObject.Find("GameController").GetComponent<Gamecontroller>();
+        _pos = transform.position;
 
         _eject = false;
     }
@@ -22,6 +24,7 @@ public class GlassEjectSwitch : MonoBehaviour
     {
         if (other.CompareTag("Player") && _eject == false)
         {
+            transform.position = new Vector2(0.0f, 1.1f);
             _eject = true;
             _pushSE.Play();
             StartCoroutine(VCam());
@@ -56,6 +59,7 @@ public class GlassEjectSwitch : MonoBehaviour
         _gameController.isCon = false;
         //カメラを元に戻す
         vCam.SetActive(false);
+        transform.position = _pos;
 
         yield break;
     }

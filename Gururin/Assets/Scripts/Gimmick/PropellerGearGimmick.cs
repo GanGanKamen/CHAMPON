@@ -61,9 +61,6 @@ public class PropellerGearGimmick : MonoBehaviour
             //ぐるりんの移動を止める
             playerMove.isMove = false;
 
-            //カウントを減らすタイマーをリセット
-            rotationCounter.timer = 0.0f;
-
             //効果音を鳴らす
             source.Play();
         }
@@ -91,7 +88,6 @@ public class PropellerGearGimmick : MonoBehaviour
             playerHit = false;
             playerMove.isMove = true;
             playerMove.setSpeed = true;
-            rotationCounter.minusCount = true;
             flagManager.moveStop = false;
         }
     }

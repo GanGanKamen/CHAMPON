@@ -23,10 +23,9 @@ public class BlockSwitch : MonoBehaviour
     {
         if (other.CompareTag("Player") && blocking == false)
         {
+            transform.position = new Vector2(0.0f, -0.5f);
             _pushSE.Play();
             blocking = true;
-            //block.SetActive(false);
-            //block.transform.position = new Vector3(1000, 0);
             StartCoroutine(VCam());
         }
     }
@@ -41,13 +40,7 @@ public class BlockSwitch : MonoBehaviour
         yield return new WaitForSeconds(blendSpeed);
 
         //ブロックを消す
-       hideBlock.transform.position = new Vector3(1000, 0);
-        /*
-        if(appearBlock != null)
-        {
-            appearBlock.SetActive(true);
-        }
-        */
+       hideBlock.transform.position = new Vector3(100, 0);
         if(fan != null)
         {
             fan.SetActive(false);
@@ -59,6 +52,7 @@ public class BlockSwitch : MonoBehaviour
         _gameController.isCon = false;
         //カメラを元に戻す
         vCam.SetActive(false);
+        gameObject.SetActive(false);
 
         yield break;
     }

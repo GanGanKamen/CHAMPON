@@ -11,11 +11,8 @@ public class RotationCounter : MonoBehaviour
 
     public int count; //風を出すためのカウント
     private int _maxCount; //カウントの限界値
-    public float timer; //カウントをマイナスするまでのタイマー
     public bool countPlus; //カウントがプラスされたとき
-    public bool minusCount; //カウントをマイナスする
     public bool fixedCount; //風が出るカウント
-    public bool restriction; //制限の有無、Trueの時に制限をかける
     public bool fanRot;
     public GameObject Wind;
 
@@ -40,11 +37,9 @@ public class RotationCounter : MonoBehaviour
         //歯車が触れるたびにカウントを1増加
         if (other.CompareTag("Gimmick"))
         {
-            timer = 0.0f;
             count ++;
             //カウントの増加を感知
             countPlus = true;
-            minusCount = false;
         }
     }
 
@@ -64,6 +59,8 @@ public class RotationCounter : MonoBehaviour
         {
             _source.Play();
             _sourcePlay = true;
+            //風が出ているときに歯車を回すと風のSEの音量を上げる
+            _source.volume += 0.005f;
         }
         else if (Wind.activeInHierarchy == false && _sourcePlay)
         {
@@ -72,30 +69,9 @@ public class RotationCounter : MonoBehaviour
             _source.volume = _sourceVolume;
         }
 
-        //minusCountがtrueの時、1秒ごとにカウントを-1
-        if (gameController.isPress == false && count > 0)
+        if (_source.volume > _sourceVolume)
         {
-            minusCount = true;
-
-            //restrictionがFalseの時はカウントをマイナスしない
-            if (minusCount)
-            {
-
-                if (restriction == false)
-                {
-                    timer += Time.deltaTime;
-                }
-                else if (restriction)
-                {
-                    timer += Time.deltaTime / 3.0f;
-                }
-
-                if (timer > 1)
-                {
-                    timer = 0.0f;
-                    count --;
-                }
-            }
+            _source.volume = _sourceVolume;
         }
 
         //カウントが10を超えたら風を出現させる
@@ -108,37 +84,6 @@ public class RotationCounter : MonoBehaviour
         {
             Wind.SetActive(false);
             fixedCount = false;
-        }
-
-        //徐々に風のSEをフェードアウト
-        if (count < _maxCount && fixedCount)
-        {
-            if (restriction == false)
-            {
-                _source.volume -= 0.002f;
-            }
-            else
-            {
-                _source.volume -= 0.002f / 3.25f;
-            }
-        }
-
-        //風が出ているときに歯車を回すと風のSEの音量を上げる
-        if(minusCount == false && fixedCount)
-        {
-            if (restriction == false)
-            {
-                _source.volume += 0.005f;
-            }
-            else
-            {
-                _source.volume += 0.005f / 3.25f;
-            }
-
-            if (_source.volume > _sourceVolume)
-            {
-                _source.volume = _sourceVolume;
-            }
         }
 
         //limitCountを超えたらカウントストップ

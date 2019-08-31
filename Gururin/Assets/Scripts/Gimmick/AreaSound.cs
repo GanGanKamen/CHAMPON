@@ -7,11 +7,13 @@ public class AreaSound : MonoBehaviour
 
     private bool _sourceStart;
     public float upVolume, maxVolume;
-    public CriAtomSource _source;
+    private CriAtomSource _source;
 
     // Start is called before the first frame update
     void Start()
     {
+        _source = GetComponent<CriAtomSource>();
+
         _sourceStart = false;
         _source.volume = 0.0f;
     }
