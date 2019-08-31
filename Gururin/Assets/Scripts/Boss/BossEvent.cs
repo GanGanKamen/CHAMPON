@@ -170,7 +170,7 @@ public class BossEvent : MonoBehaviour
         windowText.text = textMessage[0];
         windowAnim.SetBool("Close", false);
         windowAnim.SetBool("Open", true);
-        SoundManager.PlayS(gameObject, "Operation", "SE_WindowOpen");
+        //SoundManager.PlayS(gameObject, "Operation", "SE_WindowOpen");
         yield return new WaitForSeconds(1f);
         while (!Input.GetMouseButtonDown(0))
         {
@@ -179,7 +179,7 @@ public class BossEvent : MonoBehaviour
 
         windowAnim.SetBool("Open", false);
         windowAnim.SetBool("Close", true);
-        SoundManager.PlayS(gameObject, "Operation", "SE_WindowClose");
+        //SoundManager.PlayS(gameObject, "Operation", "SE_WindowClose");
         skipButton.SetActive(false);
         MovieCutOut();
         while (Mathf.Abs(topBand.localPosition.y - topDis.y) > 1f)
@@ -260,7 +260,7 @@ public class BossEvent : MonoBehaviour
         windowText.text = textMessage[1];
         windowAnim.SetBool("Open", true);
         windowAnim.SetBool("Close", false);
-        SoundManager.PlayS(gameObject, "Operation", "SE_WindowOpen");
+        //SoundManager.PlayS(gameObject, "Operation", "SE_WindowOpen");
         yield return new WaitForSeconds(1f);
         virtualCameras[1].Priority = 11;
         virtualCameras[2].Priority = 1;
@@ -282,7 +282,7 @@ public class BossEvent : MonoBehaviour
         nextStage.SetActive(true);
         windowAnim.SetBool("Open", false);
         windowAnim.SetBool("Close", true);
-        SoundManager.PlayS(gameObject, "Operation", "SE_WindowClose");
+        //SoundManager.PlayS(gameObject, "Operation", "SE_WindowClose");
         gamecontroller.isCon = true;
         player.finishMode = false;
         finish.gameObject.SetActive(false);

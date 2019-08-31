@@ -48,6 +48,7 @@ MonoBehaviour:
   - So Let's play it immediately!
   - "\u90A3\u4E48\u73B0\u5728\u7ACB\u523B\u5F00\u59CB\u6E38\u620F\u5427\uFF01"
   - "\u90A3\u9EBC\u73FE\u5728\u7ACB\u523B\u958B\u59CB\u904A\u6232\u5427\uFF01"
+  hakaseFace: {fileID: 0}
 --- !u!1 &449374386
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,6 +97,7 @@ MonoBehaviour:
   - "Look at the wall! It\u2019s uneven\u3000just like earlier ceiling!"
   - "\u90A3\u5835\u5899\u5C31\u50CF\u521A\u624D\u7684\u5929\u82B1\u677F\u4E00\u6837\u6709\u3000\u51F9\u51F8\u4E0D\u5E73\u7684\u90E8\u5206\uFF01"
   - "\u90A3\u5835\u7246\u5C31\u50CF\u525B\u624D\u7684\u5929\u82B1\u677F\u4E00\u6A23\u6709\u3000\u51F9\u51F8\u4E0D\u5E73\u7684\u90E8\u5206\uFF01"
+  hakaseFace: {fileID: 21300000, guid: 3558c50a96f48cb45ad6662149f2743f, type: 3}
 --- !u!1 &557105145
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,8 +262,10 @@ MonoBehaviour:
   - {fileID: 1297649986}
   Text: {fileID: 1337847376}
   Doctor: {fileID: 1274551133}
+  hakaseFace: {fileID: 904550947}
   TextUI: {fileID: 1979308873}
   WhiteBack: {fileID: 645678441}
+  windowAnim: {fileID: 3922297573615032045}
   IsConversation: 0
   IsDescription: 0
   sendtext: 0
@@ -325,6 +329,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 831070758}
+  - component: {fileID: 3922297573615032045}
+  - component: {fileID: 1412219530327410564}
+  - component: {fileID: 8519023105495780199}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -353,6 +360,58 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -450}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &3922297573615032045
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 831070757}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 28777aaae7c2e1445a56288ad1f2d7a9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1412219530327410564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 831070757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1e631c3b9947b54c823c6853a05529c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playOnStart: 0
+  _cueName: 
+  _cueSheet: Operation
+  _use3dPositioning: 0
+  _loop: 0
+  _volume: 1
+  _pitch: 0
+  _androidUseLowLatencyVoicePool: 0
+  need_to_player_update_all: 1
+--- !u!114 &8519023105495780199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 831070757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c573a05447d6fda47a336c669d5125f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &889524028
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,6 +460,7 @@ MonoBehaviour:
   - "\u82F1\u8A9E\u7FFB\u8A335..."
   - "\u7C21\u4F53\u5B57\u7FFB\u8A335..."
   - "\u7E41\u4F53\u5B57\u7FFB\u8A335..."
+  hakaseFace: {fileID: 0}
 --- !u!1 &904550945
 GameObject:
   m_ObjectHideFlags: 0
@@ -523,6 +583,7 @@ MonoBehaviour:
   - "\u82F1\u8A9E\u7FFB\u8A336..."
   - "\u7C21\u4F53\u5B57\u7FFB\u8A336..."
   - "\u7E41\u4F53\u5B57\u7FFB\u8A336..."
+  hakaseFace: {fileID: 0}
 --- !u!1 &1274551133
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,6 +710,7 @@ MonoBehaviour:
     you."
   - "\u548C\u5899\u58C1\u8FDE\u7ED3\u5728\u4E00\u8D77\u7684\u65F6\u5019\u6ED1\u52A8\u5C4F\u5E55\u53EF\u4EE5\u3000\u5206\u79BB\u3002\u7EC8\u70B9\u5C31\u5728\u773C\u524D\u3002"
   - "\u548C\u7246\u58C1\u9023\u7D50\u5728\u4E00\u8D77\u7684\u6642\u5019\u6ED1\u52D5\u5C4F\u5E55\u53EF\u4EE5\u3000\u5206\u96E2\u3002\u7D42\u9EDE\u5C31\u5728\u773C\u524D\u3002"
+  hakaseFace: {fileID: 21300000, guid: 0903374e8521719449506980b9ce87c0, type: 3}
 --- !u!1 &1337847371
 GameObject:
   m_ObjectHideFlags: 0
@@ -761,6 +823,8 @@ MonoBehaviour:
   conversationController: {fileID: 297745722}
   IsStart: 0
   IsDisplay: 0
+  font0: {fileID: 12800000, guid: 73ed1fb59bd24114984152a28efeed85, type: 3}
+  font1: {fileID: 12800000, guid: bda24b8dd8a4e484e889800f20716725, type: 3}
 --- !u!1 &1545705059
 GameObject:
   m_ObjectHideFlags: 0
@@ -809,6 +873,7 @@ MonoBehaviour:
   - "Maybe you can go to the top by the\u3000wall."
   - "\u4E5F\u5C31\u662F\u8BF4\u8FD9\u5835\u5899\u5E94\u8BE5\u53EF\u4EE5\u8FDE\u7ED3\u3002"
   - "\u4E5F\u5C31\u662F\u8AAA\u9019\u5835\u7246\u61C9\u8A72\u53EF\u4EE5\u9023\u7D50\u3002"
+  hakaseFace: {fileID: 21300000, guid: 8de5b13b0c96e82439b5de19493fe794, type: 3}
 --- !u!1 &1817393535
 GameObject:
   m_ObjectHideFlags: 0
@@ -1031,6 +1096,7 @@ MonoBehaviour:
   - "\u82F1\u8A9E\u7FFB\u8A334..."
   - "\u7C21\u4F53\u5B57\u7FFB\u8A334..."
   - "\u7E41\u4F53\u5B57\u7FFB\u8A334..."
+  hakaseFace: {fileID: 0}
 --- !u!1 &1979308873
 GameObject:
   m_ObjectHideFlags: 0

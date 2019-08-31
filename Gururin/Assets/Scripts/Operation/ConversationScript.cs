@@ -12,12 +12,27 @@ public class ConversationScript : MonoBehaviour
     public bool IsStart;
     public bool IsDisplay;
 
+    public Font font0,font1;
+    private Text text;
     // Start is called before the first frame update
     void Start()
     {
+        text = GetComponent<Text>();
         canvasGroup = GetComponent<CanvasGroup>();
         canvasGroup.alpha = 0;
         IsStart = true;
+        switch (LanguageSwitch.language)
+        {
+            case LanguageSwitch.Language.Japanese:
+                text.font = font0;
+                break;
+            case LanguageSwitch.Language.English:
+                text.font =font0;
+                break;
+            default:
+                text.font = font1;
+                break;
+        }
     }
 
     // Update is called once per frame

@@ -59,8 +59,10 @@ MonoBehaviour:
   - {fileID: 1811550061035625166}
   Text: {fileID: 711057388979414191}
   Doctor: {fileID: 6925672700873411641}
+  hakaseFace: {fileID: 6417537050226188155}
   TextUI: {fileID: 1377529732466600324}
   WhiteBack: {fileID: 7732622032511569846}
+  windowAnim: {fileID: 5017532727077434119}
   IsConversation: 0
   IsDescription: 0
   sendtext: 0
@@ -184,6 +186,7 @@ MonoBehaviour:
   - The place that the gate is very high in!
   - "\u5929\u54EA\uFF01\u95E8\u7ADF\u7136\u5728\u90A3\u4E48\u9AD8\u7684\u5730\u65B9\uFF01"
   - "\u5929\u54EA\uFF01\u9580\u7ADF\u7136\u5728\u90A3\u9EBC\u9AD8\u7684\u5730\u65B9\uFF01"
+  hakaseFace: {fileID: 21300000, guid: f0102bc2ef86c5a43ab551c56cc43060, type: 3}
 --- !u!1 &1377529732466600324
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,6 +310,7 @@ MonoBehaviour:
   - "Nothing to clamb, but the\u3000ceiling is uneven..."
   - "\u5468\u56F4\u6CA1\u6709\u7ACB\u811A\u70B9\uFF0C\u3000\u4E0D\u8FC7\u6709\u51F9\u51F8\u4E0D\u5E73\u7684\u5929\u82B1\u677F\u2026"
   - "\u5468\u570D\u6C92\u6709\u7ACB\u8173\u9EDE\uFF0C\u3000\u4E0D\u904E\u6709\u51F9\u51F8\u4E0D\u5E73\u7684\u5929\u82B1\u677F\u2026"
+  hakaseFace: {fileID: 21300000, guid: 21344ec4cfcfece42a51fee9585b5372, type: 3}
 --- !u!1 &2176515404352215336
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,6 +359,7 @@ MonoBehaviour:
   - "\u82F1\u8A9E\u7FFB\u8A336..."
   - "\u7C21\u4F53\u5B57\u7FFB\u8A336..."
   - "\u7E41\u4F53\u5B57\u7FFB\u8A336..."
+  hakaseFace: {fileID: 0}
 --- !u!1 &2894907758022776184
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,6 +408,7 @@ MonoBehaviour:
   - "Good!... Hey, look at!There is a step!\u3000You should flick to jump over it."
   - "\u90A3\u4E48\u73B0\u5728\u7ACB\u523B\u5F00\u59CB\u6E38\u620F\u5427\uFF01"
   - "\u90A3\u9EBC\u73FE\u5728\u7ACB\u523B\u958B\u59CB\u904A\u6232\u5427\uFF01"
+  hakaseFace: {fileID: 0}
 --- !u!1 &4075289220766624519
 GameObject:
   m_ObjectHideFlags: 0
@@ -657,6 +663,7 @@ MonoBehaviour:
   - "Maybe you should attach to it. Then\u3000you can move just like on the ground."
   - "\u5BF9\u4E86\uFF01\u8FDE\u7ED3\u90A3\u4E2A\u5929\u82B1\u677F\u6216\u8BB8\u53EF\u4EE5\u50CF\u3000\u5728\u5730\u9762\u7684\u65F6\u5019\u4E00\u6837\u79FB\u52A8\uFF01"
   - "\u5C0D\u4E86\uFF01\u9023\u7D50\u90A3\u500B\u5929\u82B1\u677F\u6216\u8A31\u53EF\u4EE5\u50CF\u3000\u5728\u5730\u9762\u7684\u6642\u5019\u4E00\u6A23\u79FB\u52D5\uFF01"
+  hakaseFace: {fileID: 21300000, guid: e9db97b5c4be0a44cb762d567b1b299a, type: 3}
 --- !u!1 &5982472982577716145
 GameObject:
   m_ObjectHideFlags: 0
@@ -769,6 +776,8 @@ MonoBehaviour:
   conversationController: {fileID: 1412710984}
   IsStart: 0
   IsDisplay: 0
+  font0: {fileID: 12800000, guid: 73ed1fb59bd24114984152a28efeed85, type: 3}
+  font1: {fileID: 12800000, guid: bda24b8dd8a4e484e889800f20716725, type: 3}
 --- !u!1 &6925672700873411641
 GameObject:
   m_ObjectHideFlags: 0
@@ -893,6 +902,7 @@ MonoBehaviour:
   - "\u82F1\u8A9E\u7FFB\u8A335..."
   - "\u7C21\u4F53\u5B57\u7FFB\u8A335..."
   - "\u7E41\u4F53\u5B57\u7FFB\u8A335..."
+  hakaseFace: {fileID: 0}
 --- !u!1 &7137637818539040869
 GameObject:
   m_ObjectHideFlags: 0
@@ -941,6 +951,7 @@ MonoBehaviour:
   - "\u82F1\u8A9E\u7FFB\u8A334..."
   - "\u7C21\u4F53\u5B57\u7FFB\u8A334..."
   - "\u7E41\u4F53\u5B57\u7FFB\u8A334..."
+  hakaseFace: {fileID: 0}
 --- !u!1 &7732622032511569846
 GameObject:
   m_ObjectHideFlags: 0
@@ -1024,6 +1035,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5132038414423731493}
+  - component: {fileID: 5017532727077434119}
+  - component: {fileID: 887369916167675794}
+  - component: {fileID: 5472731111554518265}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -1052,6 +1066,58 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -450}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &5017532727077434119
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8454943156446665965}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 28777aaae7c2e1445a56288ad1f2d7a9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &887369916167675794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8454943156446665965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1e631c3b9947b54c823c6853a05529c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playOnStart: 0
+  _cueName: 
+  _cueSheet: Operation
+  _use3dPositioning: 0
+  _loop: 0
+  _volume: 1
+  _pitch: 0
+  _androidUseLowLatencyVoicePool: 0
+  need_to_player_update_all: 1
+--- !u!114 &5472731111554518265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8454943156446665965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c573a05447d6fda47a336c669d5125f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8547695275513084586
 GameObject:
   m_ObjectHideFlags: 0

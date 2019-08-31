@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ConversationController : MonoBehaviour
 {
@@ -9,8 +10,10 @@ public class ConversationController : MonoBehaviour
     [SerializeField] Text Text;   // uiTextへの参照
 
     public GameObject Doctor;
+    public Image hakaseFace;
     public GameObject TextUI;
     public GameObject WhiteBack;
+    public Animator windowAnim;
 
     public bool IsConversation, IsDescription;
     public bool sendtext = false;
@@ -56,6 +59,8 @@ public class ConversationController : MonoBehaviour
             gameController.isCon = true;
             Doctor.SetActive(true);
             TextUI.SetActive(true);
+            windowAnim.SetBool("Open", true);
+            windowAnim.SetBool("Close", false);
             WhiteBack.SetActive(true);
             if (Input.GetMouseButtonDown(0) && config.configbutton == false)
             {
@@ -81,6 +86,8 @@ public class ConversationController : MonoBehaviour
             gameController.isDes = true;
             Doctor.SetActive(true);
             TextUI.SetActive(true);
+            windowAnim.SetBool("Open", true);
+            windowAnim.SetBool("Close", false);
 
             if (sendtext)
             {
@@ -106,12 +113,25 @@ public class ConversationController : MonoBehaviour
             displaycount++;
             if (displaycount >= 30 && !feedin && !feedout)
             {
-                Doctor.SetActive(false);
-                TextUI.SetActive(false);
+                windowAnim.SetBool("Open", false);
+                windowAnim.SetBool("Close", true);
+                StopAll();
                 displaycount = 0;
+
             }
         }
         if (currentSentenceNum > 0) textFeed[currentSentenceNum - 1] = false;
+        if (Input.GetMouseButtonDown(0)&&SceneManager.GetActiveScene().name == "Tutorial-1"&&currentSentenceNum == 4)
+        {
+            OnClick();
+        }
+        /*
+        if(SceneManager.GetActiveScene().name == "Tutorial-3" && currentSentenceNum == 4)
+        {
+            windowAnim.SetBool("Open", true);
+            windowAnim.SetBool("Close", false);
+            WhiteBack.SetActive(true);
+        }*/
     }
 
     private void TextSwitch()
@@ -126,6 +146,7 @@ public class ConversationController : MonoBehaviour
 
     private IEnumerator NovelText()
     {
+        hakaseFace.sprite = sentences[currentSentenceNum].hakaseFace;
         int wordCound = 0;
         Text.text = "";
         while (wordCound < sentences[currentSentenceNum].TextOutPut().Length)
