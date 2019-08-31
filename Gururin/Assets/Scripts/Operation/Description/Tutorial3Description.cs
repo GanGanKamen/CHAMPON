@@ -82,7 +82,7 @@ public class Tutorial3Description : MonoBehaviour
                 //このオブジェクトを非表示にする
                 gameObject.SetActive(false);
             }*/
-            if (conversationController.textFeed[2])
+            if (conversationController.textFeed[2]||conversationController.textFeed[3])
             {
                 //カメラの位置を元に戻す
                 for (int i = 0; i < vcam.Length; i++)
