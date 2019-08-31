@@ -5,7 +5,7 @@ using UnityEngine;
 public class LanguageText : MonoBehaviour
 {
     public string[] messages;
-
+    public Sprite hakaseFace;
     // Start is called before the first frame update
     void Start()
     {
