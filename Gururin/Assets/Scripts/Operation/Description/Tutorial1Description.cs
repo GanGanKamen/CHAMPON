@@ -18,21 +18,41 @@ public class Tutorial1Description : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        start = true;
-        if(num == 1)
+        if (other.CompareTag("Player"))
         {
-            videos[0].Play();
+            start = true;
+            if (num == 1)
+            {
+                videos[0].Play();
+            }
+            else
+            {
+                StartCoroutine(nextText());
+            }
+        }
+           
+    }
+
+    private IEnumerator nextText()
+    {
+        videos[1].Play();
+        
+        string finalText = "";
+        if (LanguageSwitch.language == LanguageSwitch.Language.Japanese || LanguageSwitch.language == LanguageSwitch.Language.English)
+        {
+            finalText = conversationController.sentences[conversationController.currentSentenceNum].TextOutPut().Replace("　", "\n\n");
         }
         else
         {
-            videos[1].Play();
-            conversationController.StopAll();
-            conversationController.currentSentenceNum = 3;
-            conversationController.feedin = true;
+            finalText = conversationController.sentences[conversationController.currentSentenceNum].TextOutPut().Replace("　", "\n");
         }
+        while (conversationController.Text.text != finalText)
+        {
+            yield return null;
+        }
+        conversationController.StopAll();
+        conversationController.currentSentenceNum = 3;
     }
-
-    
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Player"))

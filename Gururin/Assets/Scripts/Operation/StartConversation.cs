@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class StartConversation : MonoBehaviour
 {
     private FlagManager flagManager;
     public ConversationController conversationController;
-
+    public VideoPlayer video;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +31,7 @@ public class StartConversation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (conversationController.textFeed[1])
+        if (conversationController.textFeed[2])
         {
             
             conversationController.IsConversation = false;
@@ -41,7 +42,7 @@ public class StartConversation : MonoBehaviour
             flagManager.moveStop = false;
             //GameControllerを表示する
             flagManager.pressParm = true;
-
+            if(!video.isPlaying) video.Play();
             //このオブジェクトを非表示にする
             this.gameObject.SetActive(false);
         }

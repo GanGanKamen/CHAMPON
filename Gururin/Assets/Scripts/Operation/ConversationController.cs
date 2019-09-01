@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class ConversationController : MonoBehaviour
 {
     public LanguageText[] sentences; // 文章を格納する
-    [SerializeField] Text Text;   // uiTextへの参照
+    public Text Text;   // uiTextへの参照
 
     public GameObject Doctor;
     public Image hakaseFace;
@@ -118,16 +118,15 @@ public class ConversationController : MonoBehaviour
                 Debug.Log("aaa");
                 StopAll();
                 displaycount = 0;
-
             }
         }
         if (currentSentenceNum > 0) textFeed[currentSentenceNum - 1] = false;
         
-        if (Input.GetMouseButtonDown(0) && SceneManager.GetActiveScene().name == "Tutorial-1"
+        /*if (Input.GetMouseButtonDown(0) && SceneManager.GetActiveScene().name == "Tutorial-1"
             &&( currentSentenceNum == 2|| currentSentenceNum == 3))
         {
             OnClick();
-        }
+        }*/
     }
 
     private void TextSwitch()
@@ -199,6 +198,7 @@ public class ConversationController : MonoBehaviour
 
     public void StopAll()
     {
+        Debug.Log("stop");
         StopCoroutine(nowNobel);
         nowNobel = null; nowNobel = NovelText();
         Text.text = "";
