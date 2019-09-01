@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using UnityEngine.UI;
-
+using UnityEngine.Video;
 public class Tutorial5Description : MonoBehaviour
 {
     public GameObject vcam;
@@ -13,6 +13,7 @@ public class Tutorial5Description : MonoBehaviour
 
     public ConversationController conversationController;
 
+    public VideoPlayer video;
     // Start is called before the first frame update
     void Start()
     {
@@ -57,6 +58,7 @@ public class Tutorial5Description : MonoBehaviour
                 //GameControllerを表示する
                 flagManager.pressParm = true;
 
+                conversationController.IsConversation = false;
                 //このオブジェクトを非表示にする
                 gameObject.SetActive(false);
             }

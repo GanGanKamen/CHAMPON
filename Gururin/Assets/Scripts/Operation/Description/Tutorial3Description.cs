@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class Tutorial3Description : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class Tutorial3Description : MonoBehaviour
     public ConversationController conversationController;
 
     public int num;
+
+    public VideoPlayer video;
     // Start is called before the first frame update
     void Start()
     {
@@ -98,6 +101,7 @@ public class Tutorial3Description : MonoBehaviour
                 flagManager.pressParm = true;
 
                 //このオブジェクトを非表示にする
+                if (!video.isPlaying) video.Play();
                 gameObject.SetActive(false);
             }
         }

@@ -183,7 +183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messages:
   - "\u3042\u3093\u306A\u306B\u9AD8\u3044\u6240\u306B\u6249\u304C\uFF01"
-  - The place that the gate is very high in!
+  - "The place that the gate is very\u3000high in!"
   - "\u5929\u54EA\uFF01\u95E8\u7ADF\u7136\u5728\u90A3\u4E48\u9AD8\u7684\u5730\u65B9\uFF01"
   - "\u5929\u54EA\uFF01\u9580\u7ADF\u7136\u5728\u90A3\u9EBC\u9AD8\u7684\u5730\u65B9\uFF01"
   hakaseFace: {fileID: 21300000, guid: f0102bc2ef86c5a43ab551c56cc43060, type: 3}
