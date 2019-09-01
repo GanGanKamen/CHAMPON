@@ -64,7 +64,7 @@ public class ConversationController : MonoBehaviour
             WhiteBack.SetActive(true);
             if (Input.GetMouseButtonDown(0) && config.configbutton == false)
             {
-                
+
 
                 mousePosition = Camera.main.ScreenToViewportPoint(Input.mousePosition);
                 if (!(mousePosition.x > 0.94f && mousePosition.y > 0.91f ||
@@ -115,23 +115,19 @@ public class ConversationController : MonoBehaviour
             {
                 windowAnim.SetBool("Open", false);
                 windowAnim.SetBool("Close", true);
+                Debug.Log("aaa");
                 StopAll();
                 displaycount = 0;
 
             }
         }
         if (currentSentenceNum > 0) textFeed[currentSentenceNum - 1] = false;
-        if (Input.GetMouseButtonDown(0)&&SceneManager.GetActiveScene().name == "Tutorial-1"&&currentSentenceNum == 4)
+        
+        if (Input.GetMouseButtonDown(0) && SceneManager.GetActiveScene().name == "Tutorial-1"
+            &&( currentSentenceNum == 2|| currentSentenceNum == 3))
         {
             OnClick();
         }
-        /*
-        if(SceneManager.GetActiveScene().name == "Tutorial-3" && currentSentenceNum == 4)
-        {
-            windowAnim.SetBool("Open", true);
-            windowAnim.SetBool("Close", false);
-            WhiteBack.SetActive(true);
-        }*/
     }
 
     private void TextSwitch()
@@ -153,14 +149,21 @@ public class ConversationController : MonoBehaviour
         {
             if (sentences[currentSentenceNum].TextOutPut()[wordCound] == '　')
             {
-                Text.text += "\n";
+                if (LanguageSwitch.language == LanguageSwitch.Language.Japanese || LanguageSwitch.language == LanguageSwitch.Language.English)
+                {
+                    Text.text += "\n\n";
+                }
+                else
+                {
+                    Text.text += "\n";
+                }
             }
             else
             {
                 Text.text += sentences[currentSentenceNum].TextOutPut()[wordCound];
                 SoundManager.PlayS(gameObject, "SE_hakaseTalk");
             }
-            
+
             wordCound++;
             yield return new WaitForSeconds(textWaitTime);
         }
@@ -174,7 +177,15 @@ public class ConversationController : MonoBehaviour
         {
             if (sentences.Length - 1 >= currentSentenceNum)
             {
-                var finalText = sentences[currentSentenceNum].TextOutPut().Replace("　", "\n");
+                string finalText = "";
+                if (LanguageSwitch.language == LanguageSwitch.Language.Japanese || LanguageSwitch.language == LanguageSwitch.Language.English)
+                {
+                    finalText = sentences[currentSentenceNum].TextOutPut().Replace("　", "\n\n");
+                }
+                else
+                {
+                    finalText = sentences[currentSentenceNum].TextOutPut().Replace("　", "\n");
+                }
                 if (Text.text != finalText)
                 {
                     StopCoroutine(nowNobel);

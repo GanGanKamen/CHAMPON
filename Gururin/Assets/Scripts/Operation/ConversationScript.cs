@@ -12,7 +12,7 @@ public class ConversationScript : MonoBehaviour
     public bool IsStart;
     public bool IsDisplay;
 
-    public Font font0,font1;
+    public Font font0, font1;
     private Text text;
     // Start is called before the first frame update
     void Start()
@@ -27,7 +27,7 @@ public class ConversationScript : MonoBehaviour
                 text.font = font0;
                 break;
             case LanguageSwitch.Language.English:
-                text.font =font0;
+                text.font = font0;
                 break;
             default:
                 text.font = font1;
@@ -82,9 +82,31 @@ public class ConversationScript : MonoBehaviour
                 {
                     if (conversationController.sentences.Length - 1 > conversationController.currentSentenceNum)
                     {
-                        conversationController.StopAll();
-                        if(SceneManager.GetActiveScene().name == "Tutorial-1") conversationController.currentSentenceNum++;
-                        conversationController.feedout = false;
+                        //conversationController.StopAll();
+                        if (SceneManager.GetActiveScene().name == "Tutorial-1")
+                        {
+                            if (conversationController.currentSentenceNum != 2)
+                            {
+                                conversationController.currentSentenceNum++;
+                            }
+                            else
+                            {
+                                conversationController.feedout = false;
+                            }
+                            
+                            /*
+                             if(conversationController.currentSentenceNum != 2)
+                            {
+                                conversationController.currentSentenceNum++;
+                            }
+                            else
+                            {
+                                conversationController.feedout = false;
+                                conversationController.feedin = true;
+                            }*/
+                        }
+
+                        else conversationController.feedout = false;
                         Debug.Log("b");
                     }
                     else if (conversationController.sentences.Length - 1 == conversationController.currentSentenceNum)
