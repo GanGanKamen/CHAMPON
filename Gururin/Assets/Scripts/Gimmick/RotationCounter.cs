@@ -10,7 +10,7 @@ public class RotationCounter : MonoBehaviour
 {
 
     public int count; //風を出すためのカウント
-    [SerializeField] private int _maxCount; //カウントの限界値
+    public int _maxCount; //カウントの限界値
     public float timer; //カウントをマイナスするまでのタイマー
     public bool countPlus; //カウントがプラスされたとき
     public bool minusCount; //カウントをマイナスする

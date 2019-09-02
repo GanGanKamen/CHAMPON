@@ -66,6 +66,7 @@ namespace GanGanKamen
         // Update is called once per frame
         void Update()
         {
+            var speedPlus = 4 - bossBalloon.lifes;
             handParent.transform.position = Vector2.Lerp(handParent.transform.position, distinationPos, moveSpeed);
             switch (pattern)
             {
@@ -97,7 +98,7 @@ namespace GanGanKamen
                     Vector3 offest = Vector3.Scale((player.transform.position - transform.position), new Vector3(-1, -1, 0)).normalized;
                     distinationPos = deathZones.position + offest;
                     attackCount = 0;
-                    moveSpeed = Time.deltaTime * 1.5f;
+                    moveSpeed = Time.deltaTime * 0.5f * speedPlus;
                     if (Vector3.Distance(handParent.transform.position, distinationPos) < 0.2f)
                     {
                         pattern = Pattern.RandomWalk;
@@ -108,7 +109,7 @@ namespace GanGanKamen
                     break;
                 case Pattern.Attack:
                     attackCount += Time.deltaTime;
-                    moveSpeed = Time.deltaTime;
+                    moveSpeed = Time.deltaTime * 0.5f * speedPlus;
                     distinationPos = player.transform.position;
                     /*if (//(Vector3.Distance(handParent.transform.position, distinationPos) < 0.5f && hitPlayer == false)
                         attackCount >= 6f
@@ -119,26 +120,12 @@ namespace GanGanKamen
                         distinationPos = new Vector2(Random.Range(moveRangeX.x, moveRangeX.y),
                 Random.Range(moveRangeY.x, moveRangeY.y));
                     }*/
-                    switch (hand)
+                    if (player.transform.position.x < moveRangeX.x || player.transform.position.x > moveRangeX.y)
                     {
-                        case Hand.Left:
-                            if(player.transform.position.x < moveRangeX.x || player.transform.position.x > moveRangeX.y)
-                            {
-                                attackCount = 0;
-                                pattern = Pattern.RandomWalk;
-                                distinationPos = new Vector2(Random.Range(moveRangeX.x, moveRangeX.y),
-                Random.Range(moveRangeY.x, moveRangeY.y));
-                            }
-                            break;
-                        case Hand.Right:
-                            if (player.transform.position.x > moveRangeX.x || player.transform.position.x < moveRangeX.y)
-                            {
-                                attackCount = 0;
-                                pattern = Pattern.RandomWalk;
-                                distinationPos = new Vector2(Random.Range(moveRangeX.x, moveRangeX.y),
-                Random.Range(moveRangeY.x, moveRangeY.y));
-                            }
-                            break;
+                        attackCount = 0;
+                        pattern = Pattern.RandomWalk;
+                        distinationPos = new Vector2(Random.Range(moveRangeX.x, moveRangeX.y),
+        Random.Range(moveRangeY.x, moveRangeY.y));
                     }
                     ColliderCancel();
                     break;

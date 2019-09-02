@@ -29,7 +29,7 @@ public class ConversationController : MonoBehaviour
     public Configuration config;
     public Gamecontroller gameController;
 
-    [SerializeField] private float textWaitTime = 0.1f;
+    [SerializeField] private float textWaitTime;
     private IEnumerator nowNobel;
     void Start()
     {

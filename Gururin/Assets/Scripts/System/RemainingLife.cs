@@ -11,7 +11,8 @@ public class RemainingLife : MonoBehaviour
 
     public static int life;
     public static int maxLife;
-    public static int beforeBossLife;
+    public static int beforeBossLife; //ボスステージに入る前のプレイヤーのライフ
+    public static int bossLife;
     //中間地点の設定
     public static bool waypoint;
     //中間地点のスタート位置

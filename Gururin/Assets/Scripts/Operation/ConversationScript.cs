@@ -21,6 +21,11 @@ public class ConversationScript : MonoBehaviour
         canvasGroup = GetComponent<CanvasGroup>();
         canvasGroup.alpha = 0;
         IsStart = true;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         switch (LanguageSwitch.language)
         {
             case LanguageSwitch.Language.Japanese:
@@ -33,11 +38,7 @@ public class ConversationScript : MonoBehaviour
                 text.font = font1;
                 break;
         }
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
         if (conversationController.IsConversation || conversationController.IsDescription)
         {
             /*this.GetComponent<Text>().text =

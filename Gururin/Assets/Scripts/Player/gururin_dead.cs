@@ -20,7 +20,7 @@ public class gururin_dead : MonoBehaviour
     private CriAtomSource _gameOverSE;
     public bool _SEPlay;
     private Text _lifeCount;
-
+    [SerializeField] private GanGanKamen.DeadZone deadZone;
     // Start is called before the first frame update
     void Start()
     {
@@ -86,7 +86,8 @@ public class gururin_dead : MonoBehaviour
                     _SEPlay = true;
                 }
             }
-            
+
+            if (deadZone != null) deadZone.BossSceneReload();
             Invoke("GameOver", 2.0f);
         }
     }    

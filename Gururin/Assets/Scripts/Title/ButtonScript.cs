@@ -58,7 +58,7 @@ public class ButtonScript : MonoBehaviour
         sceneChange.button = true;
         //data.destroy = true;
         Debug.Log("x");
-
+        RemainingLife.bossLife = 0;
         config.configbutton = false;
         /*if(SceneManager.GetActiveScene().name == "Title")
         {

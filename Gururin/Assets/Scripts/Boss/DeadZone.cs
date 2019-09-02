@@ -6,7 +6,7 @@ namespace GanGanKamen
 {
     public class DeadZone : MonoBehaviour
     {
-        public SceneObject reloadScene;
+        public BossBalloon boss;
         // Start is called before the first frame update
         void Start()
         {
@@ -18,13 +18,10 @@ namespace GanGanKamen
         {
 
         }
-        void OnTriggerEnter2D(Collider2D other)
+
+        public void BossSceneReload()
         {
-            if (other.CompareTag("Player"))
-            {
-                Debug.Log("GameOver");
-                UnityEngine.SceneManagement.SceneManager.LoadScene(reloadScene);
-            }
+            RemainingLife.bossLife = boss.lifes;
         }
     }
 }

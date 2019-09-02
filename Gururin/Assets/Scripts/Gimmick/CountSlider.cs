@@ -14,6 +14,7 @@ public class CountSlider : MonoBehaviour
     void Start()
     {
         _chargeSlider = GetComponent<Slider>();
+        _chargeSlider.maxValue = rotationCounter._maxCount;
     }
 
     // Update is called once per frame

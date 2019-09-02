@@ -17,7 +17,7 @@ namespace GanGanKamen
         private float recovery = 0;
 
         [SerializeField] private float attackProbability;
-        private float attackCount;
+        [SerializeField]private float attackCount;
 
         public enum Status
         {
@@ -32,6 +32,10 @@ namespace GanGanKamen
         public bool isDead = false;
 
         public GameObject bossCadaver;
+
+        public Sprite[] lifeImages;
+
+        public SpriteRenderer lifesprite;
         // Start is called before the first frame update
         void Start()
         {
@@ -47,6 +51,8 @@ namespace GanGanKamen
             DamageHit();
 
             StatusManager();
+
+            lifesprite.sprite = lifeImages[lifes];
         }
 
         private void StatusManager()
@@ -79,6 +85,7 @@ namespace GanGanKamen
                         }
                     }
                     status = Status.Action;
+                    SoundManager.PlayS(gameObject, "SE_propellerBOSSnakigoe1");
                 }
             }
         }
@@ -88,6 +95,7 @@ namespace GanGanKamen
             if (status == Status.Hit && isDead == false)
             {
                 sprite.color = Color.clear;
+                lifesprite.color = Color.clear;
                 recovery += Time.deltaTime;
                 for (int i = 0; i < hands.Length; i++)
                 {
@@ -107,6 +115,7 @@ namespace GanGanKamen
             else
             {
                 sprite.color = Color.white;
+                lifesprite.color = Color.white;
             }
         }
 
@@ -179,6 +188,7 @@ namespace GanGanKamen
             player.transform.parent = null;
             isDead = true;
             sprite.enabled = false;
+            lifesprite.enabled = false;
             bossAnim.SetTrigger("Dead");
             for(int i = 0; i < hands.Length; i++)
             {

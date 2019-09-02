@@ -7,7 +7,6 @@ using Cinemachine;
 public class BossEvent : MonoBehaviour
 {
     public Gamecontroller gamecontroller;
-    public string[] textMessage;
 
     [SerializeField] private RectTransform topBand, bottomBand;
     [SerializeField] private Vector2 topStart, topOver;
@@ -44,7 +43,13 @@ public class BossEvent : MonoBehaviour
 
     IEnumerator canSkipEvent;
 
-    [SerializeField] private GameObject skipButton;
+    [SerializeField] private float cutInSpeed;
+    public Animator[] fanAnims;
+    public GameObject[] fanRotations;
+    private SimpleConversation conversation;
+
+    public SpriteRenderer lifeRender;
+    public Sprite newLife;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -55,29 +60,46 @@ public class BossEvent : MonoBehaviour
         bottomDis = bottomStart;
         fadeAlpha = 1;
         canSkipEvent = BossStart();
-        if (RemainingLife.life == RemainingLife.beforeBossLife) skipButton.SetActive(false);
-        else skipButton.SetActive(true);
+        conversation = GetComponent<SimpleConversation>();
     }
 
     void Start()
     {
-        StartCoroutine(canSkipEvent);
+        if (RemainingLife.life == RemainingLife.beforeBossLife) StartCoroutine(canSkipEvent);
+        else StartCoroutine(SkipFade());
+
         StartCoroutine(BossClear());
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(stop == false)
+        if (stop == false)
         {
-            topBand.localPosition = Vector2.Lerp(topBand.localPosition, topDis, Time.deltaTime);
-            bottomBand.localPosition = Vector2.Lerp(bottomBand.localPosition, bottomDis, Time.deltaTime);
+            if (topBand.localPosition.y < topDis.y)
+            {
+                topBand.localPosition += new Vector3(0, Time.deltaTime * cutInSpeed, 0);
+            }
+            else if (topBand.localPosition.y > topDis.y)
+            {
+                topBand.localPosition -= new Vector3(0, Time.deltaTime * cutInSpeed, 0);
+            }
+            if (bottomBand.localPosition.y > bottomDis.y)
+            {
+                bottomBand.localPosition -= new Vector3(0, Time.deltaTime * cutInSpeed, 0);
+            }
+            else if (bottomBand.localPosition.y < bottomDis.y)
+            {
+                bottomBand.localPosition += new Vector3(0, Time.deltaTime * cutInSpeed, 0);
+            }
+            //topBand.localPosition = Vector2.Lerp(topBand.localPosition, topDis, Time.deltaTime);
+            //bottomBand.localPosition = Vector2.Lerp(bottomBand.localPosition, bottomDis, Time.deltaTime);
         }
-        fader.color = new Color(40f/255f, 40f/255f, 40f/255f, fadeAlpha);
+        fader.color = new Color(40f / 255f, 40f / 255f, 40f / 255f, fadeAlpha);
         if (fadeOut)
         {
             fadeAlpha -= Time.deltaTime;
-            if(fadeAlpha <= 0)
+            if (fadeAlpha <= 0)
             {
 
                 fadeOut = false;
@@ -93,6 +115,32 @@ public class BossEvent : MonoBehaviour
         }
     }
 
+    private IEnumerator SkipFade()
+    {
+        virtualCameras[3].Priority = 1;
+        windowAnim.SetBool("Open", false);
+        windowAnim.SetBool("Close", true);
+        gamecontroller.isCon = false;
+        fader.gameObject.SetActive(true);
+        fadeOut = true;
+        bossBalloon.lifes = RemainingLife.bossLife;
+        for (int i = 0; i < fanAnims.Length; i++)
+        {
+            Destroy(fanAnims[i]);
+        }
+        while (fadeAlpha > 0)
+        {
+            yield return null;
+        }
+        fader.gameObject.SetActive(false);
+        fadeAlpha = 1;
+        fadeOut = false;
+        gamecontroller.isCon = false;//nextFade
+        boss.SetActive(true);//nextFade
+        SoundManager.PlayS(bgmObj);//nextFade
+        yield break;
+    }
+    /*
     public void SkipButton()
     {
         StartCoroutine(Skip());
@@ -120,12 +168,12 @@ public class BossEvent : MonoBehaviour
         SoundManager.PlayS(bgmObj);//nextFade
         yield break;
     }
-
+    */
     private IEnumerator BossStart()
     {
         gamecontroller.isCon = true;
         MovieCutIn();
-        while(Mathf.Abs(topBand.localPosition.y- topDis.y) > 1f)
+        while (Mathf.Abs(topBand.localPosition.y - topDis.y) > 1f)
         {
             yield return null;
         }
@@ -143,27 +191,43 @@ public class BossEvent : MonoBehaviour
         {
             yield return null;
         }
+        lifeRender.sprite = newLife;
         SoundManager.PlayS(bossChara.gameObject, "SE_propellerBOSSnakigoe2");
         SoundManager.PlayS(bossChara.gameObject, "SE_ballonBreak");
         yield return new WaitForSeconds(3f);
         bossChara.Recovery();
         yield return new WaitForSeconds(0.5f);
-
+        for (int i = 0; i < fanAnims.Length; i++)
+        {
+            fanAnims[i].SetBool("Down", true);
+        }
         yield return new WaitForSeconds(0.5f);
-        windowText.text = textMessage[0];
+        conversation.preSentenceNum = -1;
         windowAnim.SetBool("Close", false);
         windowAnim.SetBool("Open", true);
-        //SoundManager.PlayS(gameObject, "Operation", "SE_WindowOpen");
-        yield return new WaitForSeconds(1f);
+
+        string finalText = "";
+        if (LanguageSwitch.language == LanguageSwitch.Language.Japanese || LanguageSwitch.language == LanguageSwitch.Language.English)
+        {
+            finalText = conversation.sentences[conversation.currentSentenceNum].TextOutPut().Replace("　", "\n\n");
+        }
+        else
+        {
+            finalText = conversation.sentences[conversation.currentSentenceNum].TextOutPut().Replace("　", "\n");
+        }
+
+        while (finalText != conversation.Text.text)
+        {
+            yield return null;
+        }
+        yield return null;
         while (!Input.GetMouseButtonDown(0))
         {
             yield return null;
         }
-
+        conversation.Text.text = "";
         windowAnim.SetBool("Open", false);
         windowAnim.SetBool("Close", true);
-        //SoundManager.PlayS(gameObject, "Operation", "SE_WindowClose");
-        skipButton.SetActive(false);
         MovieCutOut();
         while (Mathf.Abs(topBand.localPosition.y - topDis.y) > 1f)
         {
@@ -174,6 +238,10 @@ public class BossEvent : MonoBehaviour
         bossChara.gameObject.SetActive(false);
         boss.SetActive(true);
         gamecontroller.isCon = false;
+        for (int i = 0; i < fanAnims.Length; i++)
+        {
+            fanAnims[i].enabled = false;
+        }
         yield break;
     }
 
@@ -182,6 +250,11 @@ public class BossEvent : MonoBehaviour
         while (bossBalloon.lifes > 0)
         {
             yield return null;
+        }
+        RemainingLife.bossLife = 0;
+        for (int i = 0; i < fanRotations.Length; i++)
+        {
+            SoundManager.StopS(fanRotations[i]);
         }
         for (int i = 0; i < deadZones.Length; i++)
         {
@@ -234,11 +307,28 @@ public class BossEvent : MonoBehaviour
         player.animator.enabled = false;
 
         window.localPosition = new Vector3(0, -50, 0);
-        windowText.text = textMessage[1];
+        conversation.currentSentenceNum = 1;
         windowAnim.SetBool("Open", true);
         windowAnim.SetBool("Close", false);
-        //SoundManager.PlayS(gameObject, "Operation", "SE_WindowOpen");
-        yield return new WaitForSeconds(1f);
+        string finalText = "";
+        if (LanguageSwitch.language == LanguageSwitch.Language.Japanese || LanguageSwitch.language == LanguageSwitch.Language.English)
+        {
+            finalText = conversation.sentences[conversation.currentSentenceNum].TextOutPut().Replace("　", "\n\n");
+        }
+        else
+        {
+            finalText = conversation.sentences[conversation.currentSentenceNum].TextOutPut().Replace("　", "\n");
+        }
+
+        while (finalText != conversation.Text.text)
+        {
+            yield return null;
+        }
+        yield return null;
+        while (!Input.GetMouseButtonDown(0))
+        {
+            yield return null;
+        }
         virtualCameras[1].Priority = 11;
         virtualCameras[2].Priority = 1;
         yield return new WaitForSeconds(0.5f);
@@ -257,6 +347,7 @@ public class BossEvent : MonoBehaviour
             yield return null;
         }
         nextStage.SetActive(true);
+        conversation.Text.text = "";
         windowAnim.SetBool("Open", false);
         windowAnim.SetBool("Close", true);
         //SoundManager.PlayS(gameObject, "Operation", "SE_WindowClose");
