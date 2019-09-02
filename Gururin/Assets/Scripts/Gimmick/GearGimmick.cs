@@ -78,6 +78,17 @@ public class GearGimmick : MonoBehaviour {
             //効果音
             source.Play();
 
+            _gururinRb2d.velocity = Vector2.zero;
+
+            _gururinRb2d.isKinematic = true;
+            //ぐるりんの位置を固定
+            _gururinRb2d.MovePosition(gearPos.transform.position);
+            //ぐるりんの角度を固定
+            _gururinRb2d.rotation = _gpQuaternion.eulerAngles.z;
+
+
+            flagManager.moveStop = true;
+
             if (bossHand != null) bossHand.AttachPlayer();
         }
     }

@@ -30,6 +30,7 @@ public class TransformFixed : MonoBehaviour
             //ぐるりんのRigidBody2Dを取得
             var _gururinRb2d = other.GetComponent<Rigidbody2D>();
             //ぐるりんの位置を固定
+            _gururinRb2d.velocity = Vector2.zero;
             _gururinRb2d.position = gearPos.transform.position;
             //ぐるりんの角度を固定
             _gururinRb2d.rotation = gearPos.transform.rotation.eulerAngles.z;

@@ -10,6 +10,8 @@ public class CameraChange : MonoBehaviour
 {
 
     public GameObject[] vCam;
+    //オブジェクトの表示状態
+    public bool state;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -17,6 +19,11 @@ public class CameraChange : MonoBehaviour
         {
             vCam[0].SetActive(false);
             vCam[1].SetActive(true);
+
+            if (state)
+            {
+                gameObject.SetActive(false);
+            }
         }
     }
 }

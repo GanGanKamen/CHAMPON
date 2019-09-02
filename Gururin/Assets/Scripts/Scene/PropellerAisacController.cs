@@ -50,6 +50,14 @@ public class PropellerAisacController : MonoBehaviour
             if (1.0f < currentControlValue[0]) currentControlValue[0] = 1.0f;
             source.SetAisacControl(aisacControllerName_B, currentControlValue[0]);
         }
+        //中間地点からスタートしたとき
+        else if (RemainingLife.waypoint)
+        {
+            currentControlValue[0] += 1.0f;
+            if (1.0f < currentControlValue[0]) currentControlValue[0] = 1.0f;
+            source.SetAisacControl(aisacControllerName_B, currentControlValue[0]);
+        }
+
         //countが加算されたらAISACのコントロール値を上げる
         if (rotationCounter[1].countPlus)
         {
@@ -57,6 +65,7 @@ public class PropellerAisacController : MonoBehaviour
             if (1.0f < currentControlValue[1]) currentControlValue[1] = 1.0f;
             source.SetAisacControl(aisacControllerName_C, currentControlValue[1]);
         }
+
         //countが加算されたらAISACのコントロール値を上げる
         if (rotationCounter[2].countPlus)
         {

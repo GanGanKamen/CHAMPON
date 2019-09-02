@@ -31,6 +31,8 @@ public class PlayerMove : MonoBehaviour
     public Animator animator;　//ぐるりんのアニメーター　ボスイベント用
     public GameObject balloon;
     public bool finishMode = false; //ボスにとどめを刺す
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +46,12 @@ public class PlayerMove : MonoBehaviour
         isJump = false;
 
         if(animator!=null) animator.enabled = false;
+
+        //中間地点が設定されたときのスタート位置
+        if (RemainingLife.waypoint)
+        {
+            transform.position = RemainingLife.startPos;
+        }
     }
 
     void OnTriggerStay2D(Collider2D other)

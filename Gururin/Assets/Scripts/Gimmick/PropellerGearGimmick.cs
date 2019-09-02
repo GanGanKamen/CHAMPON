@@ -63,6 +63,17 @@ public class PropellerGearGimmick : MonoBehaviour
 
             //効果音を鳴らす
             source.Play();
+
+            _gururinRb2d.velocity = Vector2.zero;
+
+            _gururinRb2d.isKinematic = true;
+            //ぐるりんの位置を固定
+            _gururinRb2d.MovePosition(gearPos.transform.position);
+            //ぐるりんの角度を固定
+            _gururinRb2d.rotation = _gpQuaternion.eulerAngles.z;
+
+
+            flagManager.moveStop = true;
         }
     }
 
