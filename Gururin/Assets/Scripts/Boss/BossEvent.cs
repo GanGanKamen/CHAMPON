@@ -18,8 +18,6 @@ public class BossEvent : MonoBehaviour
 
     [SerializeField] private BossChara bossChara;
     [SerializeField] private GameObject boss;
-    [SerializeField] private GameObject[] wind;
-    [SerializeField] private FanWingRotation[] fans;
     [SerializeField] private RectTransform window;
     [SerializeField] private Animator windowAnim;
     [SerializeField] private Text windowText;
@@ -107,14 +105,7 @@ public class BossEvent : MonoBehaviour
         virtualCameras[3].Priority = 1;
         stop = true;
         bossChara.gameObject.SetActive(false);
-        for (int i = 0; i < fans.Length; i++)
-        {
-            fans[i].windAct = true;
-        }
-        for (int i = 0; i < wind.Length; i++)
-        {
-            wind[i].SetActive(true);
-        }
+
         windowAnim.SetBool("Open", false);
         windowAnim.SetBool("Close", true);
         SoundManager.StopS(gameObject);
@@ -156,16 +147,8 @@ public class BossEvent : MonoBehaviour
         SoundManager.PlayS(bossChara.gameObject, "SE_ballonBreak");
         yield return new WaitForSeconds(3f);
         bossChara.Recovery();
-        for(int i = 0; i < fans.Length; i++)
-        {
-            fans[i].windAct = true;
-        }
         yield return new WaitForSeconds(0.5f);
-        for (int i = 0; i < wind.Length; i++)
-        {
-            wind[i].SetActive(true);
-        }
-        SoundManager.PlayS(gameObject, "SE_wind", false);
+
         yield return new WaitForSeconds(0.5f);
         windowText.text = textMessage[0];
         windowAnim.SetBool("Close", false);
@@ -206,15 +189,9 @@ public class BossEvent : MonoBehaviour
         }
         gamecontroller.isCon = true;
         SoundManager.StopS(bgmObj);
-        for (int i = 0; i < fans.Length; i++)
-        {
-            fans[i].windAct = fadeOut;
-        }
+
         yield return new WaitForSeconds(0.5f);
-        for (int i = 0; i < wind.Length; i++)
-        {
-            wind[i].SetActive(false);
-        }
+
         yield return new WaitForSeconds(2.5f);
         fader.gameObject.SetActive(true);
         yield return new WaitForSeconds(1f);
