@@ -46,6 +46,15 @@ public class SceneChange : MonoBehaviour
 
     void Scene ()
     {
+        bool isBoss = false;
+        foreach (SceneObject scene in bossScenes)
+        {
+            if (scene.ToString() == changeScene.ToString())
+            {
+                isBoss = true;
+            }
+        }
+        if (isBoss) RemainingLife.beforeBossLife = RemainingLife.life;
         SceneManager.LoadScene(changeScene);
     }
 
@@ -81,7 +90,6 @@ public class SceneChange : MonoBehaviour
                 isBoss = true;
             }
         }
-
         if (isBoss) RemainingLife.beforeBossLife = RemainingLife.life;
         SceneManager.LoadScene(changeScene);
         button = false;
