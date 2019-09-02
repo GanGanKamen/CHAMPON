@@ -738,16 +738,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gururin
       objectReference: {fileID: 0}
-    - target: {fileID: 502782363709291292, guid: d1d20eef8d507cc41b2b2eae2941d9ee,
-        type: 3}
-      propertyPath: gameController
-      value: 
-      objectReference: {fileID: 207093687}
-    - target: {fileID: 502782363709291292, guid: d1d20eef8d507cc41b2b2eae2941d9ee,
-        type: 3}
-      propertyPath: flagManager
-      value: 
-      objectReference: {fileID: 93710987}
     - target: {fileID: 7263691912388811708, guid: d1d20eef8d507cc41b2b2eae2941d9ee,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -803,6 +793,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 502782363709291292, guid: d1d20eef8d507cc41b2b2eae2941d9ee,
+        type: 3}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 207093687}
+    - target: {fileID: 502782363709291292, guid: d1d20eef8d507cc41b2b2eae2941d9ee,
+        type: 3}
+      propertyPath: flagManager
+      value: 
+      objectReference: {fileID: 93710987}
     - target: {fileID: 7263691912388811687, guid: d1d20eef8d507cc41b2b2eae2941d9ee,
         type: 3}
       propertyPath: gameController
@@ -20267,6 +20267,27 @@ PrefabInstance:
       propertyPath: m_Name
       value: TutorialMovie (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5447477676175758550, guid: e15e59331f99de942bf873a4bda7bedf,
+        type: 3}
+      propertyPath: m_TargetCamera
+      value: 
+      objectReference: {fileID: 1942922305}
+    - target: {fileID: 5447477676175758550, guid: e15e59331f99de942bf873a4bda7bedf,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447477676175758550, guid: e15e59331f99de942bf873a4bda7bedf,
+        type: 3}
+      propertyPath: m_VideoClip
+      value: 
+      objectReference: {fileID: 32900000, guid: 5e72f0301ec17054e92056deb52d0053,
+        type: 3}
+    - target: {fileID: 5447477676175758550, guid: e15e59331f99de942bf873a4bda7bedf,
+        type: 3}
+      propertyPath: m_TargetTexture
+      value: 
+      objectReference: {fileID: 8400000, guid: b0a581f2fcb90f247a1fb52a5a582c15, type: 2}
     - target: {fileID: 5447477677463050234, guid: e15e59331f99de942bf873a4bda7bedf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -20377,27 +20398,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1942922305}
-    - target: {fileID: 5447477676175758550, guid: e15e59331f99de942bf873a4bda7bedf,
-        type: 3}
-      propertyPath: m_TargetCamera
-      value: 
-      objectReference: {fileID: 1942922305}
-    - target: {fileID: 5447477676175758550, guid: e15e59331f99de942bf873a4bda7bedf,
-        type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5447477676175758550, guid: e15e59331f99de942bf873a4bda7bedf,
-        type: 3}
-      propertyPath: m_VideoClip
-      value: 
-      objectReference: {fileID: 32900000, guid: 5e72f0301ec17054e92056deb52d0053,
-        type: 3}
-    - target: {fileID: 5447477676175758550, guid: e15e59331f99de942bf873a4bda7bedf,
-        type: 3}
-      propertyPath: m_TargetTexture
-      value: 
-      objectReference: {fileID: 8400000, guid: b0a581f2fcb90f247a1fb52a5a582c15, type: 2}
     - target: {fileID: 5447477676175758548, guid: e15e59331f99de942bf873a4bda7bedf,
         type: 3}
       propertyPath: m_Texture
@@ -20420,6 +20420,10 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: NewOperation1-1
+      objectReference: {fileID: 0}
+    - target: {fileID: 887596269, guid: e82568a93ae1b4e4eb6f57443f5e415a, type: 3}
+      propertyPath: textWaitTime
+      value: 0.06
       objectReference: {fileID: 0}
     - target: {fileID: 5838971808317639739, guid: e82568a93ae1b4e4eb6f57443f5e415a,
         type: 3}
@@ -20776,15 +20780,15 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3899547194499908391, guid: 110d0d523754f204c867800e38c54d02,
-        type: 3}
-      propertyPath: playSE.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 5065557238108060194, guid: 110d0d523754f204c867800e38c54d02,
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3899547194499908391, guid: 110d0d523754f204c867800e38c54d02,
+        type: 3}
+      propertyPath: playSE.Array.size
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 110d0d523754f204c867800e38c54d02, type: 3}
@@ -20800,6 +20804,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TutorialMovie
       objectReference: {fileID: 0}
+    - target: {fileID: 5447477676175758550, guid: e15e59331f99de942bf873a4bda7bedf,
+        type: 3}
+      propertyPath: m_TargetCamera
+      value: 
+      objectReference: {fileID: 1942922305}
     - target: {fileID: 5447477677463050234, guid: e15e59331f99de942bf873a4bda7bedf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -20908,11 +20917,6 @@ PrefabInstance:
     - target: {fileID: 5447477677463050233, guid: e15e59331f99de942bf873a4bda7bedf,
         type: 3}
       propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 1942922305}
-    - target: {fileID: 5447477676175758550, guid: e15e59331f99de942bf873a4bda7bedf,
-        type: 3}
-      propertyPath: m_TargetCamera
       value: 
       objectReference: {fileID: 1942922305}
     m_RemovedComponents: []
@@ -21193,15 +21197,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7477931252126034327, guid: 21474b5159f77a74f9ad92c6214e9f73,
-        type: 3}
-      propertyPath: _playOnStart
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7477931253146459454, guid: 21474b5159f77a74f9ad92c6214e9f73,
         type: 3}
       propertyPath: _playOnStart
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7477931252126034327, guid: 21474b5159f77a74f9ad92c6214e9f73,
+        type: 3}
+      propertyPath: _playOnStart
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21474b5159f77a74f9ad92c6214e9f73, type: 3}
