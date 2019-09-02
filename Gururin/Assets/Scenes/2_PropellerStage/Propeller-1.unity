@@ -2057,6 +2057,11 @@ PrefabInstance:
       propertyPath: Wind
       value: 
       objectReference: {fileID: 1549692113}
+    - target: {fileID: 8236822843413609859, guid: dc07d5f2d88aab74d8b78589725c07dc,
+        type: 3}
+      propertyPath: minusCount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8236822842212694069, guid: dc07d5f2d88aab74d8b78589725c07dc,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -38945,12 +38950,6 @@ Transform:
   m_Father: {fileID: 1395451729}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &881434341 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1713923384282258335, guid: dc07d5f2d88aab74d8b78589725c07dc,
-    type: 3}
-  m_PrefabInstance: {fileID: 8236822842284394404}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &886423780
 GameObject:
   m_ObjectHideFlags: 0
@@ -39352,7 +39351,7 @@ MonoBehaviour:
   - {fileID: 2081735441}
   - {fileID: 984059992}
   vcamChange: 0
-  wind: {fileID: 881434341}
+  wind: {fileID: 0}
   conversationController: {fileID: 235503390}
 --- !u!61 &935448852
 BoxCollider2D:
@@ -51522,6 +51521,11 @@ PrefabInstance:
       propertyPath: gameController
       value: 
       objectReference: {fileID: 48460252}
+    - target: {fileID: 8236822843413609859, guid: dc07d5f2d88aab74d8b78589725c07dc,
+        type: 3}
+      propertyPath: minusCount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8236822842212694069, guid: dc07d5f2d88aab74d8b78589725c07dc,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -51612,6 +51616,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2759287313601065482, guid: dc07d5f2d88aab74d8b78589725c07dc,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.06
+      objectReference: {fileID: 0}
     - target: {fileID: 5033316854332402553, guid: dc07d5f2d88aab74d8b78589725c07dc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -51641,6 +51650,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5033316854332402553, guid: dc07d5f2d88aab74d8b78589725c07dc,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.06
       objectReference: {fileID: 0}
     - target: {fileID: 6828412762437622014, guid: dc07d5f2d88aab74d8b78589725c07dc,
         type: 3}
@@ -51676,6 +51690,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4791939912982965308, guid: dc07d5f2d88aab74d8b78589725c07dc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8236822843413609868, guid: dc07d5f2d88aab74d8b78589725c07dc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc07d5f2d88aab74d8b78589725c07dc, type: 3}

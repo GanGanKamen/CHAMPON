@@ -11,7 +11,9 @@ public class RotationCounter : MonoBehaviour
 
     public int count; //風を出すためのカウント
     [SerializeField] private int _maxCount; //カウントの限界値
+    public float timer; //カウントをマイナスするまでのタイマー
     public bool countPlus; //カウントがプラスされたとき
+    public bool minusCount; //カウントをマイナスする
     public bool fixedCount; //風が出るカウント
     public bool fanRot;
     public GameObject Wind;
@@ -27,7 +29,6 @@ public class RotationCounter : MonoBehaviour
         _source = GetComponent<CriAtomSource>();
        gameController = GameObject.Find("GameController").GetComponent<Gamecontroller>();
 
-        _maxCount = 10;
         _sourcePlay = false;
         _sourceVolume = _source.volume;
     }
@@ -37,6 +38,7 @@ public class RotationCounter : MonoBehaviour
         //歯車が触れるたびにカウントを1増加
         if (other.CompareTag("Gimmick"))
         {
+            timer = 0.0f;
             count ++;
             //カウントの増加を感知
             countPlus = true;
@@ -59,8 +61,6 @@ public class RotationCounter : MonoBehaviour
         {
             _source.Play();
             _sourcePlay = true;
-            //風が出ているときに歯車を回すと風のSEの音量を上げる
-            _source.volume += 0.005f;
         }
         else if (Wind.activeInHierarchy == false && _sourcePlay)
         {
@@ -74,6 +74,22 @@ public class RotationCounter : MonoBehaviour
             _source.volume = _sourceVolume;
         }
 
+        //minusCountがtrueの時、1秒ごとにカウントを-1
+        if (gameController.isPress == false && count > 0 && minusCount)
+        {
+            timer += Time.deltaTime;
+
+            if (timer > 1)
+            {
+                if (_sourcePlay)
+                {
+                    _source.volume -= 0.2f;
+                }
+                timer = 0.0f;
+                count--;
+            }
+        }
+
         //カウントが10を超えたら風を出現させる
         if (count >= _maxCount)
         {
@@ -84,6 +100,17 @@ public class RotationCounter : MonoBehaviour
         {
             Wind.SetActive(false);
             fixedCount = false;
+        }
+
+        //風が出ているときに歯車を回すと風のSEの音量を上げる
+        if (minusCount == false && fixedCount)
+        {
+            _source.volume += 0.01f;
+
+            if (_source.volume > _sourceVolume)
+            {
+                _source.volume = _sourceVolume;
+            }
         }
 
         //limitCountを超えたらカウントストップ

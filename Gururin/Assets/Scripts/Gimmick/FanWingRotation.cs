@@ -51,26 +51,22 @@ public class FanWingRotation : MonoBehaviour
                         break;
 
                     case 1:
-                        rotSpeed = 1.5f;
-                        break;
-
-                    case 2:
                         rotSpeed = 3.0f;
                         break;
 
-                    case 4:
+                    case 2:
                         rotSpeed = 6.0f;
                         break;
 
-                    case 6:
+                    case 3:
                         rotSpeed = 9.0f;
                         break;
 
-                    case 8:
+                    case 4:
                         rotSpeed = 12.0f;
                         break;
 
-                    case 10:
+                    case 5:
                         rotSpeed = 15.0f;
                         break;
                 }

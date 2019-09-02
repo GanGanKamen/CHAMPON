@@ -361,7 +361,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 2
   m_MinValue: 0
-  m_MaxValue: 10
+  m_MaxValue: 5
   m_WholeNumbers: 1
   m_Value: 0
   m_OnValueChanged:
@@ -963,6 +963,7 @@ MonoBehaviour:
   gearPos: {fileID: 8236822843219832359}
   playerHit: 0
   moveGear: 0101
+  jumpDirection: 0
   click: 0
   rotFlag: 0
   rotationCounter: {fileID: 0}
@@ -1192,11 +1193,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   count: 0
-  timer: 0
+  _maxCount: 5
   countPlus: 0
-  minusCount: 0
   fixedCount: 0
-  restriction: 0
   fanRot: 0
   Wind: {fileID: 1713923384282258335}
   gameController: {fileID: 0}
@@ -1622,6 +1621,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517154396816209358, guid: cdfcfedb77967e0478dae05a0f0741b0,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdfcfedb77967e0478dae05a0f0741b0, type: 3}
