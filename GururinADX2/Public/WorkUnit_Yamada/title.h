@@ -5,21 +5,22 @@
  *  ACB  Ver.        : Ver.1.32.00
  *  File Path        : /Users/yamadachihiro/Documents/Sourcetree/CHAMPON/GururinADX2/Public/WorkUnit_Yamada
  *  File Name        : title.h
- *  File Size        : 867936 bytes
- *  Date Time        : 2019/08/28 14:16:04
+ *  File Size        : 883936 bytes
+ *  Date Time        : 2019/09/02 17:42:54
  *  Target           : Public
- *  Cues             : 2
+ *  Cues             : 3
  *  CueSheet Comment : 
  *  Stream Awb Path  : /Users/yamadachihiro/Documents/Sourcetree/CHAMPON/GururinADX2/Public/WorkUnit_Yamada/title.awb
  *===========================================================================*/
 
-#define CRI_TITLE_CUENUM (2)
+#define CRI_TITLE_CUENUM (3)
 
 /* AISAC Control List (AISAC Control ID) */
 
 /* Cue List (Cue ID) */
 #define CRI_TITLE_BGM_TITLE            ( 1) /*  */
 #define CRI_TITLE_SE_GAMESTERT         ( 4) /*  */
+#define CRI_TITLE_SE_OTIRU             ( 5) /*  */
 
 /* Block List (Block Index) */
 

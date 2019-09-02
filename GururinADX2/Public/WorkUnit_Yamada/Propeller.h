@@ -5,15 +5,15 @@
  *  ACB  Ver.        : Ver.1.32.00
  *  File Path        : /Users/yamadachihiro/Documents/Sourcetree/CHAMPON/GururinADX2/Public/WorkUnit_Yamada
  *  File Name        : Propeller.h
- *  File Size        : 1034528 bytes
- *  Date Time        : 2019/08/23 19:23:20
+ *  File Size        : 1062336 bytes
+ *  Date Time        : 2019/09/02 17:42:55
  *  Target           : Public
- *  Cues             : 10
+ *  Cues             : 11
  *  CueSheet Comment : 
  *  Stream Awb Path  : /Users/yamadachihiro/Documents/Sourcetree/CHAMPON/GururinADX2/Public/WorkUnit_Yamada/Propeller.awb
  *===========================================================================*/
 
-#define CRI_PROPELLER_CUENUM (10)
+#define CRI_PROPELLER_CUENUM (11)
 
 /* AISAC Control List (AISAC Control ID) */
 #define CRI_PROPELLER_AISACCONTROL_PLOPELLER_WIND       ( 0) /*  */
@@ -32,6 +32,7 @@
 #define CRI_PROPELLER_SE_PROPELLERBOSSNAKIGOE2 ( 7) /*  */
 #define CRI_PROPELLER_SE_PROPELLERBOSSNAKIGOE3 ( 8) /*  */
 #define CRI_PROPELLER_BGM_PROPELLERBOSS    ( 9) /*  */
+#define CRI_PROPELLER_SE_BLOCKDELETE       (10) /*  */
 
 /* Block List (Block Index) */
 
