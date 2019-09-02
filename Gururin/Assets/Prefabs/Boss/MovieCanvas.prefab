@@ -273,7 +273,7 @@ MonoBehaviour:
   - "The law of victory is set. \u3000Trun it with full force!"
   - "\u597D\u673A\u4F1A\uFF01\u3000\u5FEB\u7AED\u5C3D\u5168\u529B\u8F6C\u52A8\u9F7F\u8F6E\uFF01"
   - "\u597D\u6A5F\u6703\uFF01\u3000\u5FEB\u7AED\u76E1\u5168\u529B\u8F49\u52D5\u9F52\u8F2A\uFF01"
-  hakaseFace: {fileID: 21300000, guid: 3558c50a96f48cb45ad6662149f2743f, type: 3}
+  hakaseFace: {fileID: 21300000, guid: d847207f8789afd4abb8b663b694b821, type: 3}
 --- !u!1 &1946987889517433587
 GameObject:
   m_ObjectHideFlags: 0

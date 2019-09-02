@@ -71,6 +71,7 @@ namespace GanGanKamen
             switch (pattern)
             {
                 case Pattern.RandomWalk:
+                    attackCount = 0;
                     RandomWalk();
                     ColliderCancel();
                     break;
@@ -110,24 +111,28 @@ namespace GanGanKamen
                 case Pattern.Attack:
                     attackCount += Time.deltaTime;
                     moveSpeed = Time.deltaTime * 0.5f * speedPlus;
-                    distinationPos = player.transform.position;
-                    /*if (//(Vector3.Distance(handParent.transform.position, distinationPos) < 0.5f && hitPlayer == false)
-                        attackCount >= 6f
-                        || player.nowBossHand != null)
+                    if (player.transform.position.x < moveRangeX.x)
                     {
-                        attackCount = 0;
-                        pattern = Pattern.RandomWalk;
-                        distinationPos = new Vector2(Random.Range(moveRangeX.x, moveRangeX.y),
-                Random.Range(moveRangeY.x, moveRangeY.y));
-                    }*/
-                    if (player.transform.position.x < moveRangeX.x || player.transform.position.x > moveRangeX.y)
+                        distinationPos = new Vector2(moveRangeX.x+1, player.transform.position.y);
+                    }
+                    else if (player.transform.position.x > moveRangeX.y)
+                    {
+                        distinationPos = new Vector2(moveRangeX.y-1, player.transform.position.y);
+                    }
+                    else
+                    {
+                        distinationPos = player.transform.position;
+                    }
+
+                    if (attackCount >= 5)
                     {
                         attackCount = 0;
                         pattern = Pattern.RandomWalk;
                         distinationPos = new Vector2(Random.Range(moveRangeX.x, moveRangeX.y),
         Random.Range(moveRangeY.x, moveRangeY.y));
                     }
-                    ColliderCancel();
+                    
+                        ColliderCancel();
                     break;
 
                 case Pattern.Recovery:

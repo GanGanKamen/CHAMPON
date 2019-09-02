@@ -60,6 +60,7 @@ public class Tutorial5Description : MonoBehaviour
 
                 conversationController.IsConversation = false;
                 //このオブジェクトを非表示にする
+                if (!video.isPlaying) video.Play();
                 gameObject.SetActive(false);
             }
         }

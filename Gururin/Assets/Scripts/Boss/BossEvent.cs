@@ -13,7 +13,7 @@ public class BossEvent : MonoBehaviour
     [SerializeField] private Vector2 bottomStart, bottomOver;
 
     private Vector2 topDis, bottomDis;
-    private bool stop = true;
+    private int cutin = 0;
 
     [SerializeField] private BossChara bossChara;
     [SerializeField] private GameObject boss;
@@ -74,21 +74,26 @@ public class BossEvent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (stop == false)
+        if (cutin == 1) //movieCutOut
         {
             if (topBand.localPosition.y < topDis.y)
             {
                 topBand.localPosition += new Vector3(0, Time.deltaTime * cutInSpeed, 0);
             }
-            else if (topBand.localPosition.y > topDis.y)
-            {
-                topBand.localPosition -= new Vector3(0, Time.deltaTime * cutInSpeed, 0);
-            }
             if (bottomBand.localPosition.y > bottomDis.y)
             {
                 bottomBand.localPosition -= new Vector3(0, Time.deltaTime * cutInSpeed, 0);
             }
-            else if (bottomBand.localPosition.y < bottomDis.y)
+        }
+        else if(cutin == 2)//movieCutIn
+        {
+
+            if (topBand.localPosition.y > topDis.y)
+            {
+                topBand.localPosition -= new Vector3(0, Time.deltaTime * cutInSpeed, 0);
+            }
+
+            if (bottomBand.localPosition.y < bottomDis.y)
             {
                 bottomBand.localPosition += new Vector3(0, Time.deltaTime * cutInSpeed, 0);
             }
@@ -177,7 +182,7 @@ public class BossEvent : MonoBehaviour
         {
             yield return null;
         }
-        stop = true;
+        cutin = 0;
         bossChara.gameObject.SetActive(true);
         //SoundManager.PlayS(bossChara.gameObject, "SE_propellerBOSSnakigoe1");
         virtualCameras[3].Priority = 11;
@@ -233,7 +238,7 @@ public class BossEvent : MonoBehaviour
         {
             yield return null;
         }
-        stop = true;
+        cutin = 0;
         SoundManager.PlayS(bgmObj);
         bossChara.gameObject.SetActive(false);
         boss.SetActive(true);
@@ -286,7 +291,7 @@ public class BossEvent : MonoBehaviour
         {
             yield return null;
         }
-        stop = true;
+        cutin = 0;
 
         player.animator.enabled = true;
         player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
@@ -365,14 +370,14 @@ public class BossEvent : MonoBehaviour
 
     private void MovieCutIn()
     {
-        stop = false;
+        cutin = 2;
         topDis = topOver;
         bottomDis = bottomOver;
     }
 
     private void MovieCutOut()
     {
-        stop = false;
+        cutin = 1;
         topDis = topStart;
         bottomDis = bottomStart;
     }
