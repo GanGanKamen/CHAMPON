@@ -75,7 +75,7 @@ namespace GanGanKamen
                         }
                         else
                         {
-                            hands[i].pattern = BossHand.Pattern.GearTurn;
+                            hands[i].pattern = BossHand.Pattern.RandomWalk;
                         }
                     }
                     status = Status.Action;

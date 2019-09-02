@@ -16,7 +16,7 @@ namespace GanGanKamen
         [SerializeField] private Vector2 moveRangeX;
         [SerializeField] private Vector2 moveRangeY;
         [SerializeField] private GearGimmick thisGear;
-        [SerializeField] private BossStageGear floorGimickGear;
+        //[SerializeField] private BossStageGear floorGimickGear;
         [SerializeField] private Vector3 GearPosOffest;
         [SerializeField] private BossBalloon bossBalloon;
         [Range(-1, 1)] [SerializeField] int direction;
@@ -31,7 +31,6 @@ namespace GanGanKamen
             Kill,
             ReadyToKill,
             Attack,
-            GearTurn,
             Recovery
         }
         public Pattern pattern;
@@ -111,7 +110,7 @@ namespace GanGanKamen
                     attackCount += Time.deltaTime;
                     moveSpeed = Time.deltaTime;
                     distinationPos = player.transform.position;
-                    if (//(Vector3.Distance(handParent.transform.position, distinationPos) < 0.5f && hitPlayer == false)
+                    /*if (//(Vector3.Distance(handParent.transform.position, distinationPos) < 0.5f && hitPlayer == false)
                         attackCount >= 6f
                         || player.nowBossHand != null)
                     {
@@ -119,31 +118,31 @@ namespace GanGanKamen
                         pattern = Pattern.RandomWalk;
                         distinationPos = new Vector2(Random.Range(moveRangeX.x, moveRangeX.y),
                 Random.Range(moveRangeY.x, moveRangeY.y));
-                    }
-                    ColliderCancel();
-                    break;
-                case Pattern.GearTurn:
-                    distinationPos = floorGimickGear.transform.position + GearPosOffest;
-                    ColliderCancel();
-                    if (floorGimickGear.moveFloor.isLimit == true)
+                    }*/
+                    switch (hand)
                     {
-                        pattern = Pattern.RandomWalk;
-                        distinationPos = new Vector2(Random.Range(moveRangeX.x, moveRangeX.y),
+                        case Hand.Left:
+                            if(player.transform.position.x < moveRangeX.x || player.transform.position.x > moveRangeX.y)
+                            {
+                                attackCount = 0;
+                                pattern = Pattern.RandomWalk;
+                                distinationPos = new Vector2(Random.Range(moveRangeX.x, moveRangeX.y),
                 Random.Range(moveRangeY.x, moveRangeY.y));
+                            }
+                            break;
+                        case Hand.Right:
+                            if (player.transform.position.x > moveRangeX.x || player.transform.position.x < moveRangeX.y)
+                            {
+                                attackCount = 0;
+                                pattern = Pattern.RandomWalk;
+                                distinationPos = new Vector2(Random.Range(moveRangeX.x, moveRangeX.y),
+                Random.Range(moveRangeY.x, moveRangeY.y));
+                            }
+                            break;
                     }
-                    if (Vector3.Distance(handParent.transform.position, distinationPos) < 0.4f)
-                    {
-                        floorGimickGear.GearTurn(true, false);
-                        attackCount += Time.deltaTime;
-                        if (attackCount >= 3f)
-                        {
-                            pattern = Pattern.RandomWalk;
-                            distinationPos = new Vector2(Random.Range(moveRangeX.x, moveRangeX.y),
-                    Random.Range(moveRangeY.x, moveRangeY.y));
-                        }
-                    }
-                    moveSpeed = Time.deltaTime;
+                    ColliderCancel();
                     break;
+
                 case Pattern.Recovery:
                     distinationPos = startPos;
                     capsuleCollider.enabled = false;
