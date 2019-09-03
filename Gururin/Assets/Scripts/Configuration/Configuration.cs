@@ -95,7 +95,7 @@ public class Configuration : MonoBehaviour
             configwindow.SetActive(true);
             configbutton = true;
 
-            titleback.SetActive(true);
+            if(titleback != null)titleback.SetActive(true);
 
             
         }
@@ -107,7 +107,7 @@ public class Configuration : MonoBehaviour
             configwindow.SetActive(false);
             configbutton = false;
 
-            titleback.SetActive(false);
+            if (titleback != null) titleback.SetActive(false);
         }
     }
 
