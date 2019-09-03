@@ -74,15 +74,24 @@ public class BossEvent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(cutin);
         if (cutin == 1) //movieCutOut
         {
             if (topBand.localPosition.y < topDis.y)
             {
                 topBand.localPosition += new Vector3(0, Time.deltaTime * cutInSpeed, 0);
             }
+            else
+            {
+                cutin = 0;
+            }
             if (bottomBand.localPosition.y > bottomDis.y)
             {
                 bottomBand.localPosition -= new Vector3(0, Time.deltaTime * cutInSpeed, 0);
+            }
+            else
+            {
+                cutin = 0;
             }
         }
         else if(cutin == 2)//movieCutIn
@@ -92,10 +101,17 @@ public class BossEvent : MonoBehaviour
             {
                 topBand.localPosition -= new Vector3(0, Time.deltaTime * cutInSpeed, 0);
             }
-
+            else
+            {
+                cutin = 0;
+            }
             if (bottomBand.localPosition.y < bottomDis.y)
             {
                 bottomBand.localPosition += new Vector3(0, Time.deltaTime * cutInSpeed, 0);
+            }
+            else
+            {
+                cutin = 0;
             }
             //topBand.localPosition = Vector2.Lerp(topBand.localPosition, topDis, Time.deltaTime);
             //bottomBand.localPosition = Vector2.Lerp(bottomBand.localPosition, bottomDis, Time.deltaTime);
@@ -178,7 +194,8 @@ public class BossEvent : MonoBehaviour
     {
         gamecontroller.isCon = true;
         MovieCutIn();
-        while (Mathf.Abs(topBand.localPosition.y - topDis.y) > 1f)
+        yield return null;
+        while (cutin != 0)
         {
             yield return null;
         }
@@ -234,7 +251,8 @@ public class BossEvent : MonoBehaviour
         windowAnim.SetBool("Open", false);
         windowAnim.SetBool("Close", true);
         MovieCutOut();
-        while (Mathf.Abs(topBand.localPosition.y - topDis.y) > 1f)
+        yield return null;
+        while (cutin != 0)
         {
             yield return null;
         }
@@ -287,7 +305,8 @@ public class BossEvent : MonoBehaviour
         }
 
         MovieCutIn();
-        while (Mathf.Abs(topBand.localPosition.y - topDis.y) > 1f)
+        yield return null;
+        while (cutin!=0)
         {
             yield return null;
         }
