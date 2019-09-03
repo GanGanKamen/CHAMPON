@@ -102,6 +102,8 @@ public class SceneChange : MonoBehaviour
 
     void GameStart()
     {
+        _volumeDown = false;
+        button = false;
         NeoConfig.isSoundFade = false;
         bool isBoss = false;
         foreach (SceneObject scene in bossScenes)
@@ -114,6 +116,5 @@ public class SceneChange : MonoBehaviour
         if (isBoss) RemainingLife.beforeBossLife = RemainingLife.life;
         if (isBackToTitle == true) config.Method();
         SceneManager.LoadScene(changeScene);
-        button = false;
     }
 }

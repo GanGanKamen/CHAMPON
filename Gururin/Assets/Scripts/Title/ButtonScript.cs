@@ -54,10 +54,11 @@ public class ButtonScript : MonoBehaviour
         if (_cnt == 1)
         {
             _startSE.Play();
+            _cnt = 0;
         }
         //_fadeOut = true;
         //Debug.Log("CLICK");
-        sceneChange.button = true;
+        if(sceneChange.button == false)sceneChange.button = true;
         if (isBackToTitle) sceneChange.isBackToTitle = true;
         RemainingLife.bossLife = 0;
         config.configbutton = false;
