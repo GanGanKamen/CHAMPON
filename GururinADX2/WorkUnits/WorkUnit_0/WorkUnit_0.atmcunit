@@ -50,7 +50,7 @@
               <Orca OrcaName="Track_re_SE_Gate-02" ObjectColor="200, 40, 120, 200" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthTrack">
                 <Orca OrcaName="re_SE_Gate-02.wav" LinkWaveform="/CriAtomCraftV2Root/WorkUnits/WorkUnit_0_MaterialInfo/MaterialRootFolder/retake/re_SE_Gate-02.wav" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoCueSynthWaveform"/>
               </Orca>
-              <Orca OrcaName="Gate_volume" AisacControl="/CriAtomCraftV2Root/GlobalSettings/AISAC-Controls/GateVolume" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAisac">
+              <Orca OrcaName="GateVolume" AisacControl="/CriAtomCraftV2Root/GlobalSettings/AISAC-Controls/Plopeller_wind" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAisac">
                 <Orca OrcaName="Volume" ControlDestinationType="Volume" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAisacGraph">
                   <Orca OrcaName="Point" ControlValue="0" DestinationValue="0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAisacPoint"/>
                   <Orca OrcaName="Point_0" ControlValue="1" DestinationValue="1" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAisacPoint"/>
