@@ -14,13 +14,14 @@ public class Propeller1Description : MonoBehaviour
     private FlagManager flagManager;
     public ConversationController conversationController;
 
+    private BoxCollider2D boxCollider;
     // Start is called before the first frame update
     void Start()
     {
         flagManager = GameObject.Find("FlagManager").GetComponent<FlagManager>();
         
         vcamChange = false;
-
+        boxCollider = GetComponent<BoxCollider2D>();
         if (RemainingLife.life < RemainingLife.maxLife)
         {
             _reDescription = true;
@@ -38,7 +39,10 @@ public class Propeller1Description : MonoBehaviour
             Stop();
 
             vcamChange = true;
+            conversationController.preSentenceNum = -1;
+            boxCollider.enabled = false;
         }
+
     }
 
     void Stop()
