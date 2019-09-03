@@ -7,13 +7,16 @@ public class GururinFall : MonoBehaviour
 
     private Rigidbody2D _rb2d;
     private bool _SEPlay;
-    private CriAtomSource _fallSE;
+    private Titlemove _titleMove;
+    private CriAtomSource _fallSE, _jumpSE;
 
     // Start is called before the first frame update
     void Start()
     {
         _rb2d = GetComponent<Rigidbody2D>();
+        _titleMove = GetComponent<Titlemove>();
         _fallSE = GameObject.Find("SE_otiru(CriAtomSource)").GetComponent<CriAtomSource>();
+        _jumpSE = GameObject.Find("SE_jump(CriAtomSource)").GetComponent<CriAtomSource>();
 
         _SEPlay = false;
     }
@@ -37,10 +40,20 @@ public class GururinFall : MonoBehaviour
     void Update()
     {
         //落下時にSEを鳴らす
-        if (_rb2d.velocity.y < -0.01f && _SEPlay == false)
+        if (_SEPlay == false)
         {
-            _fallSE.Play();
-            _SEPlay = true;
+            //横からの出現時
+            if (_titleMove.terms1 == 2 && _rb2d.velocity.x > 3.0f)
+            {
+                _jumpSE.Play();
+                _SEPlay = true;
+            }
+            //上からの出現時
+            else if ((_titleMove.terms1 == 0 || _titleMove.terms1 == 1) && _rb2d.velocity.y < -0.01f)
+            {
+                _fallSE.Play();
+                _SEPlay = true;
+            }
         }
     }
 }
