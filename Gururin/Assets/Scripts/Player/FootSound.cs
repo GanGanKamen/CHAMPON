@@ -31,13 +31,16 @@ public class FootSound : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerMove.gearGimmickHit)
+        if (playerMove != null)
         {
-            GetComponent<PolygonCollider2D>().enabled = false;
-        }
-        else if (playerMove.gearGimmickHit == false)
-        {
-            GetComponent<PolygonCollider2D>().enabled = true;
+            if (playerMove.gearGimmickHit)
+            {
+                GetComponent<PolygonCollider2D>().enabled = false;
+            }
+            else if (playerMove.gearGimmickHit == false)
+            {
+                GetComponent<PolygonCollider2D>().enabled = true;
+            }
         }
     }
 }

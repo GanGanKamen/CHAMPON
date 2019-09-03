@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 
 
-public class PropellerAisacController : MonoBehaviour
+public class Propeller2AisacController : MonoBehaviour
 {
 
     private CriAtomSource source;
@@ -16,7 +16,8 @@ public class PropellerAisacController : MonoBehaviour
     private string aisacControllerName_D = "piopellerBGM_D";
     //public bool[] _playLimit;
     public float[] currentControlValue;
-    [SerializeField] RotationCounter[] rotationCounter;
+    [SerializeField] BlockSwitch[] blockSwitches;
+    [SerializeField] GlassSwitch glassSwitch;
 
     private void Awake()
     {
@@ -43,31 +44,24 @@ public class PropellerAisacController : MonoBehaviour
     {
         if (source == null) return;
 
-        //countが加算されたらAISACのコントロール値を上げる
-        if (rotationCounter[0].countPlus)
-        {
-            currentControlValue[0] += 0.01f;
-            if (1.0f < currentControlValue[0]) currentControlValue[0] = 1.0f;
-            source.SetAisacControl(aisacControllerName_B, currentControlValue[0]);
-        }
-        //中間地点からスタートしたとき
-        else if (RemainingLife.waypoint)
+        //スイッチが押されたときAISACのコントロール値を上げる
+        if (blockSwitches[0].blocking)
         {
             currentControlValue[0] += 1.0f;
             if (1.0f < currentControlValue[0]) currentControlValue[0] = 1.0f;
             source.SetAisacControl(aisacControllerName_B, currentControlValue[0]);
         }
     
-        if (rotationCounter[1].countPlus)
+        if (blockSwitches[1].blocking)
         {
-            currentControlValue[1] += 0.01f;
+            currentControlValue[1] += 1.0f;
             if (1.0f < currentControlValue[1]) currentControlValue[1] = 1.0f;
             source.SetAisacControl(aisacControllerName_C, currentControlValue[1]);
         }
     
-        if (rotationCounter[2].countPlus)
+        if (glassSwitch.blocking)
         {
-            currentControlValue[2] += 0.01f;
+            currentControlValue[2] += 1.0f;
             if (1.0f < currentControlValue[2]) currentControlValue[2] = 1.0f;
             source.SetAisacControl(aisacControllerName_D, currentControlValue[2]);
         }
