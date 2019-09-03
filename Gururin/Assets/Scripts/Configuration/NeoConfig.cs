@@ -13,10 +13,11 @@ public class NeoConfig : MonoBehaviour
     public GameObject backButton;
     static public float textWaitTime;
     public Slider textSpeedSlider;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame

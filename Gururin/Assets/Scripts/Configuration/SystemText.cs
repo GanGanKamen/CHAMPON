@@ -14,6 +14,19 @@ public class SystemText : MonoBehaviour
     {
         languageText = GetComponent<LanguageText>();
         text = GetComponent<Text>();
+        switch (LanguageSwitch.language)
+        {
+            case LanguageSwitch.Language.Japanese:
+                text.font = font0;
+                break;
+            case LanguageSwitch.Language.English:
+                text.font = font0;
+                break;
+            default:
+                text.font = font1;
+                break;
+        }
+        text.text = languageText.TextOutPut().Replace("　", "\n");
         nowlanguage = LanguageSwitch.language;
     }
 

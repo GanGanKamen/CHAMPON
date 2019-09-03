@@ -2732,6 +2732,36 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7389899228535807652, guid: c967e085e87aefc4ca5dfa42f5b40d0a,
+        type: 3}
+      propertyPath: visibleMouseCursor
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291562138608307223, guid: c967e085e87aefc4ca5dfa42f5b40d0a,
+        type: 3}
+      propertyPath: isBackToTitle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389899227719539562, guid: c967e085e87aefc4ca5dfa42f5b40d0a,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291562138026586479, guid: c967e085e87aefc4ca5dfa42f5b40d0a,
+        type: 3}
+      propertyPath: m_Text
+      value: "\u65E9\u3044   \u666E\u901A   \u9045\u3044"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5291562138026586477, guid: c967e085e87aefc4ca5dfa42f5b40d0a,
+        type: 3}
+      propertyPath: messages.Array.data[0]
+      value: "\u65E9\u3044   \u666E\u901A   \u9045\u3044"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389899227719539560, guid: c967e085e87aefc4ca5dfa42f5b40d0a,
+        type: 3}
+      propertyPath: messages.Array.data[0]
+      value: "\u4E0A  \u771F\u3093\u4E2D  \u4E0B"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c967e085e87aefc4ca5dfa42f5b40d0a, type: 3}
 --- !u!1 &5696210383234636065 stripped
