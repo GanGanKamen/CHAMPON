@@ -19,6 +19,8 @@ public class ButtonScript : MonoBehaviour
     private float _volume;
 
     private Configuration config;
+
+    public bool isBackToTitle;
     // Start is called before the first frame update
     void Start()
     {
@@ -53,11 +55,10 @@ public class ButtonScript : MonoBehaviour
         {
             _startSE.Play();
         }
-        _fadeOut = true;
+        //_fadeOut = true;
         //Debug.Log("CLICK");
         sceneChange.button = true;
-        //data.destroy = true;
-        Debug.Log("x");
+        if (isBackToTitle) sceneChange.isBackToTitle = true;
         RemainingLife.bossLife = 0;
         config.configbutton = false;
         /*if(SceneManager.GetActiveScene().name == "Title")

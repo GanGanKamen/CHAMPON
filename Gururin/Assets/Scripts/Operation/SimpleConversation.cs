@@ -7,7 +7,6 @@ public class SimpleConversation : MonoBehaviour
 {
     public LanguageText[] sentences; // 文章を格納する
     public Text Text;   // uiTextへの参照
-    [SerializeField] private float textWaitTime = 0.1f;
     private IEnumerator nowNobel;
     public Image hakaseFace;
     public int currentSentenceNum = 0; //現在表示している文章番号
@@ -75,7 +74,7 @@ public class SimpleConversation : MonoBehaviour
             }
 
             wordCound++;
-            yield return new WaitForSeconds(textWaitTime);
+            yield return new WaitForSeconds(NeoConfig.textWaitTime);
         }
         nowNobel = null; nowNobel = NovelText();
         yield break;

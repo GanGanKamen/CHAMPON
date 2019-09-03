@@ -67,6 +67,7 @@ public class Configuration : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if (SceneManager.GetActiveScene().name != "Title" && titleback == null)
         {
             titleback = GameObject.Find("TitleBackButton");
@@ -78,7 +79,7 @@ public class Configuration : MonoBehaviour
         else if(SceneManager.GetActiveScene().name == "Title")
         {
             titleback = null;
-        }
+        }*/
         if (flagManager == null)
         {
             flagManager = GameObject.Find("FlagManager").GetComponent<FlagManager>();

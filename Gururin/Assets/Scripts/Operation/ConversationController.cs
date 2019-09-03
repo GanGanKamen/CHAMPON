@@ -29,7 +29,6 @@ public class ConversationController : MonoBehaviour
     public Configuration config;
     public Gamecontroller gameController;
 
-    [SerializeField] private float textWaitTime;
     private IEnumerator nowNobel;
     void Start()
     {
@@ -164,7 +163,7 @@ public class ConversationController : MonoBehaviour
             }
 
             wordCound++;
-            yield return new WaitForSeconds(textWaitTime);
+            yield return new WaitForSeconds(NeoConfig.textWaitTime);
         }
         nowNobel = null; nowNobel = NovelText();
         yield break;

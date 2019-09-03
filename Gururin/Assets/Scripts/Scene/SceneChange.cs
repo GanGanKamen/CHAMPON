@@ -17,18 +17,21 @@ public class SceneChange : MonoBehaviour
     private FlagManager flagManager;
 
     private bool _volumeDown;
-    private float _volume;
-
+    private float _volumeBGM,_volumeSE;
+    private float bgmDecay, seDecay;
     public SceneObject[] bossScenes;
+
+    private Configuration config;
+
+    public bool isBackToTitle;
     // Start is called before the first frame update
     void Start()
     {
         flagManager = GameObject.Find("FlagManager").GetComponent<FlagManager>();
-        
-        
+        config = GameObject.Find("ConfigCanvas").GetComponent<Configuration>();
+
         button = false;
         _volumeDown = false;
-        _volume = 1.0f;
     }
 
     void OnTriggerStay2D(Collider2D other)
@@ -39,13 +42,22 @@ public class SceneChange : MonoBehaviour
             //ぐるりんの動きを止める
             flagManager.moveStop = true;
             //3.5秒遅延を入れる(ゴールSEを入れるため)
-            _volumeDown = true;
-            Invoke("Scene", 3.5f);
-    }
+            if (_volumeDown == false)
+            {
+                Invoke("Scene", 3.5f);
+                NeoConfig.isSoundFade = true;
+                _volumeBGM = NeoConfig.BGMVolume/10f;
+                _volumeSE = NeoConfig.SEVolume/10f;
+                bgmDecay = (NeoConfig.BGMVolume / 10 * Time.deltaTime) / 3.5f;
+                seDecay = (NeoConfig.SEVolume / 10 * Time.deltaTime) / 3.5f;
+                _volumeDown = true;
+            }
+        }
     }
 
-    void Scene ()
+    void Scene()
     {
+        NeoConfig.isSoundFade = false;
         bool isBoss = false;
         foreach (SceneObject scene in bossScenes)
         {
@@ -64,33 +76,43 @@ public class SceneChange : MonoBehaviour
         if (_volumeDown)
         {
             //ゴール時にボリュームをマイナスする(フェードアウト)
-            _volume -= 0.01f;
+            //_volume -= 0.01f;
             //BGMカテゴリとSEカテゴリを指定
-            CriAtom.SetCategoryVolume("BGM", _volume);
-            CriAtom.SetCategoryVolume("SE", _volume);
-
-            if (_volume == 0.0f)
-            {
-                _volume = 0.0f;
-            }
+            _volumeBGM -= bgmDecay;
+            _volumeSE -= seDecay;
+            CriAtom.SetCategoryVolume("BGM", _volumeBGM);
+            CriAtom.SetCategoryVolume("SE", _volumeSE);
+            Debug.Log(_volumeBGM);
         }
         if (button)
         {
-            Invoke("GameStart", 1.5f);
+            if (_volumeDown == false)
+            {
+                NeoConfig.isSoundFade = true;
+                _volumeBGM = NeoConfig.BGMVolume/10f;
+                _volumeSE = NeoConfig.SEVolume/10f;
+                bgmDecay = (NeoConfig.BGMVolume / 10 * Time.deltaTime) / 1f;
+                seDecay = (NeoConfig.SEVolume / 10 * Time.deltaTime) / 1f;
+                _volumeDown = true;
+                Invoke("GameStart", 1.5f);
+            }
+
         }
     }
 
     void GameStart()
     {
+        NeoConfig.isSoundFade = false;
         bool isBoss = false;
-        foreach(SceneObject scene in bossScenes)
+        foreach (SceneObject scene in bossScenes)
         {
-            if(scene.ToString() == changeScene.ToString())
+            if (scene.ToString() == changeScene.ToString())
             {
                 isBoss = true;
             }
         }
         if (isBoss) RemainingLife.beforeBossLife = RemainingLife.life;
+        if (isBackToTitle == true) config.Method();
         SceneManager.LoadScene(changeScene);
         button = false;
     }
