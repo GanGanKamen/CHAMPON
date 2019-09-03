@@ -6,7 +6,7 @@
  *  File Path        : /Users/yamadachihiro/Documents/Sourcetree/CHAMPON/GururinADX2/Public/WorkUnit_Yamada
  *  File Name        : allStageGimmick.h
  *  File Size        : 400256 bytes
- *  Date Time        : 2019/09/02 17:42:54
+ *  Date Time        : 2019/09/03 23:06:35
  *  Target           : Public
  *  Cues             : 8
  *  CueSheet Comment : 
@@ -16,7 +16,7 @@
 #define CRI_ALLSTAGEGIMMICK_CUENUM (8)
 
 /* AISAC Control List (AISAC Control ID) */
-#define CRI_ALLSTAGEGIMMICK_AISACCONTROL_GATEVOLUME           ( 4) /*  */
+#define CRI_ALLSTAGEGIMMICK_AISACCONTROL_PLOPELLER_WIND       ( 0) /*  */
 
 /* Cue List (Cue ID) */
 #define CRI_ALLSTAGEGIMMICK_SE_JUMP              ( 0) /*  */

@@ -6,7 +6,7 @@
  *  File Path          : /Users/yamadachihiro/Documents/Sourcetree/CHAMPON/GururinADX2/Public
  *  File Name          : Gururin_acf.h
  *  File Size          : 5088 bytes
- *  Date Time          : 2019/09/02 16:13:51
+ *  Date Time          : 2019/09/03 23:06:35
  *  Target             : Public
  *  Categories         : 5
  *  AISAC Controls     : 16
@@ -45,7 +45,7 @@
 #define CRI_GURURIN_ACF_AISACCONTROL_PIOPELLERBGM_B       ( 1) /*  */
 #define CRI_GURURIN_ACF_AISACCONTROL_PIOPELLERBGM_C       ( 2) /*  */
 #define CRI_GURURIN_ACF_AISACCONTROL_PIOPELLERBGM_D       ( 3) /*  */
-#define CRI_GURURIN_ACF_AISACCONTROL_GATEVOLUME           ( 4) /*  */
+#define CRI_GURURIN_ACF_AISACCONTROL_AISACCONTROL_04      ( 4) /*  */
 #define CRI_GURURIN_ACF_AISACCONTROL_AISACCONTROL_05      ( 5) /*  */
 #define CRI_GURURIN_ACF_AISACCONTROL_AISACCONTROL_06      ( 6) /*  */
 #define CRI_GURURIN_ACF_AISACCONTROL_AISACCONTROL_07      ( 7) /*  */
