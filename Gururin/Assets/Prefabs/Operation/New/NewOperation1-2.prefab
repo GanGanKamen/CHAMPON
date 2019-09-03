@@ -72,7 +72,7 @@ MonoBehaviour:
   textFeed: 0000
   config: {fileID: 0}
   gameController: {fileID: 0}
-  textWaitTime: 0.1
+  textWaitTime: 0.03
 --- !u!114 &347175509075185125
 MonoBehaviour:
   m_ObjectHideFlags: 0

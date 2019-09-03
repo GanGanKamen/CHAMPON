@@ -42,8 +42,8 @@ public class Gamecontroller : MonoBehaviour
         Arrow_RB.SetActive(false);
         Arrow_LR.SetActive(false);
         Arrow_LB.SetActive(false);*/
-        flicklimit.x = 0.1f;
-        flicklimit.y = 0.2f;
+        flicklimit.x = 0.02f;
+        flicklimit.y = 0.01f;
         jamp = 30;
         initial = 10;
         area = 0.2f;

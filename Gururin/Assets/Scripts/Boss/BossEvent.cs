@@ -74,7 +74,6 @@ public class BossEvent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(cutin);
         if (cutin == 1) //movieCutOut
         {
             if (topBand.localPosition.y < topDis.y)

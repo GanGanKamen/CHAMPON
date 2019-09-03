@@ -153,7 +153,7 @@ namespace GanGanKamen
                     break;
             }
 
-
+            /*
             if (gameController.isPress && hitPlayer)
             {
                 if (gameController.AxB.z < 0)
@@ -165,8 +165,8 @@ namespace GanGanKamen
                     handParent.transform.Rotate(0, 0, -thisGear.rotSpeed);
                 }
 
-            }
-            else if (hitPlayer == false)
+            }*/
+            if (hitPlayer == false)
             {
                 thisGear.gear.transform.Rotate(new Vector3(0.0f, 0.0f, thisGear.rotSpeed * direction));
             }
@@ -208,6 +208,7 @@ namespace GanGanKamen
 
         public void Separate()
         {
+            Debug.Log("separate");
             player.transform.parent = null;
             hitPlayer = false;
             pattern = Pattern.Recovery;
