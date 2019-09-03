@@ -37,6 +37,7 @@ public class GameClear : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             _stageClear.alpha = 1.0f;
+            RemainingLife.waypoint = false;
             playSE[0] = true;
         }
     }
