@@ -10284,15 +10284,6 @@ PrefabInstance:
       propertyPath: gameController
       value: 
       objectReference: {fileID: 563356559}
-    - target: {fileID: 805720519, guid: 8669c6dc93cbd2843a5bd46de7af6463, type: 3}
-      propertyPath: messages.Array.data[1]
-      value: "I see\u2026 It\u2019s Fludian! I think the balloon\u3000is a week point.
-        OK, just do it."
-      objectReference: {fileID: 0}
-    - target: {fileID: 1404391096, guid: 8669c6dc93cbd2843a5bd46de7af6463, type: 3}
-      propertyPath: messages.Array.data[1]
-      value: "Chance! \u3000Turn it with full force!"
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8669c6dc93cbd2843a5bd46de7af6463, type: 3}
 --- !u!1 &2155609694266678075

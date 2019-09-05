@@ -77,7 +77,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messages:
   - "\u3042\u308C\u306F\u2026\u300C\u30D5\u30EF\u30FC\u30C7\u30A3\u30A2\u30F3\u300D\u3060\uFF01\u3042\u306E\u30D0\u30EB\u30FC\u30F3\u3000\u304C\u5F31\u70B9\u3060\u3088\uFF01\u9811\u5F35\u3063\u3066\u5012\u305D\u3046\u306D\uFF01"
-  - "Chance! \u3000Turn it with full force!"
+  - "I see\u2026 It\u2019s Fludian! I think the balloon\u3000is a week point. OK,
+    just do it."
   - "\u90A3\u662F\u2026\u98D8\u98D8\u536B\u58EB\uFF01\u4F30\u8BA1\u90A3\u4E2A\u6C14\u7403\u662F\u3000\u5F31\u70B9\u3002\u52A0\u6CB9\uFF0C\u6253\u5230\u5B83\uFF01"
   - "\u90A3\u662F\u2026\u98C4\u98C4\u885B\u58EB\uFF01\u4F30\u8A08\u90A3\u500B\u6C23\u7403\u662F\u3000\u5F31\u9EDE\u3002\u52A0\u6CB9\uFF0C\u6253\u5230\u5B83\uFF01"
   hakaseFace: {fileID: 21300000, guid: 0903374e8521719449506980b9ce87c0, type: 3}
@@ -270,7 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messages:
   - "\u4ECA\u3060!\u3000\u5168\u529B\u3067\u3050\u308B\u3050\u308B\u56DE\u305D\u3046!"
-  - "The law of victory is set. \u3000Trun it with full force!"
+  - "Chance! \u3000Turn it with full force!"
   - "\u597D\u673A\u4F1A\uFF01\u3000\u5FEB\u7AED\u5C3D\u5168\u529B\u8F6C\u52A8\u9F7F\u8F6E\uFF01"
   - "\u597D\u6A5F\u6703\uFF01\u3000\u5FEB\u7AED\u76E1\u5168\u529B\u8F49\u52D5\u9F52\u8F2A\uFF01"
   hakaseFace: {fileID: 21300000, guid: d847207f8789afd4abb8b663b694b821, type: 3}
@@ -1117,7 +1118,6 @@ MonoBehaviour:
   - {fileID: 805720519}
   - {fileID: 1404391096}
   Text: {fileID: 1946987890403878866}
-  textWaitTime: 0.03
   hakaseFace: {fileID: 1946987889517433585}
   currentSentenceNum: 0
   preSentenceNum: 0
