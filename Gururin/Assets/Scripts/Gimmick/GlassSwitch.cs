@@ -7,11 +7,10 @@ public class GlassSwitch : MonoBehaviour
 
     public GameObject door, vCam;
     public bool blocking;
-    private CriAtomSource _pushSE, _blockSE;
+    private CriAtomSource _blockSE;
 
     private void Start()
     {
-        _pushSE = GameObject.Find("SE_item(CriAtomSource)").GetComponent<CriAtomSource>();
         _blockSE = GetComponent<CriAtomSource>();
     }
 
@@ -19,7 +18,6 @@ public class GlassSwitch : MonoBehaviour
     {
         if (other.gameObject)
         {
-            _pushSE.Play();
             blocking = true;
             //StartCoroutine(VCam());
             door.SetActive(false);

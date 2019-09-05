@@ -4,26 +4,34 @@ using UnityEngine;
 
 public class Waypoint : MonoBehaviour
 {
-    [SerializeField] private GameObject _flag;
+    [SerializeField] private GameObject _flag, _animFlag;
+
+    private bool _animPlay;
 
     private PlayerMove _playerMove;
     private CriAtomSource _source;
+    private Animator _flagAnim;
 
     // Start is called before the first frame update
     void Awake()
     {
         _playerMove = GameObject.Find("Gururin").GetComponent<PlayerMove>();
         _source = GetComponent<CriAtomSource>();
+        _flagAnim = _animFlag.GetComponent<Animator>();
 
         _source.volume = 0.5f;
+
+        _animPlay = false;
 
         if(_flag != null)
         {
             _flag.SetActive(false);
         }
 
+        _animFlag.SetActive(false);
+
         //ぐるりんの残機が減った時かつ中間地点に到達していた時にスタート位置を変更
-        if(RemainingLife.life != RemainingLife.beforeBossLife && RemainingLife.waypoint)
+        if (RemainingLife.life != RemainingLife.beforeBossLife && RemainingLife.waypoint)
         {
             RemainingLife.startPos = transform.position;
         }
@@ -35,15 +43,28 @@ public class Waypoint : MonoBehaviour
         {
             if (RemainingLife.waypoint == false)
             {
+                _animPlay = true;
                 _source.Play();
+
+                //アニメーション再生
+                if (_animPlay)
+                {
+                    _animFlag.SetActive(true);
+                    _flagAnim.Play("Flag");
+                }
             }
 
+            //中間地点を設定
             RemainingLife.waypoint = true;
+        }
+    }
 
-            if (_flag != null)
-            {
-                _flag.SetActive(true);
-            }
+    private void Update()
+    {
+        //中間地点に到達して残機が減った時、アニメーションしない旗を出現
+        if (_flag != null && RemainingLife.waypoint && _animPlay == false)
+        {
+            _flag.SetActive(true);
         }
     }
 }
