@@ -13,7 +13,8 @@ public class NeoConfig : MonoBehaviour
     public GameObject backButton;
     static public float textWaitTime;
     public Slider textSpeedSlider;
-
+    static public bool isToutchToJump;
+    public Slider touchSlider;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +26,7 @@ public class NeoConfig : MonoBehaviour
     {
         TextSpeed();
         Volume();
+        TouchOrFlick();
         if(SceneManager.GetActiveScene().name == "Title")
         {
             backButton.SetActive(false);
@@ -62,6 +64,18 @@ public class NeoConfig : MonoBehaviour
         else
         {
             textWaitTime = 0.1f;
+        }
+    }
+
+    private void TouchOrFlick()
+    {
+        if(touchSlider.value == 1)
+        {
+            isToutchToJump = false;
+        }
+        else
+        {
+            isToutchToJump = true;
         }
     }
 }

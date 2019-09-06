@@ -258,9 +258,9 @@ public class PlayerMove : MonoBehaviour
                 isPress = false;
                 return;
             }
+            
             if (gameController.flick_up)
             {
-                Debug.Log("up");
                 _rb2d.AddForce(Vector2.up * jumpSpeed);
                 _jumpSE.Play();
                 isJump = false;
@@ -287,6 +287,7 @@ public class PlayerMove : MonoBehaviour
             {
                 gameController.isFlick = false;
             }
+            
         }
     }
 

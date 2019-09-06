@@ -41,5 +41,6 @@ public class DefaultButton : MonoBehaviour
         NeoConfig.BGMSlider.value = 8;
         NeoConfig.SESlider.value = 8;
         NeoConfig.textSpeedSlider.value = 0;
+        NeoConfig.touchSlider.value = 1;
     }
 }

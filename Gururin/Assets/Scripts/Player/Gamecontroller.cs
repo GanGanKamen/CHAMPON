@@ -12,7 +12,7 @@ public class Gamecontroller : MonoBehaviour
     public GameObject camera; //カメラオブジェクト
     public Vector2 mousePosition1, flicklimit, prepos, pos, vecA, vecB; //マウスの初期位置 フリック判定範囲制限 1フレーム前のマウス位置 現在のコントローラー位置 マウス位置の2ベクトル
     public Vector2 initialpos1, initialpos2, initialpos3; //jampcountの初期化のための位置取得
-    public int jampcount, jamp; //フレーム毎のカウント　ジャンプ出来るまでのカウント数
+    public float jampcount, jamp; //フレーム毎のカウント　ジャンプ出来るまでのカウント数
     public int initialcount, initial; //jampcount初期化のフレーム毎のカウント　初期化までのカウント数
     public int timercount; //押してから離れるまでのフレーム毎のカウント
     public float angle, flick, area; //角度　フリックできる距離の値　フリック初期化の範囲の値
@@ -44,7 +44,7 @@ public class Gamecontroller : MonoBehaviour
         Arrow_LB.SetActive(false);*/
         flicklimit.x = 0.02f;
         flicklimit.y = 0.01f;
-        jamp = 30;
+        jamp = 0.5f;
         initial = 10;
         area = 0.2f;
         isFlick = false;
@@ -140,7 +140,7 @@ public class Gamecontroller : MonoBehaviour
             if (Input.GetMouseButton(0) && isPress)
             {
                 //フレーム毎にjampcount, timercountをカウントする 
-                jampcount++;
+                jampcount+=Time.deltaTime;
                 timercount++;
 
                 //現在のマウス位置を取得しmousePosition2に代入
@@ -175,36 +175,70 @@ public class Gamecontroller : MonoBehaviour
 
             if (Input.GetMouseButtonUp(0))
             {
-                
-                Vector2 mousePosition3 = Camera.main.ScreenToViewportPoint(Input.mousePosition);
-                Vector2 flickpos = mousePosition3 - pos;
-
-
-                if (jampcount <= jamp)
+                if (!NeoConfig.isToutchToJump)
                 {
-                    if (flickpos.x > flick)
+                    Vector2 mousePosition3 = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+                    Vector2 flickpos = mousePosition3 - pos;
+
+
+                    if (jampcount <= jamp)
                     {
-                        flick_right = true;
-                        isFlick = true;
+                        if (flickpos.x > flick)
+                        {
+                            flick_right = true;
+                            isFlick = true;
+                        }
+                        else if (flickpos.x < -flick)
+                        {
+                            flick_left = true;
+                            isFlick = true;
+                        }
+                        if (flickpos.y > flick)
+                        {
+                            flick_up = true;
+                            isFlick = true;
+                        }
+                        else if (flickpos.y < -flick)
+                        {
+                            flick_down = true;
+                            isFlick = true;
+                        }
+
                     }
-                    else if (flickpos.x < -flick)
-                    {
-                        flick_left = true;
-                        isFlick = true;
-                    }
-                    if (flickpos.y > flick)
-                    {
-                        flick_up = true;
-                        isFlick = true;
-                    }
-                    else if (flickpos.y < -flick)
-                    {
-                        flick_down = true;
-                        isFlick = true;
-                    }
+
+                    playerMove.isPress = true;
                 }
 
-                playerMove.isPress = true;
+                else
+                {
+                    Vector2 mousePosition3 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    var playerPos = new Vector2(playerMove.transform.position.x, playerMove.transform.position.y);
+                    Debug.Log(mousePosition3.y);
+                    Debug.Log(playerPos.y);
+                    if (jampcount <= jamp)
+                    {
+                        if(mousePosition3.y >= playerPos.y + 0.5f)
+                        {
+                            flick_up = true;
+                            isFlick = true;
+                        }
+                        else
+                        {
+                            if(mousePosition3.x > playerPos.x)
+                            {
+                                flick_right = true;
+                                isFlick = true;
+                            }
+                            else
+                            {
+                                flick_left = true;
+                                isFlick = true;
+                            }
+                        }
+                    }
+                    playerMove.isPress = true;
+                }
+                
                 /*
                 if (playerMove.nowBossHand!=null)
                 {
@@ -227,6 +261,7 @@ public class Gamecontroller : MonoBehaviour
                 //コントローラーの非活性化
                 controllerObject.SetActive(false);
                 isPress = false;
+                jampcount = 0;
             }
         }
         else
