@@ -226,7 +226,7 @@ public class GearGimmick : MonoBehaviour {
         }
         
     }
-
+    /*
     //isPressが押された後(Update後)に判定
     private void LateUpdate()
     {
@@ -251,6 +251,7 @@ public class GearGimmick : MonoBehaviour {
 
         
     }
+    */
 
     IEnumerator Col()
     {
