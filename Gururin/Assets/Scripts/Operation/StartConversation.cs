@@ -8,10 +8,12 @@ public class StartConversation : MonoBehaviour
     private FlagManager flagManager;
     public ConversationController conversationController;
     public VideoPlayer video;
+
     // Start is called before the first frame update
     void Start()
     {
         flagManager = GameObject.Find("FlagManager").GetComponent<FlagManager>();
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)

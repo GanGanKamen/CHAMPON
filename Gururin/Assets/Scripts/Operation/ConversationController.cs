@@ -76,7 +76,7 @@ public class ConversationController : MonoBehaviour
         }
         else
         {
-            gameController.isCon = false;
+            if (WhiteBack.activeSelf == true) Invoke("PlayStartCtrl", 0.5f);
             WhiteBack.SetActive(false);
         }
 
@@ -126,6 +126,11 @@ public class ConversationController : MonoBehaviour
         {
             OnClick();
         }*/
+    }
+
+    private void PlayStartCtrl()
+    {
+        gameController.isCon = false;
     }
 
     private void TextSwitch()

@@ -208,7 +208,6 @@ namespace GanGanKamen
 
         public void Separate()
         {
-            Debug.Log("separate");
             player.transform.parent = null;
             hitPlayer = false;
             pattern = Pattern.Recovery;

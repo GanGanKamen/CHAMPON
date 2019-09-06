@@ -16,8 +16,8 @@ public class ControllerPosition : MonoBehaviour
         posScrollbar = GetComponent<Scrollbar>();
 
         //スクロールバーの現在値の設定
-        posScrollbar.value = 0.0f;
-        steps = 0;
+        posScrollbar.value = 0.5f;
+        steps = 1;
         config.controllerposition = steps;
 
     }
@@ -52,8 +52,8 @@ public class ControllerPosition : MonoBehaviour
     }
     public void OnClick()
     {
-        posScrollbar.value = 0.0f;
-        steps = 0;
+        posScrollbar.value = 0.5f;
+        steps = 1;
         config.controllerposition = steps;
     }
 }

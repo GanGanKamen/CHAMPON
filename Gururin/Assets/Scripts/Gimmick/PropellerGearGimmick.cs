@@ -49,7 +49,7 @@ public class PropellerGearGimmick : MonoBehaviour
 
             //ぐるりんとGearの接触を感知
             playerHit = true;
-            playerMove.gearGimmickHit = true;
+            //playerMove.gearGimmickHit = true;
 
             //Playerの回転を許可
             click = true;

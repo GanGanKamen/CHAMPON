@@ -33,11 +33,11 @@ public class FootSound : MonoBehaviour
     {
         if (playerMove != null)
         {
-            if (playerMove.gearGimmickHit)
+            if (playerMove.nowGearGimiick!= null)
             {
                 GetComponent<PolygonCollider2D>().enabled = false;
             }
-            else if (playerMove.gearGimmickHit == false)
+            else
             {
                 GetComponent<PolygonCollider2D>().enabled = true;
             }

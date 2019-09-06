@@ -171,43 +171,11 @@ public class Gamecontroller : MonoBehaviour
 
                 //preposにこの時点でのマウス位置を代入 camerapos2にこの時点でのカメラ位置を再代入
                 prepos = mousePosition2;
-
-                //jampconut初期化の設定
-                /*if (initialcount == 0)
-                {
-                    initialpos1 = mousePosition2 - pos;
-                }
-                initialpos2 = mousePosition2 - pos;
-                initialpos3 = initialpos2 - initialpos1;
-                initialpos1 = initialpos2;
-                if (mousePosition2.x <= controllerObject.transform.position.x + area &&
-                    mousePosition2.x >= controllerObject.transform.position.x - area &&
-                    mousePosition2.y <= controllerObject.transform.position.y + area &&
-                    mousePosition2.y >= controllerObject.transform.position.y - area)
-                {
-                    if (initialpos3.x <= 0.2 && initialpos3.x >= -0.2 &&
-                    initialpos3.y <= 0.2 && initialpos3.y >= -0.2)
-                    {
-                        initialcount++;
-                    }
-                    else
-                    {
-                        initialcount = 0;
-                    }
-                }
-                else
-                {
-                    initialcount = 0;
-                }
-
-                if (initialcount >= initial)
-                {
-                    jampcount = 0;
-                }*/
             }
 
             if (Input.GetMouseButtonUp(0))
             {
+                
                 Vector2 mousePosition3 = Camera.main.ScreenToViewportPoint(Input.mousePosition);
                 Vector2 flickpos = mousePosition3 - pos;
 
@@ -236,6 +204,8 @@ public class Gamecontroller : MonoBehaviour
                     }
                 }
 
+                playerMove.isPress = true;
+                /*
                 if (playerMove.nowBossHand!=null)
                 {
                     if (playerMove.isJump && (flick_up || flick_down || flick_right || flick_left))
@@ -250,7 +220,7 @@ public class Gamecontroller : MonoBehaviour
                         playerMove.isPress = true;
                     }
                 }
-
+                */
 
                 //angleの値を初期化
                 angle = 0;
