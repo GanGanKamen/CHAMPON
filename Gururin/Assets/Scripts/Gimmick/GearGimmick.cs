@@ -185,7 +185,8 @@ public class GearGimmick : MonoBehaviour {
                 bossEvent.finish.value += Time.deltaTime;
             }
         }
-        else
+        //回転操作をしていないときは普通の顔にする
+        else if (gameController.isPress == false)
         {
             flagManager.standFirm_Face = false;
         }

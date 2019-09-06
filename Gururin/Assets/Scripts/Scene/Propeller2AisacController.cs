@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// プロペラステージ1BGMのAISAC制御
+/// プロペラステージ2BGMのAISAC制御
 /// </summary>
 
 
@@ -47,21 +47,21 @@ public class Propeller2AisacController : MonoBehaviour
         //スイッチが押されたときAISACのコントロール値を上げる
         if (blockSwitches[0].blocking)
         {
-            currentControlValue[0] += 1.0f;
+            currentControlValue[0] += 0.05f;
             if (1.0f < currentControlValue[0]) currentControlValue[0] = 1.0f;
             source.SetAisacControl(aisacControllerName_B, currentControlValue[0]);
         }
     
         if (blockSwitches[1].blocking)
         {
-            currentControlValue[1] += 1.0f;
+            currentControlValue[1] += 0.05f;
             if (1.0f < currentControlValue[1]) currentControlValue[1] = 1.0f;
             source.SetAisacControl(aisacControllerName_C, currentControlValue[1]);
         }
     
         if (glassSwitch.blocking)
         {
-            currentControlValue[2] += 1.0f;
+            currentControlValue[2] += 0.05f;
             if (1.0f < currentControlValue[2]) currentControlValue[2] = 1.0f;
             source.SetAisacControl(aisacControllerName_D, currentControlValue[2]);
         }
