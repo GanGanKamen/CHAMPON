@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GearGimmick : MonoBehaviour {
+
     public bool isPropeller;
 
     public GameObject gear; //カウンターとの接触判定を取る歯車
@@ -75,8 +76,7 @@ public class GearGimmick : MonoBehaviour {
             playerHit = true;
 
             if (isPropeller) click = true;
-            //Playerの回転を許可
-            rotParm = true;
+            rotParm = false;
 
             //速度の上書きを止める
             playerMove.setSpeed = false;
@@ -105,11 +105,9 @@ public class GearGimmick : MonoBehaviour {
     
     void OnTriggerStay2D(Collider2D other)
     {
-        if (other.CompareTag("Player")&& rotParm)
+        if (other.CompareTag("Player")&& rotParm == false)
         {
-            //_gururinRb2d.isKinematic = true;
             //ぐるりんの位置を固定
-            //_gururinRb2d.position = gearPos.transform.position;
            if(GetComponent<GanGanKamen.BossHand>()==null) _gururinRb2d.MovePosition(gearPos.transform.position);
             //ぐるりんの角度を固定
             _gururinRb2d.rotation = _gpQuaternion.eulerAngles.z;
@@ -119,22 +117,6 @@ public class GearGimmick : MonoBehaviour {
             _gururinRb2d.velocity = Vector2.zero;
         }
     }
-    /*
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            _gururinRb2d.isKinematic = false;
-            playerHit = false;
-            playerMove.isMove = true;
-            playerMove.setSpeed= true;
-            flagManager.moveStop = false;
-
-            other.GetComponent<PlayerMove>().nowBossHand = null;
-            if (bossHand != null) bossHand.Separate();
-
-        }
-    }*/
 
     // Update is called once per frame
     void Update()
@@ -143,7 +125,8 @@ public class GearGimmick : MonoBehaviour {
         {
             if (gameController.AxB.z < 0 && gameController.isPress && playerHit && moveGear[0])
             {
-                rotParm = false;
+                //ぐるりんの回転を許可
+                rotParm = true;
                 //ぐるりんの表情を変更
                 flagManager.standFirm_Face = true;
                 gear.transform.Rotate(new Vector3(0.0f, 0.0f, rotSpeed));
@@ -172,7 +155,8 @@ public class GearGimmick : MonoBehaviour {
             }
             else if (gameController.AxB.z > 0 && gameController.isPress && playerHit && moveGear[1])
             {
-                rotParm = false;
+                //ぐるりんの回転を許可
+                rotParm = true;
                 flagManager.standFirm_Face = true;
                 gear.transform.Rotate(new Vector3(0.0f, 0.0f, -rotSpeed));
                 _gururinRb2d.rotation += rotSpeed;
@@ -206,6 +190,8 @@ public class GearGimmick : MonoBehaviour {
         {
             if (gameController.AxB.z < 0 && gameController.isPress && playerHit && moveGear[0] && rotFlag)
             {
+                //ぐるりんの回転を許可
+                rotParm = true;
                 click = false;
                 flagManager.standFirm_Face = true;
                 gear.transform.Rotate(new Vector3(0.0f, 0.0f, rotSpeed));
@@ -214,6 +200,8 @@ public class GearGimmick : MonoBehaviour {
             //右回転
             else if (gameController.AxB.z > 0 && gameController.isPress && playerHit && moveGear[0] && !rotFlag)
             {
+                //ぐるりんの回転を許可
+                rotParm = true;
                 click = false;
                 flagManager.standFirm_Face = true;
                 gear.transform.Rotate(new Vector3(0.0f, 0.0f, -rotSpeed));
@@ -224,34 +212,7 @@ public class GearGimmick : MonoBehaviour {
                 flagManager.standFirm_Face = false;
             }
         }
-        
     }
-    /*
-    //isPressが押された後(Update後)に判定
-    private void LateUpdate()
-    {
-        if (playerMove.nowBossHand != null)
-        {
-            if (playerMove.isPress && playerHit)
-            {
-                _gururinRb2d.isKinematic = false;
-                //歯車のColliderを消す
-                StartCoroutine(Col());
-            }
-        }
-        else
-        {
-            if (gameController.isFlick && playerHit)
-            {
-                _gururinRb2d.isKinematic = false;
-                //歯車のColliderを消す
-                StartCoroutine(Col());
-            }
-        }
-
-        
-    }
-    */
 
     IEnumerator Col()
     {
