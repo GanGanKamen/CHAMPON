@@ -4,7 +4,7 @@
   <OrcaTree OrcaName="(no name)">
     <Orca OrcaName="atmcUserFile" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserFile">
       <Orca OrcaName="WorkUnit_0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
-      <Orca OrcaName="WorkUnit_Yamada" orcaPath="CueSheetFolder/WorkUnit_Yamada" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
+      <Orca OrcaName="allStageGimmick" orcaPath="CueSheetFolder/WorkUnit_Yamada/allStageGimmick" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="SE_jump_0" orcaPath="CueSheetFolder/WorkUnit_Yamada/allStageGimmick/SE_jump/SE_jump_0" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="Track_SE_foot" orcaPath="CueSheetFolder/WorkUnit_Yamada/allStageGimmick/SE_foot/Track_SE_foot" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="Track_SE_GearMesh" orcaPath="CueSheetFolder/WorkUnit_Yamada/allStageGimmick/SE_GearMesh/Track_SE_GearMesh" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
@@ -23,7 +23,6 @@
       <Orca OrcaName="PBGM_C" orcaPath="CueSheetFolder/WorkUnit_Yamada/Propeller/BGM_plopeller/Track_BGM_plopeller_C/PBGM_C" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="PBGM_D" orcaPath="CueSheetFolder/WorkUnit_Yamada/Propeller/BGM_plopeller/Track_BGM_plopeller_D/PBGM_D" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="Track_BGM_propellerBOSS" orcaPath="CueSheetFolder/WorkUnit_Yamada/Propeller/BGM_propellerBOSS/Track_BGM_propellerBOSS" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
-      <Orca OrcaName="SE_BlockDelete" orcaPath="CueSheetFolder/WorkUnit_Yamada/Propeller/SE_BlockDelete" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="Track_re_SE_Block-04" orcaPath="CueSheetFolder/WorkUnit_Yamada/Propeller/SE_BlockDelete/Track_re_SE_Block-04" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="Track_SE_tap" orcaPath="CueSheetFolder/WorkUnit_Yamada/Operation/SE_tap/Track_SE_tap" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="Track_re_SE_hakaseWord" orcaPath="CueSheetFolder/WorkUnit_Yamada/Operation/SE_hakaseTalk/Track_re_SE_hakaseWord" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
