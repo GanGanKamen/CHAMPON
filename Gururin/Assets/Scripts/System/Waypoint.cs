@@ -6,7 +6,7 @@ public class Waypoint : MonoBehaviour
 {
     [SerializeField] private GameObject _flag, _animFlag;
 
-    private bool _animPlay;
+    public bool animPlay;
 
     private PlayerMove _playerMove;
     private CriAtomSource _source;
@@ -21,7 +21,7 @@ public class Waypoint : MonoBehaviour
 
         _source.volume = 0.5f;
 
-        _animPlay = false;
+        animPlay = false;
 
         if(_flag != null)
         {
@@ -43,11 +43,11 @@ public class Waypoint : MonoBehaviour
         {
             if (RemainingLife.waypoint == false)
             {
-                _animPlay = true;
+                animPlay = true;
                 _source.Play();
 
                 //アニメーション再生
-                if (_animPlay)
+                if (animPlay)
                 {
                     _animFlag.SetActive(true);
                     _flagAnim.Play("Flag");
@@ -62,7 +62,7 @@ public class Waypoint : MonoBehaviour
     private void Update()
     {
         //中間地点に到達して残機が減った時、アニメーションしない旗を出現
-        if (_flag != null && RemainingLife.waypoint && _animPlay == false)
+        if (_flag != null && RemainingLife.waypoint && animPlay == false)
         {
             _flag.SetActive(true);
         }
