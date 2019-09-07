@@ -79,18 +79,23 @@ public class SceneChange : MonoBehaviour
             //_volume -= 0.01f;
             //BGMカテゴリとSEカテゴリを指定
             _volumeBGM -= bgmDecay;
+            if (_volumeBGM < 0) _volumeBGM = 0;
             _volumeSE -= seDecay;
+            if (_volumeSE < 0) _volumeSE = 0;
             CriAtom.SetCategoryVolume("BGM", _volumeBGM);
             CriAtom.SetCategoryVolume("SE", _volumeSE);
             Debug.Log(_volumeBGM);
         }
         if (button)
         {
+            NeoConfig.isSoundFade = false;
             if (_volumeDown == false)
             {
                 NeoConfig.isSoundFade = true;
                 _volumeBGM = NeoConfig.BGMVolume/10f;
+                if (_volumeBGM < 0) _volumeBGM = 0;
                 _volumeSE = NeoConfig.SEVolume/10f;
+                if (_volumeSE < 0) _volumeSE = 0;
                 bgmDecay = (NeoConfig.BGMVolume / 10 * Time.deltaTime) / 1f;
                 seDecay = (NeoConfig.SEVolume / 10 * Time.deltaTime) / 1f;
                 _volumeDown = true;

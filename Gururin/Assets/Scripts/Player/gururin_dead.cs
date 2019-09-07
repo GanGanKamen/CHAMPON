@@ -57,6 +57,7 @@ public class gururin_dead : MonoBehaviour
             _cinemachineBrain.m_DefaultBlend.m_Time = 0.7f;
             //カメラをぐるりんに近づける
             vCam.SetActive(true);
+            NeoConfig.isSoundFade = true;
             CriAtom.SetCategoryVolume("BGM", 0.0f);
             var _rb2d = other.GetComponent<Rigidbody2D>();
             //ぐるりんの動き(操作系・重力系)を停止
@@ -94,6 +95,7 @@ public class gururin_dead : MonoBehaviour
 
     void GameOver()
     {
+        NeoConfig.isSoundFade = false;
         if (RemainingLife.life != 0)
         {
             //シーンをリセット
