@@ -962,6 +962,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &351813490 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3922297573615032045, guid: 45e5502d60f72dd4db9fac2ad2fd732a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1547067965}
+  m_PrefabAsset: {fileID: 0}
 --- !u!60 &391004304 stripped
 PolygonCollider2D:
   m_CorrespondingSourceObject: {fileID: 1531117051012861068, guid: 0f3383a66cbbb7947ad9718139b3391a,
@@ -15098,16 +15104,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gururin
       objectReference: {fileID: 0}
-    - target: {fileID: 502782363709291292, guid: d1d20eef8d507cc41b2b2eae2941d9ee,
-        type: 3}
-      propertyPath: gameController
-      value: 
-      objectReference: {fileID: 1041245349}
-    - target: {fileID: 502782363709291292, guid: d1d20eef8d507cc41b2b2eae2941d9ee,
-        type: 3}
-      propertyPath: flagManager
-      value: 
-      objectReference: {fileID: 653294687}
     - target: {fileID: 7263691912388811708, guid: d1d20eef8d507cc41b2b2eae2941d9ee,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15163,6 +15159,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 502782363709291292, guid: d1d20eef8d507cc41b2b2eae2941d9ee,
+        type: 3}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 1041245349}
+    - target: {fileID: 502782363709291292, guid: d1d20eef8d507cc41b2b2eae2941d9ee,
+        type: 3}
+      propertyPath: flagManager
+      value: 
+      objectReference: {fileID: 653294687}
     - target: {fileID: 7263691912388811687, guid: d1d20eef8d507cc41b2b2eae2941d9ee,
         type: 3}
       propertyPath: gameController
@@ -15585,6 +15591,16 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 7.0277395
       objectReference: {fileID: 0}
+    - target: {fileID: 8961353505048458451, guid: 110d0d523754f204c867800e38c54d02,
+        type: 3}
+      propertyPath: windowAnim
+      value: 
+      objectReference: {fileID: 351813490}
+    - target: {fileID: 8961353505048458451, guid: 110d0d523754f204c867800e38c54d02,
+        type: 3}
+      propertyPath: conversationController
+      value: 
+      objectReference: {fileID: 1547067966}
     m_RemovedComponents:
     - {fileID: 3899547193711795524, guid: 110d0d523754f204c867800e38c54d02, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 110d0d523754f204c867800e38c54d02, type: 3}

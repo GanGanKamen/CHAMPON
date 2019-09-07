@@ -117,6 +117,10 @@ MonoBehaviour:
     acbFile: Operation.acb
     awbFile: Operation.awb
     loaderStatus: 0
+  - name: tutorialClear
+    acbFile: tutorialClear.acb
+    awbFile: tutorialClear.awb
+    loaderStatus: 0
   dspBusSetting: 
   dontDestroyOnLoad: 0
   dontRemoveExistsCueSheet: 0

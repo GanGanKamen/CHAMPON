@@ -7,9 +7,9 @@ public class EndAnimation : MonoBehaviour
 {
 
     [SerializeField] private Animator _gururinAnim, _hakaseAnim, _textFlashing;
-    [SerializeField] CriAtomSource gingle, tap;
+    [SerializeField] CriAtomSource clear, tap;
     public bool[] _sourcePlay;
-    private bool _backtoTitle;
+    private bool _bgmVolume, _backtoTitle;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +22,7 @@ public class EndAnimation : MonoBehaviour
         {
             _sourcePlay[i] = true;
         }
+        _bgmVolume = false;
         _backtoTitle = false;
 
         StartCoroutine("AnimPlay");
@@ -39,7 +40,7 @@ public class EndAnimation : MonoBehaviour
 
         if (_sourcePlay[0])
         {
-            gingle.Play();
+            clear.Play();
             _sourcePlay[0] = false;
         }
 
@@ -55,6 +56,7 @@ public class EndAnimation : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            _bgmVolume = true;
             if (_sourcePlay[1])
             {
                 tap.Play();
@@ -72,6 +74,16 @@ public class EndAnimation : MonoBehaviour
         if (_backtoTitle)
         {
             StartCoroutine("BacktoTitle");
+        }
+
+        if (_bgmVolume)
+        {
+            Debug.Log(clear.volume);
+            clear.volume -= 0.02f;
+            if(clear.volume <= 0.0f)
+            {
+                clear.volume = 0.0f;
+            }
         }
     }
 }
