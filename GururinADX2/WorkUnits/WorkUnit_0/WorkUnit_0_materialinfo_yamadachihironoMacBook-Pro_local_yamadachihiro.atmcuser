@@ -3,9 +3,7 @@
 <OrcaTrees ObjectTypeExpression="Full" BinaryEncodingType="Base64" FileVersion="3" FileRevision="0">
   <OrcaTree OrcaName="(no name)">
     <Orca OrcaName="atmcUserFile" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserFile">
-      <Orca OrcaName="SE" orcaPath="MaterialRootFolder/SE" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
       <Orca OrcaName="retake" orcaPath="MaterialRootFolder/retake" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
-      <Orca OrcaName="windChime" orcaPath="MaterialRootFolder/windChime" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoAtmcUserOrca"/>
     </Orca>
   </OrcaTree>
 </OrcaTrees>

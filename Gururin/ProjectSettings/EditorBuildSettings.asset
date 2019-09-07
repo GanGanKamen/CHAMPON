@@ -33,7 +33,7 @@ EditorBuildSettings:
     path: Assets/Scenes/ExScene.unity
     guid: 3884b7165f1b9c44bbcb4da5f97d329e
   - enabled: 0
-    path: Assets/Scenes/2_PropellerStage/TestPropeller-1.unity
+    path: 
     guid: bc9ac233533428a4a88f79fff55df942
   - enabled: 1
     path: Assets/Scenes/2_PropellerStage/Propeller-1.unity
@@ -41,4 +41,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Result.unity
     guid: cc75eb609fdbce04680d073c31a2348e
+  - enabled: 1
+    path: Assets/Scenes/2_PropellerStage/Propeller-2.unity
+    guid: 1055eecb5cd945046980a2ad349e1922
   m_configObjects: {}
