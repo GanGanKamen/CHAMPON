@@ -33,7 +33,7 @@ public class VariableGravity : MonoBehaviour
         if (other.CompareTag("Wall_U"))
         {
             //重力変化
-            Physics2D.gravity = new Vector2(0.0f, 25.0f);
+            Physics2D.gravity = new Vector2(0.0f, 9.81f);
 
             //速度再設定
             playerMove.speed[0] = 5.0f;
