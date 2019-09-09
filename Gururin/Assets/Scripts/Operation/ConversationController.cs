@@ -114,7 +114,6 @@ public class ConversationController : MonoBehaviour
             {
                 windowAnim.SetBool("Open", false);
                 windowAnim.SetBool("Close", true);
-                Debug.Log("aaa");
                 StopAll();
                 displaycount = 0;
             }

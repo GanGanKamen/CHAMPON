@@ -42,8 +42,8 @@ public class Gamecontroller : MonoBehaviour
         Arrow_RB.SetActive(false);
         Arrow_LR.SetActive(false);
         Arrow_LB.SetActive(false);*/
-        poslimit.x = 0.2f;
-        poslimit.y = 0.1f;
+        poslimit.x = 0.12f;
+        poslimit.y = 0.15f;
         jamp = 0.5f;
         initial = 10;
         area = 0.2f;
@@ -53,7 +53,7 @@ public class Gamecontroller : MonoBehaviour
         flickdistance = config.flickdistance;
         controllerposition = config.controllerposition;
 
-        flick = 0.01f + flickdistance;
+        flick = 0.1f + flickdistance;
     }
 
     // Update is called once per frame
@@ -71,7 +71,7 @@ public class Gamecontroller : MonoBehaviour
         sensitivity = config.sensitivity;
         flickdistance = config.flickdistance;
         controllerposition = config.controllerposition;
-        flick = 0.01f + flickdistance;
+        flick = 0.1f + flickdistance;
 
 
         if (flagManager.pressParm)
@@ -97,7 +97,17 @@ public class Gamecontroller : MonoBehaviour
                 }*/
                 /*else
                 {*/
-                    if (mousePosition1.x < poslimit.x)
+                if (controllerposition == 0)
+                {
+                    mousePosition1.y = mousePosition1.y - 0.1f;
+                }
+                else if (controllerposition == 2)
+                {
+                    mousePosition1.y = mousePosition1.y + 0.1f;
+                    controller.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180f);
+                }
+
+                if (mousePosition1.x < poslimit.x)
                     {
                         mousePosition1.x = poslimit.x;
                     }
@@ -114,16 +124,7 @@ public class Gamecontroller : MonoBehaviour
                     {
                         mousePosition1.y = 1 - poslimit.y;
                     }
-
-                    if(controllerposition == 0)
-                    {
-                        mousePosition1.y = mousePosition1.y - 0.1f;
-                    }
-                    else if(controllerposition == 2)
-                    {
-                        mousePosition1.y = mousePosition1.y + 0.1f;
-                        controller.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180f);
-                    }
+                    
                 //}
                 
 

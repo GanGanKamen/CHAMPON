@@ -264,14 +264,14 @@ public class PlayerMove : MonoBehaviour
                 return;
             }
             
-            if (gameController.flick_up)
+            if (gameController.flick_up && !gameController.flick_right && !gameController.flick_left)
             {
                 _rb2d.AddForce(Vector2.up * jumpSpeed);
                 _jumpSE.Play();
                 isJump = false;
                 gameController.isFlick = false;
             }
-            else if (gameController.flick_right)
+            else if (gameController.flick_up && gameController.flick_right)
             {
                 Debug.Log("right");
                 Vector2 jumpforce = new Vector2(0.3f / gameController.sensitivity, 1.0f);
@@ -280,7 +280,7 @@ public class PlayerMove : MonoBehaviour
                 isJump = false;
                 gameController.isFlick = false;
             }
-            else if (gameController.flick_left)
+            else if (gameController.flick_up && gameController.flick_left)
             {
                 Vector2 jumpforce = new Vector2(-0.3f / gameController.sensitivity, 1.0f);
                 _rb2d.AddForce(jumpforce * jumpSpeed);
