@@ -60,7 +60,7 @@ public class Configuration : MonoBehaviour
         configwindow.SetActive(false);
 
         sensitivity = 1.5f;
-        flickdistance = 0.1f;
+        flickdistance = 0.01f;
         controllerposition = 0;
     }
 

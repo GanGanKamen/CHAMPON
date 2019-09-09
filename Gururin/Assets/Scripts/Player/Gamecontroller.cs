@@ -10,7 +10,7 @@ public class Gamecontroller : MonoBehaviour
     public GameObject controllerObject;
     public GameObject controller/*, Arrow_RR, Arrow_RB, Arrow_LR, Arrow_LB*/; //コントローラーオブジェクト
     public GameObject camera; //カメラオブジェクト
-    public Vector2 mousePosition1, flicklimit, prepos, pos, vecA, vecB; //マウスの初期位置 フリック判定範囲制限 1フレーム前のマウス位置 現在のコントローラー位置 マウス位置の2ベクトル
+    public Vector2 mousePosition1, poslimit, prepos, pos, vecA, vecB; //マウスの初期位置 フリック判定範囲制限 1フレーム前のマウス位置 現在のコントローラー位置 マウス位置の2ベクトル
     public Vector2 initialpos1, initialpos2, initialpos3; //jampcountの初期化のための位置取得
     public float jampcount, jamp; //フレーム毎のカウント　ジャンプ出来るまでのカウント数
     public int initialcount, initial; //jampcount初期化のフレーム毎のカウント　初期化までのカウント数
@@ -42,8 +42,8 @@ public class Gamecontroller : MonoBehaviour
         Arrow_RB.SetActive(false);
         Arrow_LR.SetActive(false);
         Arrow_LB.SetActive(false);*/
-        flicklimit.x = 0.02f;
-        flicklimit.y = 0.01f;
+        poslimit.x = 0.2f;
+        poslimit.y = 0.1f;
         jamp = 0.5f;
         initial = 10;
         area = 0.2f;
@@ -53,7 +53,7 @@ public class Gamecontroller : MonoBehaviour
         flickdistance = config.flickdistance;
         controllerposition = config.controllerposition;
 
-        flick = 0.1f + flickdistance;
+        flick = 0.01f + flickdistance;
     }
 
     // Update is called once per frame
@@ -71,7 +71,7 @@ public class Gamecontroller : MonoBehaviour
         sensitivity = config.sensitivity;
         flickdistance = config.flickdistance;
         controllerposition = config.controllerposition;
-        flick = 0.1f + flickdistance;
+        flick = 0.01f + flickdistance;
 
 
         if (flagManager.pressParm)
@@ -90,29 +90,29 @@ public class Gamecontroller : MonoBehaviour
 
                 //コントローラーの位置取得
                 mousePosition1 = Camera.main.ScreenToViewportPoint(Input.mousePosition);
-                if (mousePosition1.x > 0.94f && mousePosition1.y > 0.91f ||
+                /*if (mousePosition1.x > 0.94f && mousePosition1.y > 0.91f ||
                     mousePosition1.x < 0.19f && mousePosition1.y < 0.09f)
                 {
                     controllerObject.SetActive(false);
-                }
-                else
-                {
-                    if (mousePosition1.x < flicklimit.x)
+                }*/
+                /*else
+                {*/
+                    if (mousePosition1.x < poslimit.x)
                     {
-                        mousePosition1.x = flicklimit.x;
+                        mousePosition1.x = poslimit.x;
                     }
-                    else if (mousePosition1.x > 1 - flicklimit.x)
+                    else if (mousePosition1.x > 1 - poslimit.x)
                     {
-                        mousePosition1.x = 1 - flicklimit.x;
+                        mousePosition1.x = 1 - poslimit.x;
                     }
 
-                    if (mousePosition1.y < flicklimit.y)
+                    if (mousePosition1.y < poslimit.y)
                     {
-                        mousePosition1.y = flicklimit.y;
+                        mousePosition1.y = poslimit.y;
                     }
-                    else if (mousePosition1.y > 1 - flicklimit.y)
+                    else if (mousePosition1.y > 1 - poslimit.y)
                     {
-                        mousePosition1.y = 1 - flicklimit.y;
+                        mousePosition1.y = 1 - poslimit.y;
                     }
 
                     if(controllerposition == 0)
@@ -124,7 +124,7 @@ public class Gamecontroller : MonoBehaviour
                         mousePosition1.y = mousePosition1.y + 0.1f;
                         controller.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180f);
                     }
-                }
+                //}
                 
 
                 controllerObject.transform.position = Camera.main.ViewportToScreenPoint(mousePosition1);

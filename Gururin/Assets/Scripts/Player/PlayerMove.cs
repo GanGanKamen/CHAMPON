@@ -138,6 +138,8 @@ public class PlayerMove : MonoBehaviour
             {
                 isRot[1] = true;
             }
+
+
         }
         /*
         if (attach == false && nowBossHand == null)

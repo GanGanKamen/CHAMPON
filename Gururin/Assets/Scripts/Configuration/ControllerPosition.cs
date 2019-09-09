@@ -32,7 +32,7 @@ public class ControllerPosition : MonoBehaviour
         if (posScrollbar.value < 0.25f)
         {
             posScrollbar.value = 0.0f;
-            steps = 0;
+            steps = 2;
         }
         else if(posScrollbar.value >= 0.25f && posScrollbar.value < 0.75f)
         {
@@ -42,7 +42,7 @@ public class ControllerPosition : MonoBehaviour
         else if(posScrollbar.value >= 0.75f)
         {
             posScrollbar.value = 1.0f;
-            steps = 2;
+            steps = 0;
         }
 
         config.controllerposition = steps;
