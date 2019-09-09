@@ -120,7 +120,7 @@ public class PlayerMove : MonoBehaviour
         //速度を毎回上書き
         if (setSpeed)
         {
-            speed[0] = gameController.angle * gameController.sensitivity / 5.0f;
+            speed[0] = gameController.angle * gameController.sensitivity * 0.2f;
             speed[1] = 0.0f;
         }
 
@@ -139,7 +139,10 @@ public class PlayerMove : MonoBehaviour
                 isRot[1] = true;
             }
 
-
+            if(_rb2d.velocity.x > -1 && _rb2d.velocity.x < 1)
+            {
+                speed[0] = gameController.angle * 0.4f;
+            }
         }
         /*
         if (attach == false && nowBossHand == null)
