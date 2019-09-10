@@ -116,7 +116,6 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Test();
         //速度を毎回上書き
         if (setSpeed)
         {
@@ -139,7 +138,8 @@ public class PlayerMove : MonoBehaviour
                 isRot[1] = true;
             }
 
-            if(_rb2d.velocity.x > -1 && _rb2d.velocity.x < 1)
+            //ぐるりんの速度が一定以下かつ張り付くラックと接触していないときに初速を与える
+            if(_rb2d.velocity.x > -1 && _rb2d.velocity.x < 1 && flagManager.isStick == false)
             {
                 speed[0] = gameController.angle * 0.4f;
             }
