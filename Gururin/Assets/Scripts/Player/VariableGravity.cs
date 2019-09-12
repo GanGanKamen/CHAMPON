@@ -34,6 +34,7 @@ public class VariableGravity : MonoBehaviour
         {
             //重力変化
             Physics2D.gravity = new Vector2(0.0f, 9.81f);
+            flagManager.isStick = true;
 
             //速度再設定
             playerMove.speed[0] = 5.0f;
@@ -51,6 +52,7 @@ public class VariableGravity : MonoBehaviour
         if (other.CompareTag("Wall_R"))
         {
             Physics2D.gravity = new Vector2(9.81f, 0.0f);
+            flagManager.isStick = true;
 
             //速度の更新を止める
             playerMove.setSpeed = false;
@@ -68,6 +70,7 @@ public class VariableGravity : MonoBehaviour
         if (other.CompareTag("Wall_L"))
         {
             Physics2D.gravity = new Vector2(-9.81f, 0.0f);
+            flagManager.isStick = true;
 
             playerMove.setSpeed = false;
             playerMove.speed[0] = 0.0f;
@@ -104,6 +107,7 @@ public class VariableGravity : MonoBehaviour
         if (flagManager.returnGravity)
         {
             Physics2D.gravity = new Vector2(0.0f, -9.81f);
+            flagManager.isStick = false;
         }
 
         if(gameController.AxB.z < 0 && gameController.isPress)
