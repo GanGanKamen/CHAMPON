@@ -71,4 +71,10 @@ public class ButtonScript : MonoBehaviour
             //Destroy(configCanvas);
         }*/
     }
+
+    public void TitleOnclick(string name)
+    {
+        SoundManager.PlayS(gameObject);
+        Fader.FadeIn(2f, name);
+    }
 }

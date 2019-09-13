@@ -80,6 +80,7 @@ public class Configuration : MonoBehaviour
         {
             titleback = null;
         }*/
+        Debug.Log(NeoConfig.isSoundFade);
         if (flagManager == null)
         {
             flagManager = GameObject.Find("FlagManager").GetComponent<FlagManager>();
