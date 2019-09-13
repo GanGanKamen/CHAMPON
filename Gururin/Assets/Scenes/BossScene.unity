@@ -1578,7 +1578,12 @@ PrefabInstance:
     - target: {fileID: 6143972447586887475, guid: 8c935c80cbf34c4409e45532c943e4c1,
         type: 3}
       propertyPath: m_ScreenMatchMode
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9166530341389479214, guid: 8c935c80cbf34c4409e45532c943e4c1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 150
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c935c80cbf34c4409e45532c943e4c1, type: 3}
@@ -4197,6 +4202,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ScreenMatchMode
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4935201042659416038, guid: e350387b3131e704ebd8992311227282,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4935201042659416038, guid: e350387b3131e704ebd8992311227282,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e350387b3131e704ebd8992311227282, type: 3}
@@ -10034,6 +10049,21 @@ PrefabInstance:
     - target: {fileID: 805720519, guid: 8669c6dc93cbd2843a5bd46de7af6463, type: 3}
       propertyPath: messages.Array.data[3]
       value: "\u90A3\u662F\u2026\u98C4\u98C4\u885B\u58EB\uFF01\u3000\u4F30\u8A08\u90A3\u500B\u6C23\u7403\u662F\u5F31\u9EDE\u3002\u52A0\u6CB9\uFF0C\u6253\u5230\u5B83\uFF01"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1946987891184199807, guid: 8669c6dc93cbd2843a5bd46de7af6463,
+        type: 3}
+      propertyPath: m_ScreenMatchMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1946987891493244544, guid: 8669c6dc93cbd2843a5bd46de7af6463,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1600
+      objectReference: {fileID: 0}
+    - target: {fileID: 1946987891493244544, guid: 8669c6dc93cbd2843a5bd46de7af6463,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1600
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8669c6dc93cbd2843a5bd46de7af6463, type: 3}
