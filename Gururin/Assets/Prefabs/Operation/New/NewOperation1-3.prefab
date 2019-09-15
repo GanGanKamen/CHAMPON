@@ -75,7 +75,6 @@ MonoBehaviour:
   textFeed: 00000000
   config: {fileID: 0}
   gameController: {fileID: 0}
-  textWaitTime: 0.03
 --- !u!114 &6895769888602625318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -936,7 +935,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messages:
   - "\u3080\u3063\uFF01\u524D\u65B9\u306B\u307E\u305F\u58C1\u3060\uFF01\u3000\u3053\u308C\u3058\u3083\u3042\u901A\u308C\u306A\u3044\u306A\u3041..."
-  - "Hum! There is another wall!\u3000Oh My God."
+  - "Oh, no!\u3000There is another wall!"
   - "\u554A\uFF01\u524D\u65B9\u53C8\u662F\u4E00\u5835\u5899\uFF01\u3000\u6211\u7684\u5929\u2026"
   - "\u554A\uFF01\u524D\u65B9\u53C8\u662F\u4E00\u5835\u58BB\uFF01\u3000\u6211\u7684\u5929\u2026"
   hakaseFace: {fileID: 21300000, guid: d6120997ab1e86840a6f16f78f261e19, type: 3}
