@@ -4,8 +4,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GearGimmick : MonoBehaviour {
+    public enum Categoly
+    {
+        normal,
+        propeller,
+        watch
+    }
 
-    public bool isPropeller;
+    public Categoly categoly;
 
     public GameObject gear; //カウンターとの接触判定を取る歯車
     public GameObject gearPos;  //ぐるりんの位置
@@ -75,7 +81,7 @@ public class GearGimmick : MonoBehaviour {
             playerMove.nowGearGimiick = this;
             playerHit = true;
 
-            if (isPropeller) click = true;
+            if (categoly == Categoly.propeller) click = true;
             rotParm = false;
 
             //速度の上書きを止める
@@ -121,96 +127,18 @@ public class GearGimmick : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if(isPropeller == false)
+        switch (categoly) //Update()に全部ぶち込んちゃうと見づらいので、categolyごとの処理を関数に格納した
         {
-            if (gameController.AxB.z < 0 && gameController.isPress && playerHit && moveGear[0])
-            {
-                //ぐるりんの回転を許可
-                rotParm = true;
-                //ぐるりんの表情を変更
-                flagManager.standFirm_Face = true;
-                gear.transform.Rotate(new Vector3(0.0f, 0.0f, rotSpeed));
-                _gururinRb2d.rotation += -rotSpeed;
-                if (stageGear != null)//ボスステージの歯車を回す
-                {
-                    if (stageGear.direction == 1)
-                    {
-                        stageGear.GearTurn(true, true);
-                    }
-                    else
-                    {
-                        stageGear.GearTurn(false, true);
-                    }
-                }
+            case Categoly.normal:
+                NormalAction();
+                break;
+            case Categoly.propeller:
+                PropellerAction();
+                break;
+            case Categoly.watch:
+                WatchAction();
+                break;
 
-                if (watchGear != null)//時計歯車を回す
-                {
-                    watchGear.GearTurn(true);
-                }
-
-                if (playerMove.finishMode)//マスターギアを取る
-                {
-                    bossEvent.finish.value += Time.deltaTime;
-                }
-            }
-            else if (gameController.AxB.z > 0 && gameController.isPress && playerHit && moveGear[1])
-            {
-                //ぐるりんの回転を許可
-                rotParm = true;
-                flagManager.standFirm_Face = true;
-                gear.transform.Rotate(new Vector3(0.0f, 0.0f, -rotSpeed));
-                _gururinRb2d.rotation += rotSpeed;
-                if (stageGear != null)  //ボスステージの歯車を回す
-                {
-                    if (stageGear.direction == -1)
-                    {
-                        stageGear.GearTurn(true, true);
-                    }
-                    else
-                    {
-                        stageGear.GearTurn(false, true);
-                    }
-                }
-                if (watchGear != null) //時計歯車を回す
-                {
-                    watchGear.GearTurn(false);
-                }
-                if (playerMove.finishMode) //マスターギアを取る
-                {
-                    bossEvent.finish.value += Time.deltaTime;
-                }
-            }
-            //回転操作をしていないときは普通の顔にする
-            else if (gameController.isPress == false)
-            {
-                flagManager.standFirm_Face = false;
-            }
-        }
-        else
-        {
-            if (gameController.AxB.z < 0 && gameController.isPress && playerHit && moveGear[0] && rotFlag)
-            {
-                //ぐるりんの回転を許可
-                rotParm = true;
-                click = false;
-                flagManager.standFirm_Face = true;
-                gear.transform.Rotate(new Vector3(0.0f, 0.0f, rotSpeed));
-                _gururinRb2d.rotation += -rotSpeed;
-            }
-            //右回転
-            else if (gameController.AxB.z > 0 && gameController.isPress && playerHit && moveGear[0] && !rotFlag)
-            {
-                //ぐるりんの回転を許可
-                rotParm = true;
-                click = false;
-                flagManager.standFirm_Face = true;
-                gear.transform.Rotate(new Vector3(0.0f, 0.0f, -rotSpeed));
-                _gururinRb2d.rotation += rotSpeed;
-            }
-            else if (gameController.isPress == false)
-            {
-                flagManager.standFirm_Face = false;
-            }
         }
     }
 
@@ -226,7 +154,7 @@ public class GearGimmick : MonoBehaviour {
         yield break;
     }
 
-    public void Separation()
+    public void Separation() //ぐるりんが離れる時に他のスクリプトから呼び出す
     {
         StartCoroutine(Col());
         if (bossHand != null) bossHand.Separate();
@@ -239,5 +167,141 @@ public class GearGimmick : MonoBehaviour {
         playerMove.nowBossHand = null;
         playerMove.nowGearGimiick = null;
         if (bossHand != null) bossHand.Separate();
+    }
+
+    private void PropellerAction()//プロペラの場合
+    {
+        if (gameController.AxB.z < 0 && gameController.isPress && playerHit && moveGear[0] && rotFlag)
+        {
+            //ぐるりんの回転を許可
+            rotParm = true;
+            click = false;
+            flagManager.standFirm_Face = true;
+            gear.transform.Rotate(new Vector3(0.0f, 0.0f, rotSpeed));
+            _gururinRb2d.rotation += -rotSpeed;
+        }
+        //右回転
+        else if (gameController.AxB.z > 0 && gameController.isPress && playerHit && moveGear[0] && !rotFlag)
+        {
+            //ぐるりんの回転を許可
+            rotParm = true;
+            click = false;
+            flagManager.standFirm_Face = true;
+            gear.transform.Rotate(new Vector3(0.0f, 0.0f, -rotSpeed));
+            _gururinRb2d.rotation += rotSpeed;
+        }
+        else if (gameController.isPress == false)
+        {
+            flagManager.standFirm_Face = false;
+        }
+
+    }
+
+    private void NormalAction() //普通の歯車の場合
+    {
+        if (gameController.AxB.z < 0 && gameController.isPress && playerHit && moveGear[0])
+        {
+            //ぐるりんの回転を許可
+            rotParm = true;
+            //ぐるりんの表情を変更
+            flagManager.standFirm_Face = true;
+            gear.transform.Rotate(new Vector3(0.0f, 0.0f, rotSpeed));
+            _gururinRb2d.rotation += -rotSpeed;
+            /*
+            if (stageGear != null)//ボスステージの歯車を回す
+            {
+                if (stageGear.direction == 1)
+                {
+                    stageGear.GearTurn(true, true);
+                }
+                else
+                {
+                    stageGear.GearTurn(false, true);
+                }
+            }
+
+            if (watchGear != null)//時計歯車を回す
+            {
+                watchGear.GearTurn(true);
+            }
+            */
+            if (playerMove.finishMode)//マスターギアを取る
+            {
+                bossEvent.finish.value += Time.deltaTime;
+            }
+        }
+        else if (gameController.AxB.z > 0 && gameController.isPress && playerHit && moveGear[1])
+        {
+            //ぐるりんの回転を許可
+            rotParm = true;
+            flagManager.standFirm_Face = true;
+            gear.transform.Rotate(new Vector3(0.0f, 0.0f, -rotSpeed));
+            _gururinRb2d.rotation += rotSpeed;
+            if (stageGear != null)  //ボスステージの歯車を回す
+            {
+                if (stageGear.direction == -1)
+                {
+                    stageGear.GearTurn(true, true);
+                }
+                else
+                {
+                    stageGear.GearTurn(false, true);
+                }
+            }
+            if (watchGear != null) //時計歯車を回す
+            {
+                watchGear.GearTurn(false);
+            }
+            if (playerMove.finishMode) //マスターギアを取る
+            {
+                bossEvent.finish.value += Time.deltaTime;
+            }
+        }
+        //回転操作をしていないときは普通の顔にする
+        else if (gameController.isPress == false)
+        {
+            flagManager.standFirm_Face = false;
+        }
+    }
+
+    private void WatchAction() //時計の歯車の場合
+    {
+        if (gameController.AxB.z < 0 && gameController.isPress && playerHit && moveGear[0])
+        {
+            //ぐるりんの回転を許可
+            rotParm = true;
+            //ぐるりんの表情を変更
+            flagManager.standFirm_Face = true;
+            gear.transform.Rotate(new Vector3(0.0f, 0.0f, rotSpeed));
+            _gururinRb2d.rotation += -rotSpeed;
+
+            if (watchGear != null)//時計歯車を回す
+            {
+                watchGear.GearTurn(true);
+            }
+            
+            if (playerMove.finishMode)//マスターギアを取る
+            {
+                bossEvent.finish.value += Time.deltaTime;
+            }
+        }
+        else if (gameController.AxB.z > 0 && gameController.isPress && playerHit && moveGear[1])
+        {
+            //ぐるりんの回転を許可
+            rotParm = true;
+            flagManager.standFirm_Face = true;
+            gear.transform.Rotate(new Vector3(0.0f, 0.0f, -rotSpeed));
+            _gururinRb2d.rotation += rotSpeed;
+
+            if (watchGear != null) //時計歯車を回す
+            {
+                watchGear.GearTurn(false);
+            }
+        }
+        //回転操作をしていないときは普通の顔にする
+        else if (gameController.isPress == false)
+        {
+            flagManager.standFirm_Face = false;
+        }
     }
 }
