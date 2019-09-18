@@ -15,6 +15,7 @@ public class NeoConfig : MonoBehaviour
     public Slider textSpeedSlider;
     static public bool isToutchToJump;
     public Slider touchSlider;
+    
     // Start is called before the first frame update
     void Start()
     {

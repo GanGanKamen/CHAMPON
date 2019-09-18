@@ -2063,7 +2063,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -2089,7 +2089,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6999845448663834756}
   m_HandleRect: {fileID: 6999845448663834759}
   m_Direction: 2
-  m_Value: 0.9999999
+  m_Value: 1
   m_Size: 0.32038832
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -2153,7 +2153,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -350}
+  m_AnchoredPosition: {x: 0, y: -350.00006}
   m_SizeDelta: {x: 0, y: 700}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4499787813128034788
@@ -3236,8 +3236,8 @@ GameObject:
   - component: {fileID: 5291562138565070457}
   - component: {fileID: 5291562138565070456}
   - component: {fileID: 5291562138565070459}
-  - component: {fileID: 5291562138565070458}
   - component: {fileID: 5291562138565070461}
+  - component: {fileID: 2164644688790133526}
   m_Layer: 5
   m_Name: TitleBackButton
   m_TagString: Untagged
@@ -3343,7 +3343,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5291562138565070458}
+      - m_Target: {fileID: 2164644688790133526}
         m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
@@ -3356,20 +3356,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &5291562138565070458
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5291562138565070463}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7607348ebb6b0048945fccac3294f8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneChange: {fileID: 5291562138608307223}
-  isBackToTitle: 1
 --- !u!114 &5291562138565070461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3391,6 +3377,20 @@ MonoBehaviour:
   _pitch: 0
   _androidUseLowLatencyVoicePool: 0
   need_to_player_update_all: 1
+--- !u!114 &2164644688790133526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5291562138565070463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ce1075a8f0831a488b1da45b0f83bee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  configuration: {fileID: 6412078159651177691}
+  scrollbar: {fileID: 4499787812967114364}
 --- !u!1 &5291562138592826013
 GameObject:
   m_ObjectHideFlags: 0
@@ -4289,7 +4289,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89312944a26eebb4498cf537aab14e87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  steps: 0
+  config: {fileID: 6412078159651177691}
+  posScrollbar: {fileID: 6412078159591077310}
+  steps: 2
 --- !u!1 &6412078159651177694
 GameObject:
   m_ObjectHideFlags: 0
@@ -4413,7 +4415,7 @@ MonoBehaviour:
   titleback: {fileID: 0}
   sensitivity: 0
   flickdistance: 0
-  controllerposition: 0
+  controllerposition: 2
   configbutton: 0
   flagManager: {fileID: 0}
 --- !u!114 &7389899228535807652
@@ -4545,6 +4547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0677353104385a04eb3d10fda12dbe4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  config: {fileID: 6412078159651177691}
 --- !u!1 &6412078160864807516
 GameObject:
   m_ObjectHideFlags: 0

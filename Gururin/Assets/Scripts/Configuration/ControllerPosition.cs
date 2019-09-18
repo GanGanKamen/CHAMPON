@@ -5,15 +5,14 @@ using UnityEngine.UI;
 
 public class ControllerPosition : MonoBehaviour
 {
-    private Configuration config;
-    Scrollbar posScrollbar;
+    [SerializeField]private Configuration config;
+    [SerializeField]private Scrollbar posScrollbar;
     public int steps;
 
     // Start is called before the first frame update
     void Start()
     {
-        config = GameObject.Find("ConfigCanvas").GetComponent<Configuration>();
-        posScrollbar = GetComponent<Scrollbar>();
+        //config = GameObject.Find("ConfigCanvas").GetComponent<Configuration>();
 
         //スクロールバーの現在値の設定
         posScrollbar.value = 0.5f;

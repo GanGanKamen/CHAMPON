@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 public class Sensitivity : MonoBehaviour
 {
-    private Configuration config;
+    [SerializeField]private Configuration config;
     Slider senSlider;
 
     // Start is called before the first frame update
     void Start()
     {
-        config = GameObject.Find("ConfigCanvas").GetComponent<Configuration>();
+        //config = GameObject.Find("ConfigCanvas").GetComponent<Configuration>();
         senSlider = GetComponent<Slider>();
         
         //スライダーの最大値の設定
