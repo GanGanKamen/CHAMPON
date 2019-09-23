@@ -6,7 +6,7 @@ public class WatchGear : MonoBehaviour
 {
     [SerializeField] private GameObject gear;
     public float rotSpeed;
-    public WatchGimick watch;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,12 +18,5 @@ public class WatchGear : MonoBehaviour
     {
         
     }
-    public void GearTurn(bool direction)
-    {
-        if (direction == true) watch.PointerRotate(true);
-        else
-        {
-            watch.PointerRotate(false);
-        }
-    }
+
 }

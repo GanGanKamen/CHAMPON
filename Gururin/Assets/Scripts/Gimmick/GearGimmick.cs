@@ -32,15 +32,17 @@ public class GearGimmick : MonoBehaviour {
     private Gamecontroller gameController;
     private FlagManager flagManager;
 
-    private GanGanKamen.BossHand bossHand;
-    private GanGanKamen.BossStageGear stageGear;
-    private WatchGear watchGear;
+    private GanGanKamen.BossHand bossHand;  //ボスの腕
+    private GanGanKamen.BossStageGear stageGear; //ボスステージの歯車
 
     [SerializeField] BossEvent bossEvent;
 
     private PolygonCollider2D gearCol;
 
-    [SerializeField] RotationCounter rotationCounter;
+    [SerializeField] RotationCounter rotationCounter; //プロペラのスライダー
+
+    public WatchGimick watch; //時計ギミック
+
     // Start is called before the first frame update
     void Start() {
         source = GetComponent<CriAtomSource>();
@@ -60,7 +62,6 @@ public class GearGimmick : MonoBehaviour {
 
         if (GetComponent<GanGanKamen.BossHand>() != null) bossHand = GetComponent<GanGanKamen.BossHand>();
         if (GetComponent<GanGanKamen.BossStageGear>() != null) stageGear = GetComponent<GanGanKamen.BossStageGear>();
-        if (GetComponent<WatchGear>() != null) watchGear = GetComponent<WatchGear>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -207,24 +208,7 @@ public class GearGimmick : MonoBehaviour {
             flagManager.standFirm_Face = true;
             gear.transform.Rotate(new Vector3(0.0f, 0.0f, rotSpeed));
             _gururinRb2d.rotation += -rotSpeed;
-            /*
-            if (stageGear != null)//ボスステージの歯車を回す
-            {
-                if (stageGear.direction == 1)
-                {
-                    stageGear.GearTurn(true, true);
-                }
-                else
-                {
-                    stageGear.GearTurn(false, true);
-                }
-            }
 
-            if (watchGear != null)//時計歯車を回す
-            {
-                watchGear.GearTurn(true);
-            }
-            */
             if (playerMove.finishMode)//マスターギアを取る
             {
                 bossEvent.finish.value += Time.deltaTime;
@@ -247,10 +231,6 @@ public class GearGimmick : MonoBehaviour {
                 {
                     stageGear.GearTurn(false, true);
                 }
-            }
-            if (watchGear != null) //時計歯車を回す
-            {
-                watchGear.GearTurn(false);
             }
             if (playerMove.finishMode) //マスターギアを取る
             {
@@ -275,11 +255,8 @@ public class GearGimmick : MonoBehaviour {
             gear.transform.Rotate(new Vector3(0.0f, 0.0f, rotSpeed));
             _gururinRb2d.rotation += -rotSpeed;
 
-            if (watchGear != null)//時計歯車を回す
-            {
-                watchGear.GearTurn(true);
-            }
-            
+            WatchGearTurn(true);
+
             if (playerMove.finishMode)//マスターギアを取る
             {
                 bossEvent.finish.value += Time.deltaTime;
@@ -293,15 +270,21 @@ public class GearGimmick : MonoBehaviour {
             gear.transform.Rotate(new Vector3(0.0f, 0.0f, -rotSpeed));
             _gururinRb2d.rotation += rotSpeed;
 
-            if (watchGear != null) //時計歯車を回す
-            {
-                watchGear.GearTurn(false);
-            }
+            WatchGearTurn(false);
         }
         //回転操作をしていないときは普通の顔にする
         else if (gameController.isPress == false)
         {
             flagManager.standFirm_Face = false;
+        }
+    }
+
+    private void WatchGearTurn(bool direction)
+    {
+        if (direction == true) watch.PointerRotate(true);
+        else
+        {
+            watch.PointerRotate(false);
         }
     }
 }
