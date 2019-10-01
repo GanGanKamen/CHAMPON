@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1918968367539207772}
   - component: {fileID: 1918968367539207775}
   m_Layer: 0
-  m_Name: GururinPos1
+  m_Name: GururinFixedPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 1918968368447577222}
   - component: {fileID: 1918968368447577337}
   m_Layer: 0
-  m_Name: GururinPos2
+  m_Name: GururinFixedPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -357,7 +357,7 @@ GameObject:
   - component: {fileID: 1918968368611542655}
   - component: {fileID: 1918968368611542654}
   m_Layer: 0
-  m_Name: GururinPos3
+  m_Name: GururinFixedPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -515,7 +515,7 @@ GameObject:
   - component: {fileID: 289685575699042531}
   m_Layer: 0
   m_Name: GameObject (1)
-  m_TagString: Untagged
+  m_TagString: TransformFixed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -599,7 +599,7 @@ GameObject:
   - component: {fileID: 2321913832334217033}
   m_Layer: 0
   m_Name: GameObject (3)
-  m_TagString: Untagged
+  m_TagString: TransformFixed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -683,7 +683,7 @@ GameObject:
   - component: {fileID: 189552696047932267}
   m_Layer: 0
   m_Name: GameObject (2)
-  m_TagString: Untagged
+  m_TagString: TransformFixed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

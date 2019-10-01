@@ -5,7 +5,6 @@ using UnityEngine;
 public class RackCollider : MonoBehaviour
 {
 
-    public GameObject traFixed;
     private FlagManager flagManager;
 
     // Start is called before the first frame update
@@ -17,7 +16,15 @@ public class RackCollider : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Player")){
-            traFixed.SetActive(false);
+            //traFixed.SetActive(false);
+            //TransformFixedのタグを取得、タグを持つオブジェクトを非表示にする
+            GameObject[] traFixeds = GameObject.FindGameObjectsWithTag("TransformFixed");
+
+            foreach (GameObject traFixed in traFixeds)
+            {
+                traFixed.GetComponent<CapsuleCollider2D>().enabled = false;
+            }
+            Debug.Log("false");
         }
     }
 
@@ -32,7 +39,14 @@ public class RackCollider : MonoBehaviour
 
     void Regene()
     {
-        traFixed.SetActive(true);
+        //traFixed.SetActive(true);
+        GameObject[] traFixeds = GameObject.FindGameObjectsWithTag("TransformFixed");
+
+        foreach (GameObject traFixed in traFixeds)
+        {
+            traFixed.GetComponent<CapsuleCollider2D>().enabled = true;
+        }
+        Debug.Log("true");
     }
 
     // Update is called once per frame
