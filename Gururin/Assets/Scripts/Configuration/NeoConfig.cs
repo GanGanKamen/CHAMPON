@@ -14,7 +14,7 @@ public class NeoConfig : MonoBehaviour
     static public float textWaitTime;
     public Slider textSpeedSlider;
     static public bool isToutchToJump;
-    public Slider touchSlider;
+    public Scrollbar touchScrollbar;
     
     // Start is called before the first frame update
     void Start()
@@ -70,7 +70,7 @@ public class NeoConfig : MonoBehaviour
 
     private void TouchOrFlick()
     {
-        if(touchSlider.value == 1)
+        if(touchScrollbar.value > 0.5)
         {
             isToutchToJump = false;
         }

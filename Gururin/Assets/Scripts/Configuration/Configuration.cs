@@ -13,7 +13,7 @@ public class Configuration : MonoBehaviour
     public GameObject titleback;
 
     public float sensitivity, flickdistance;
-    public int controllerposition;
+    public int controllerfixed, controllerposition;
     public bool configbutton = false;
 
     private CriAtomSource _open, _close;
@@ -61,12 +61,26 @@ public class Configuration : MonoBehaviour
 
         sensitivity = 1.5f;
         flickdistance = 0.01f;
+        controllerfixed = 0;
         controllerposition = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
+        /*
+        if (SceneManager.GetActiveScene().name != "Title" && titleback == null)
+        {
+            titleback = GameObject.Find("TitleBackButton");
+            if (configbuttonOpen.activeSelf == false)
+            {
+                titleback.SetActive(false);
+            }
+        }
+        else if(SceneManager.GetActiveScene().name == "Title")
+        {
+            titleback = null;
+        }*/
         if (flagManager == null)
         {
             flagManager = GameObject.Find("FlagManager").GetComponent<FlagManager>();
