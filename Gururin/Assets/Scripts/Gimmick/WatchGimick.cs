@@ -9,11 +9,12 @@ public class WatchGimick : MonoBehaviour
     [SerializeField] [Range(0, 200)] private float speed;
     [Range(1, 12)] public int hours;
     [Range(0, 59)] public int minminutes;
+    public bool canRotate;
 
-    
     // Start is called before the first frame update
     void Start()
-    {       
+    {
+        canRotate = true;
         if (minminutes >= 0 && minminutes < 15)
         {
             pointer1.transform.localEulerAngles = new Vector3(0, 0, 90 - minminutes * 6);
@@ -29,7 +30,7 @@ public class WatchGimick : MonoBehaviour
 
         if (hours >= 1 && hours < 3)
         {
-            pointer2.transform.localEulerAngles = new Vector3(0, 0, 90 - hours * 30);
+            pointer2.transform.localEulerAngles = new Vector3(0, 0, 90 - hours * 30 - minminutes * 0.5f);
         }
         else if (hours == 3)
         {
@@ -37,24 +38,21 @@ public class WatchGimick : MonoBehaviour
         }
         else
         {
-            pointer2.transform.localEulerAngles = new Vector3(0, 0, 360 - (hours / 3f - 1f) * 90);
+            pointer2.transform.localEulerAngles = new Vector3(0, 0, 360 - (hours / 3f - 1f) * 90 - minminutes * 0.5f);
         }
-
     }
 
     // Update is called once per frame
     void Update()
     {
+        TestKeyCtrl();
         MinminutesChange();
-        //Debug.Log(new Vector2(hours,minminutes));
-        //Debug.Log(Pointer1Num());
-        //Debug.Log(pointer1.transform.localEulerAngles.z);
-        
     }
 
 
     public void PointerRotate(bool PlusOrMinus)
     {
+        if (canRotate == false) return;
         if (PlusOrMinus == true)
         {
             pointer1.transform.Rotate(new Vector3(0, 0, 1), -speed * Time.deltaTime);
@@ -111,14 +109,14 @@ public class WatchGimick : MonoBehaviour
 
     private void MinminutesChange()
     {
-        if(minminutes != Pointer1Num())
+        if (minminutes != Pointer1Num())
         {
-            if(direction == 1 && Pointer1Num() < minminutes)
+            if (direction == 1 && Pointer1Num() < minminutes)
             {
                 minminutes = 0;
                 HourChange(true);
             }
-            else if(direction == -1 && Pointer1Num() > minminutes)
+            else if (direction == -1 && Pointer1Num() > minminutes)
             {
                 minminutes = 59;
                 HourChange(false);

@@ -8,9 +8,11 @@ using UnityEngine;
 
 public class PassFloor : MonoBehaviour
 {
-
+    public bool invalid;
     public GameObject[] passFloor;
     private bool setPass = false;
+
+    [SerializeField] private BoxCollider2D[] boxColliders;
 
     private void OnTriggerStay2D(Collider2D other)
     {
@@ -40,6 +42,24 @@ public class PassFloor : MonoBehaviour
         {
             passFloor[0].GetComponent<BoxCollider2D>().enabled = true;
             passFloor[1].SetActive(true);
+        }
+    }
+
+    private void Invalid()
+    {
+        if(invalid == true)
+        {
+            for(int i= 0; i < boxColliders.Length; i++)
+            {
+                boxColliders[i].enabled = false;
+            }
+        }
+        else
+        {
+            for (int i = 0; i < boxColliders.Length; i++)
+            {
+                boxColliders[i].enabled = true;
+            }
         }
     }
 }
