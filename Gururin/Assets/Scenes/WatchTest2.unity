@@ -4075,6 +4075,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Watch
       objectReference: {fileID: 0}
+    - target: {fileID: 1616844255354988674, guid: 7431391d494f86342ab3d119e1aa80fa,
+        type: 3}
+      propertyPath: hours
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1616844255354988674, guid: 7431391d494f86342ab3d119e1aa80fa,
+        type: 3}
+      propertyPath: minminutes
+      value: 45
+      objectReference: {fileID: 0}
     - target: {fileID: 1616844255354988675, guid: 7431391d494f86342ab3d119e1aa80fa,
         type: 3}
       propertyPath: m_LocalPosition.x

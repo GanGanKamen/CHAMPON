@@ -1,5 +1,62 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1725387937451936110
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7905789101317412608}
+  - component: {fileID: 1494088806996488282}
+  m_Layer: 0
+  m_Name: 'JumpCollider '
+  m_TagString: Jump
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7905789101317412608
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1725387937451936110}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5557191781402354341}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1494088806996488282
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1725387937451936110}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 1.5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 0.2}
+  m_EdgeRadius: 0
 --- !u!1 &5557191779940985911
 GameObject:
   m_ObjectHideFlags: 0
@@ -671,6 +728,7 @@ Transform:
   - {fileID: 5557191781137394215}
   - {fileID: 5557191780497896429}
   - {fileID: 5557191781137584088}
+  - {fileID: 7905789101317412608}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -715,23 +773,23 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 5557191780497896431}
     m_ColliderPaths:
-    - - X: 7700000
+    - - X: 7700001
         Y: 13350000
-      - X: 5299999
+      - X: 5300001
         Y: 13350000
-      - X: 5299999
+      - X: 5300001
         Y: 650000
-      - X: 7700000
+      - X: 7700001
         Y: 650000
   - m_Collider: {fileID: 5557191781137394209}
     m_ColliderPaths:
-    - - X: -5299999
+    - - X: -5300001
         Y: 13350000
-      - X: -7700000
+      - X: -7700001
         Y: 13350000
-      - X: -7700000
+      - X: -7700001
         Y: 650000
-      - X: -5299999
+      - X: -5300001
         Y: 650000
   - m_Collider: {fileID: 5557191780778351638}
     m_ColliderPaths:
@@ -745,13 +803,13 @@ CompositeCollider2D:
         Y: -15200000
   - m_Collider: {fileID: 5557191779940985910}
     m_ColliderPaths:
-    - - X: 7700000
+    - - X: 7700001
         Y: -650000
-      - X: 5299999
+      - X: 5300001
         Y: -650000
-      - X: 5299999
+      - X: 5300001
         Y: -13350000
-      - X: 7700000
+      - X: 7700001
         Y: -13350000
   - m_Collider: {fileID: 5557191780757130353}
     m_ColliderPaths:
@@ -776,27 +834,27 @@ CompositeCollider2D:
   m_CompositePaths:
     m_Paths:
     - - {x: 0.635, y: -1.335}
-      - {x: 0.77, y: -1.335}
-      - {x: 0.77, y: -0.065}
+      - {x: 0.7700001, y: -1.335}
+      - {x: 0.7700001, y: -0.065}
       - {x: 0.635, y: -0.065}
       - {x: 0.635, y: 0.065}
-      - {x: 0.77, y: 0.065}
-      - {x: 0.77, y: 1.335}
+      - {x: 0.7700001, y: 0.065}
+      - {x: 0.7700001, y: 1.335}
       - {x: 0.635, y: 1.335}
       - {x: 0.635, y: 1.52}
       - {x: -0.635, y: 1.52}
       - {x: -0.635, y: 1.335}
-      - {x: -0.77, y: 1.335}
-      - {x: -0.77, y: 0.065}
+      - {x: -0.7700001, y: 1.335}
+      - {x: -0.7700001, y: 0.065}
       - {x: -0.635, y: 0.065}
       - {x: -0.635, y: -0.120000005}
-      - {x: 0.5299999, y: -0.120000005}
-      - {x: 0.5299999, y: -1.28}
+      - {x: 0.5300001, y: -0.120000005}
+      - {x: 0.5300001, y: -1.28}
       - {x: -0.635, y: -1.28}
       - {x: -0.635, y: -1.52}
       - {x: 0.635, y: -1.52}
-    - - {x: -0.5299999, y: 0.120000005}
-      - {x: -0.5299999, y: 1.28}
-      - {x: 0.5299999, y: 1.28}
-      - {x: 0.5299999, y: 0.120000005}
+    - - {x: -0.5300001, y: 0.120000005}
+      - {x: -0.5300001, y: 1.28}
+      - {x: 0.5300001, y: 1.28}
+      - {x: 0.5300001, y: 0.120000005}
   m_VertexDistance: 0.0005

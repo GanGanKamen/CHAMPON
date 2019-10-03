@@ -101,7 +101,11 @@ public class FallFloor : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Died") && status == Status.Fall)
         {
-            Destroy(gameObject);
+            for(int i = 0; i < targets.Length; i++)
+            {
+                targets[i].SetActive(false);
+            }
+            Destroy(this);
         }
     }
 }

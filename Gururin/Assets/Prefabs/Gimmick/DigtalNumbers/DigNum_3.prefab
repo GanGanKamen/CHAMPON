@@ -1,5 +1,62 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3948034495127194806
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7868597414306127223}
+  - component: {fileID: 5154577133205579500}
+  m_Layer: 0
+  m_Name: 'JumpCollider '
+  m_TagString: Jump
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7868597414306127223
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3948034495127194806}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7936002881675973284}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &5154577133205579500
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3948034495127194806}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 1.5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 0.2}
+  m_EdgeRadius: 0
 --- !u!1 &7936002881026708052
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,6 +409,7 @@ Transform:
   - {fileID: 7936002881026708041}
   - {fileID: 7936002881360292019}
   - {fileID: 7936002881356321940}
+  - {fileID: 7868597414306127223}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -396,34 +454,34 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 7936002881360292029}
     m_ColliderPaths:
-    - - X: 7700000
-        Y: 13350000
-      - X: 5299999
-        Y: 13350000
-      - X: 5299999
-        Y: 650000
-      - X: 7700000
-        Y: 650000
+    - - X: 7700001
+        Y: 13349998
+      - X: 5300001
+        Y: 13349998
+      - X: 5300001
+        Y: 649998
+      - X: 7700001
+        Y: 649998
   - m_Collider: {fileID: 7936002881026708043}
     m_ColliderPaths:
     - - X: 6350000
-        Y: -12800000
+        Y: -12800001
       - X: -6350000
-        Y: -12800000
+        Y: -12800001
       - X: -6350000
-        Y: -15200000
+        Y: -15200001
       - X: 6350000
-        Y: -15200000
+        Y: -15200001
   - m_Collider: {fileID: 7936002881712367836}
     m_ColliderPaths:
-    - - X: 7700000
-        Y: -650000
-      - X: 5299999
-        Y: -650000
-      - X: 5299999
-        Y: -13350000
-      - X: 7700000
-        Y: -13350000
+    - - X: 7700001
+        Y: -649998
+      - X: 5300001
+        Y: -649998
+      - X: 5300001
+        Y: -13349998
+      - X: 7700001
+        Y: -13349998
   - m_Collider: {fileID: 7936002881753741306}
     m_ColliderPaths:
     - - X: 6350000
@@ -437,35 +495,35 @@ CompositeCollider2D:
   - m_Collider: {fileID: 7936002881356321942}
     m_ColliderPaths:
     - - X: 6350000
-        Y: 15200000
+        Y: 15200001
       - X: -6350000
-        Y: 15200000
+        Y: 15200001
       - X: -6350000
-        Y: 12800000
+        Y: 12800001
       - X: 6350000
-        Y: 12800000
+        Y: 12800001
   m_CompositePaths:
     m_Paths:
-    - - {x: 0.635, y: -1.335}
-      - {x: 0.77, y: -1.335}
-      - {x: 0.77, y: -0.065}
-      - {x: 0.635, y: -0.065}
-      - {x: 0.635, y: 0.065}
-      - {x: 0.77, y: 0.065}
-      - {x: 0.77, y: 1.335}
-      - {x: 0.635, y: 1.335}
-      - {x: 0.635, y: 1.52}
-      - {x: -0.635, y: 1.52}
-      - {x: -0.635, y: 1.28}
-      - {x: 0.5299999, y: 1.28}
-      - {x: 0.5299999, y: 0.120000005}
+    - - {x: 0.635, y: -1.3349998}
+      - {x: 0.7700001, y: -1.3349998}
+      - {x: 0.7700001, y: -0.064999804}
+      - {x: 0.635, y: -0.064999804}
+      - {x: 0.635, y: 0.064999804}
+      - {x: 0.7700001, y: 0.064999804}
+      - {x: 0.7700001, y: 1.3349998}
+      - {x: 0.635, y: 1.3349998}
+      - {x: 0.635, y: 1.5200001}
+      - {x: -0.635, y: 1.5200001}
+      - {x: -0.635, y: 1.2800001}
+      - {x: 0.5300001, y: 1.2800001}
+      - {x: 0.5300001, y: 0.120000005}
       - {x: -0.635, y: 0.120000005}
       - {x: -0.635, y: -0.120000005}
-      - {x: 0.5299999, y: -0.120000005}
-      - {x: 0.5299999, y: -1.28}
-      - {x: -0.635, y: -1.28}
-      - {x: -0.635, y: -1.52}
-      - {x: 0.635, y: -1.52}
+      - {x: 0.5300001, y: -0.120000005}
+      - {x: 0.5300001, y: -1.2800001}
+      - {x: -0.635, y: -1.2800001}
+      - {x: -0.635, y: -1.5200001}
+      - {x: 0.635, y: -1.5200001}
   m_VertexDistance: 0.0005
 --- !u!1 &7936002881712367837
 GameObject:
