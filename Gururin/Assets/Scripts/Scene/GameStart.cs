@@ -5,8 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class GameStart : MonoBehaviour
 {
-    public string nowSceneName;
+    public string NextSceneName;
+
+    [System.NonSerialized] public string nowSceneName;
     private string preSceneName;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +17,7 @@ public class GameStart : MonoBehaviour
         nowSceneName = SceneManager.GetActiveScene().name;
         preSceneName = nowSceneName;
 
-        SceneManager.LoadSceneAsync("Title");
+        SceneManager.LoadSceneAsync(NextSceneName);
     }
 
     // Update is called once per frame
