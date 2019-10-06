@@ -71,9 +71,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5d4b68a205f29b42a5b5b5f4ba8aa53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  invalid: 0
   passFloor:
   - {fileID: 9073449597272190315}
   - {fileID: 8896398122339099175}
+  boxColliders:
+  - {fileID: 1357944045637836137}
+  - {fileID: 5052914177220240481}
+  - {fileID: 978950193899691468}
 --- !u!1 &8896398122339099175
 GameObject:
   m_ObjectHideFlags: 0
