@@ -9,48 +9,71 @@ public class ResistConveyor : MonoBehaviour
     private Gamecontroller _gameController;
     private FlagManager _flagManager;
 
-    public bool resistDirection;
+    public bool[] resistDirection;
     public float defaultSpeed, resistSpeed;
 
     // Start is called before the first frame update
     void Start()
     {
-        _surfaceEffector2D = GetComponent<SurfaceEffector2D>();
+        _surfaceEffector2D = transform.GetChild(0).GetComponent<SurfaceEffector2D>();
         _gameController = GameObject.Find("GameController").GetComponent<Gamecontroller>();
         _flagManager = GameObject.Find("FlagManager").GetComponent<FlagManager>();
     }
 
-    private void OnCollisionStay2D(Collision2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            switch (resistDirection)
+            //左方向に抵抗
+            if (resistDirection[0])
             {
-                //左方向に抵抗
-                case true:
-                    if (_gameController.AxB.z > 0)
-                    {
-                        _flagManager.standFirm_Face = true;
-                        _surfaceEffector2D.speed = resistSpeed;
-                    }
-                    break;
+                //抵抗
+                if (_gameController.AxB.z > 0)
+                {
+                    _flagManager.standFirm_Face = true;
+                    _surfaceEffector2D.speed = resistSpeed;
+                }
 
-                //右方向に抵抗
-                case false:
-                    if (_gameController.AxB.z < 0)
-                    {
-                        _flagManager.standFirm_Face = true;
-                        _surfaceEffector2D.speed = -resistSpeed;
-                    }
-                    break;
+                //右に移動
+                else if (_gameController.AxB.z < 0)
+                {
+                    _flagManager.standFirm_Face = false;
+                    _surfaceEffector2D.speed = defaultSpeed;
+                }
             }
+
+            //右方向に抵抗
+            if (resistDirection[1])
+            {
+                //抵抗
+                if (_gameController.AxB.z < 0)
+                {
+                    _flagManager.standFirm_Face = true;
+                    _surfaceEffector2D.speed = resistSpeed;
+                }
+
+                //左に移動
+                else if (_gameController.AxB.z > 0)
+                {
+                    _flagManager.standFirm_Face = false;
+                    _surfaceEffector2D.speed = defaultSpeed;
+                }
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player") && _flagManager.standFirm_Face)
+        {
+            _flagManager.standFirm_Face = false;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        //コントローラーが非表示の時ベルトコンベアの速度をDefaultSpeedにする
+        //コントローラーが非アクティブ時にベルトコンベアの速度をDefaultSpeedにする
         if (_gameController.controllerObject.activeInHierarchy == false)
         {
             _surfaceEffector2D.speed = defaultSpeed;
