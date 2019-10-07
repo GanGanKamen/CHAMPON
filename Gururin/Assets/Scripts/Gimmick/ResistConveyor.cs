@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// ベルトコンベアについて
+/// </summary>
+
 public class ResistConveyor : MonoBehaviour
 {
 
@@ -9,8 +13,9 @@ public class ResistConveyor : MonoBehaviour
     private Gamecontroller _gameController;
     private FlagManager _flagManager;
 
-    public bool[] resistDirection;
-    public float defaultSpeed, resistSpeed;
+    public bool[] resistDirection; //抵抗方向、0が左方向、1が右方向
+    [SerializeField] private float defaultSpeed; //ベルトコンベアの速度
+    private float resistSpeed; //抵抗速度
 
     // Start is called before the first frame update
     void Start()
@@ -18,11 +23,15 @@ public class ResistConveyor : MonoBehaviour
         _surfaceEffector2D = transform.GetChild(0).GetComponent<SurfaceEffector2D>();
         _gameController = GameObject.Find("GameController").GetComponent<Gamecontroller>();
         _flagManager = GameObject.Find("FlagManager").GetComponent<FlagManager>();
+
+        //resistSpeedはdefaultSpeedの半分
+        resistSpeed = -defaultSpeed / 2.0f;
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        //ベルトコンベアに接触時かつコントローラーがアクティブ時
+        if (other.CompareTag("Player") && _gameController.controllerObject.activeInHierarchy)
         {
             //左方向に抵抗
             if (resistDirection[0])
@@ -78,6 +87,7 @@ public class ResistConveyor : MonoBehaviour
         {
             _surfaceEffector2D.speed = defaultSpeed;
 
+            //踏ん張り顔(抵抗)時
             if (_flagManager.standFirm_Face)
             {
                 StartCoroutine(FaceChange());
