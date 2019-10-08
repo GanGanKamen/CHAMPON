@@ -20,7 +20,7 @@ public class ResistConveyor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _surfaceEffector2D = transform.root.GetComponent<SurfaceEffector2D>();
+        _surfaceEffector2D = transform.parent.GetComponent<SurfaceEffector2D>();
         _gameController = GameObject.Find("GameController").GetComponent<Gamecontroller>();
         _flagManager = GameObject.Find("FlagManager").GetComponent<FlagManager>();
 
