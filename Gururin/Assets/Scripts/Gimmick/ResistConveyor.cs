@@ -20,12 +20,14 @@ public class ResistConveyor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _surfaceEffector2D = transform.GetChild(0).GetComponent<SurfaceEffector2D>();
+        _surfaceEffector2D = transform.root.GetComponent<SurfaceEffector2D>();
         _gameController = GameObject.Find("GameController").GetComponent<Gamecontroller>();
         _flagManager = GameObject.Find("FlagManager").GetComponent<FlagManager>();
 
         //resistSpeedはdefaultSpeedの半分
         resistSpeed = -defaultSpeed / 2.0f;
+
+        _surfaceEffector2D.useFriction = false;
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -33,6 +35,8 @@ public class ResistConveyor : MonoBehaviour
         //ベルトコンベアに接触時かつコントローラーがアクティブ時
         if (other.CompareTag("Player") && _gameController.controllerObject.activeInHierarchy)
         {
+            _surfaceEffector2D.useFriction = true;
+
             //左方向に抵抗
             if (resistDirection[0])
             {
@@ -86,6 +90,7 @@ public class ResistConveyor : MonoBehaviour
         if (_gameController.controllerObject.activeInHierarchy == false)
         {
             _surfaceEffector2D.speed = defaultSpeed;
+            _surfaceEffector2D.useFriction = false;
 
             //踏ん張り顔(抵抗)時
             if (_flagManager.standFirm_Face)
