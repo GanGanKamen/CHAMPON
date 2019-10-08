@@ -86,7 +86,7 @@ public class PigeonGimmick : MonoBehaviour
                 {
                     for (int i = 0; i < moveFloors.Length; i++)
                     {
-                        moveFloors[i].transform.position = new Vector3(moveFloorDestination, moveFloors[i].transform.localPosition.y, 0);
+                        moveFloors[i].transform.localPosition = new Vector3(moveFloorDestination, moveFloors[i].transform.localPosition.y, 0);
                     }
                     direction = 0;
                 }
