@@ -27,4 +27,10 @@ public class Fader : MonoBehaviour
         GameObject fader = Instantiate(Resources.Load<GameObject>("FadeCanvas"));
         fader.GetComponent<FadeCanvas>().FadeIn(time,sceneName);
     }
+
+    static public void FadeInBlack(float time, string sceneName)
+    {
+        GameObject fader = Instantiate(Resources.Load<GameObject>("FadeCanvasBlack"));
+        fader.GetComponent<FadeCanvas>().FadeIn(time, sceneName);
+    }
 }

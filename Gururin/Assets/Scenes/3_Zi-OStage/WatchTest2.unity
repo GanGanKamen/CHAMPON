@@ -1133,16 +1133,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7263691912388811682, guid: d1d20eef8d507cc41b2b2eae2941d9ee,
-        type: 3}
-      propertyPath: m_SleepingMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5422741950847065924, guid: d1d20eef8d507cc41b2b2eae2941d9ee,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7263691912388811683, guid: d1d20eef8d507cc41b2b2eae2941d9ee,
         type: 3}
       propertyPath: m_SortingLayerID
@@ -1151,6 +1141,16 @@ PrefabInstance:
     - target: {fileID: 7263691912388811683, guid: d1d20eef8d507cc41b2b2eae2941d9ee,
         type: 3}
       propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7263691912388811682, guid: d1d20eef8d507cc41b2b2eae2941d9ee,
+        type: 3}
+      propertyPath: m_SleepingMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5422741950847065924, guid: d1d20eef8d507cc41b2b2eae2941d9ee,
+        type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2719,6 +2719,11 @@ PrefabInstance:
       propertyPath: changeScene.m_SceneName
       value: BossScene
       objectReference: {fileID: 0}
+    - target: {fileID: 3899547194499908391, guid: 110d0d523754f204c867800e38c54d02,
+        type: 3}
+      propertyPath: playSE.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3010215638287617571, guid: 110d0d523754f204c867800e38c54d02,
         type: 3}
       propertyPath: m_IsActive
@@ -2728,11 +2733,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3899547194499908391, guid: 110d0d523754f204c867800e38c54d02,
-        type: 3}
-      propertyPath: playSE.Array.size
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3899547194499908390, guid: 110d0d523754f204c867800e38c54d02, type: 3}
@@ -4075,16 +4075,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Watch
       objectReference: {fileID: 0}
-    - target: {fileID: 1616844255354988674, guid: 7431391d494f86342ab3d119e1aa80fa,
-        type: 3}
-      propertyPath: hours
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1616844255354988674, guid: 7431391d494f86342ab3d119e1aa80fa,
-        type: 3}
-      propertyPath: minminutes
-      value: 45
-      objectReference: {fileID: 0}
     - target: {fileID: 1616844255354988675, guid: 7431391d494f86342ab3d119e1aa80fa,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4139,6 +4129,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1616844255354988674, guid: 7431391d494f86342ab3d119e1aa80fa,
+        type: 3}
+      propertyPath: hours
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1616844255354988674, guid: 7431391d494f86342ab3d119e1aa80fa,
+        type: 3}
+      propertyPath: minminutes
+      value: 45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7431391d494f86342ab3d119e1aa80fa, type: 3}

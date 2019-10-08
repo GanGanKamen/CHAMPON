@@ -3,33 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class OPFadeCtrl : MonoBehaviour
+public class PageCtrl : MonoBehaviour
 {
     [SerializeField] private RawImage[] pages;
-    private int pageNum;
-    private float[] alphas;
+    public int pageNum;
+    private Material[] pageMaterials;
+    private float[] flips;
     [SerializeField] private float speed;
-    [Range(0, 2)] private int pageChange;
+    [Range(0, 2)] public int pageChange;
 
     public int nowPageNum = 0;
     // Start is called before the first frame update
     void Start()
     {
         pageNum = pages.Length;
-        alphas = new float[pageNum];
-        for (int i = 0; i < pageNum; i++)
+        pageMaterials = new Material[pageNum];
+        flips = new float[pageNum];
+        for(int i= 0;i< pageNum; i++)
         {
-            alphas[i] = 1f;
-            pages[i].color = new Color(1, 1, 1, alphas[i]);
+            pageMaterials[i] = pages[i].material;
+            flips[i] = 1;
+            pageMaterials[i].SetFloat("_Flip", flips[i]);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i < pageNum; i++)
+        for(int i = 0; i < pageNum; i++)
         {
-            pages[i].color = new Color(1, 1, 1, alphas[i]);
+            pageMaterials[i].SetFloat("_Flip", flips[i]);
         }
 
         switch (pageChange)
@@ -37,41 +40,40 @@ public class OPFadeCtrl : MonoBehaviour
             default:
                 break;
             case 1:
-                if(alphas[nowPageNum] > 0)
+                if(flips[nowPageNum] > -1f)
                 {
-                    alphas[nowPageNum] -= speed * Time.deltaTime;
+                    flips[nowPageNum] -= speed * Time.deltaTime;
                 }
                 else
                 {
-                    alphas[nowPageNum] = 0;
+                    flips[nowPageNum] = -1f;
                     nowPageNum += 1;
                     pageChange = 0;
                 }
                 break;
             case 2:
-                if (alphas[nowPageNum-1] < 1f)
+                if (flips[nowPageNum-1] <1f)
                 {
-                    alphas[nowPageNum-1] += speed * Time.deltaTime;
+                    flips[nowPageNum-1] += speed * Time.deltaTime;
                 }
                 else
                 {
-                    alphas[nowPageNum-1] = 1f;
+                    flips[nowPageNum-1] = 1f;
                     nowPageNum -= 1;
                     pageChange = 0;
                 }
                 break;
         }
-
         KeyTest();
     }
 
-    private void NextPage(int nowPage)
+    public void NextPage(int nowPage)
     {
         if (nowPage >= pageNum - 1) return;
         pageChange = 1;
     }
 
-    private void PrevPage(int nowPage)
+    public void PrevPage(int nowPage)
     {
         if (nowPage < 1) return;
         pageChange = 2;

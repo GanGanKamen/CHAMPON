@@ -30,7 +30,7 @@ public class FadeCanvas : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        faderImg.color = new Color(1, 1, 1, alpha);
+        faderImg.color = new Color(faderImg.color.r, faderImg.color.g, faderImg.color.b, alpha);
         switch (fadeSwitch)
         {
             default:
