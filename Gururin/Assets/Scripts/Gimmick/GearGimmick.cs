@@ -37,7 +37,7 @@ public class GearGimmick : MonoBehaviour {
 
     [SerializeField] BossEvent bossEvent;
 
-    private PolygonCollider2D gearCol;
+    //private PolygonCollider2D gearCol;
 
     [SerializeField] RotationCounter rotationCounter; //プロペラのスライダー
 
@@ -58,7 +58,7 @@ public class GearGimmick : MonoBehaviour {
             moveGear[i] = true;
         }
 
-        gearCol = gear.GetComponent<PolygonCollider2D>();
+        //gearCol = gear.GetComponent<PolygonCollider2D>();
 
         if (GetComponent<GanGanKamen.BossHand>() != null) bossHand = GetComponent<GanGanKamen.BossHand>();
         if (GetComponent<GanGanKamen.BossStageGear>() != null) stageGear = GetComponent<GanGanKamen.BossStageGear>();
@@ -146,12 +146,12 @@ public class GearGimmick : MonoBehaviour {
     IEnumerator Col()
     {
         GetComponent<CapsuleCollider2D>().enabled = false;
-        gearCol.enabled = false;
+        //gearCol.enabled = false;
 
         yield return new WaitForSeconds(0.3f);
 
         GetComponent<CapsuleCollider2D>().enabled = true;
-        gearCol.enabled = true;
+        //gearCol.enabled = true;
         yield break;
     }
 

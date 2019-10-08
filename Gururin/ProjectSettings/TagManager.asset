@@ -15,6 +15,7 @@ TagManager:
   - Balloon
   - Wind
   - Died
+  - TransformFixed
   layers:
   - Default
   - TransparentFX
