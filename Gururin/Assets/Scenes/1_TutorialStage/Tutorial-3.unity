@@ -1443,7 +1443,7 @@ PrefabInstance:
     - target: {fileID: 5573327411972211404, guid: 1fc868abe45cffa43a9525e7d01122c5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.108363
+      value: 4.0994744
       objectReference: {fileID: 0}
     - target: {fileID: 5573327411972211404, guid: 1fc868abe45cffa43a9525e7d01122c5,
         type: 3}
@@ -14696,6 +14696,36 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: 1918968368904059930, guid: ec5a26f146497a5468504419ee2da2eb,
+        type: 3}
+      propertyPath: flagManager
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918968368904059930, guid: ec5a26f146497a5468504419ee2da2eb,
+        type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918968368973821139, guid: ec5a26f146497a5468504419ee2da2eb,
+        type: 3}
+      propertyPath: flagManager
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918968368973821139, guid: ec5a26f146497a5468504419ee2da2eb,
+        type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918968368746581395, guid: ec5a26f146497a5468504419ee2da2eb,
+        type: 3}
+      propertyPath: flagManager
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918968368746581395, guid: ec5a26f146497a5468504419ee2da2eb,
+        type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1918968367539207773, guid: ec5a26f146497a5468504419ee2da2eb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14746,42 +14776,12 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1918968368904059930, guid: ec5a26f146497a5468504419ee2da2eb,
-        type: 3}
-      propertyPath: flagManager
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1918968368904059930, guid: ec5a26f146497a5468504419ee2da2eb,
-        type: 3}
-      propertyPath: mainCamera
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1918968368973821139, guid: ec5a26f146497a5468504419ee2da2eb,
-        type: 3}
-      propertyPath: flagManager
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1918968368973821139, guid: ec5a26f146497a5468504419ee2da2eb,
-        type: 3}
-      propertyPath: mainCamera
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1918968368746581395, guid: ec5a26f146497a5468504419ee2da2eb,
-        type: 3}
-      propertyPath: flagManager
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1918968368746581395, guid: ec5a26f146497a5468504419ee2da2eb,
-        type: 3}
-      propertyPath: mainCamera
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1918968368611542640, guid: ec5a26f146497a5468504419ee2da2eb,
+    - target: {fileID: 1918968368447577339, guid: ec5a26f146497a5468504419ee2da2eb,
         type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1918968368447577339, guid: ec5a26f146497a5468504419ee2da2eb,
+    - target: {fileID: 1918968368611542640, guid: ec5a26f146497a5468504419ee2da2eb,
         type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -14959,15 +14959,15 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 22
       objectReference: {fileID: 0}
-    - target: {fileID: 3055725215510759287, guid: ad54913df01102d44858536f878c099b,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 21.628061
-      objectReference: {fileID: 0}
     - target: {fileID: 5052914177220240481, guid: ad54913df01102d44858536f878c099b,
         type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
       value: 43.910496
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055725215510759287, guid: ad54913df01102d44858536f878c099b,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 21.628061
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad54913df01102d44858536f878c099b, type: 3}
@@ -15483,7 +15483,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1321714893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17263,7 +17263,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 557105145, guid: 45e5502d60f72dd4db9fac2ad2fd732a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 557105146, guid: 45e5502d60f72dd4db9fac2ad2fd732a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18065,6 +18065,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gururin
       objectReference: {fileID: 0}
+    - target: {fileID: 502782363709291292, guid: d1d20eef8d507cc41b2b2eae2941d9ee,
+        type: 3}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 1041245349}
+    - target: {fileID: 502782363709291292, guid: d1d20eef8d507cc41b2b2eae2941d9ee,
+        type: 3}
+      propertyPath: flagManager
+      value: 
+      objectReference: {fileID: 653294687}
     - target: {fileID: 7263691912388811708, guid: d1d20eef8d507cc41b2b2eae2941d9ee,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -18120,16 +18130,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 502782363709291292, guid: d1d20eef8d507cc41b2b2eae2941d9ee,
-        type: 3}
-      propertyPath: gameController
-      value: 
-      objectReference: {fileID: 1041245349}
-    - target: {fileID: 502782363709291292, guid: d1d20eef8d507cc41b2b2eae2941d9ee,
-        type: 3}
-      propertyPath: flagManager
-      value: 
-      objectReference: {fileID: 653294687}
     - target: {fileID: 7263691912388811687, guid: d1d20eef8d507cc41b2b2eae2941d9ee,
         type: 3}
       propertyPath: gameController
@@ -19839,14 +19839,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 22
       objectReference: {fileID: 0}
-    - target: {fileID: 3055725215510759287, guid: ad54913df01102d44858536f878c099b,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 21.628061
-      objectReference: {fileID: 0}
     - target: {fileID: 5052914177220240481, guid: ad54913df01102d44858536f878c099b,
         type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 21.628061
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055725215510759287, guid: ad54913df01102d44858536f878c099b,
+        type: 3}
+      propertyPath: m_Size.x
       value: 21.628061
       objectReference: {fileID: 0}
     m_RemovedComponents: []
