@@ -336,6 +336,7 @@ MonoBehaviour:
   shakeSpeed: 6
   shakeWidth: 0.5
   fallSpeed: 10
+  startShakeWaitTime: 3
   status: 0
 --- !u!1 &1616844255368705012
 GameObject:
