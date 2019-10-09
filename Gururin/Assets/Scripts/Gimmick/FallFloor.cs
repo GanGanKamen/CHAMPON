@@ -13,9 +13,12 @@ public class FallFloor : MonoBehaviour
     private float[] startPosx;
     private float[] direction;
 
+    [SerializeField] private float startShakeWaitTime;
+    private float startShakeCount;
     public enum Status
     {
         Normal,
+        Ready,
         Shake,
         Fall
     }
@@ -40,6 +43,9 @@ public class FallFloor : MonoBehaviour
         {
             case Status.Normal:
                 break;
+            case Status.Ready:
+                Ready();
+                break;
             case Status.Shake:
                 Shaking(shakeSpeed, shakeWidth);
                 break;
@@ -51,6 +57,12 @@ public class FallFloor : MonoBehaviour
         if(endurance <= 0)
         {
             status = Status.Fall;
+        }
+
+        if(startShakeCount >= startShakeWaitTime && status == Status.Ready)
+        {
+            status = Status.Shake;
+            startShakeCount = 0;
         }
     }
 
@@ -81,6 +93,11 @@ public class FallFloor : MonoBehaviour
         endurance -= Time.deltaTime;
     }
 
+    private void Ready()
+    {
+        startShakeCount += Time.deltaTime;
+    }
+
     private void Falling(float speed)
     {
         for (int i = 0; i < targets.Length; i++)
@@ -93,7 +110,15 @@ public class FallFloor : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && status == Status.Normal)
         {
-            status = Status.Shake;
+            status = Status.Ready;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player") && status == Status.Ready)
+        {
+            status = Status.Normal;
         }
     }
 

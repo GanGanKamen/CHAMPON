@@ -4979,6 +4979,11 @@ PrefabInstance:
       propertyPath: minminutes
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1616844255354988674, guid: 7431391d494f86342ab3d119e1aa80fa,
+        type: 3}
+      propertyPath: speed
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 1616844255354988672, guid: 7431391d494f86342ab3d119e1aa80fa,
         type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.size
@@ -7366,7 +7371,7 @@ PrefabInstance:
     - target: {fileID: 6918544703936178468, guid: 9876b6fa2f875934f8cedb307605ad0b,
         type: 3}
       propertyPath: reloadScene.m_SceneName
-      value: Watch_1
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6918544703936178468, guid: 9876b6fa2f875934f8cedb307605ad0b,
         type: 3}
@@ -8825,6 +8830,11 @@ PrefabInstance:
         type: 3}
       propertyPath: minminutes
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1616844255354988674, guid: 7431391d494f86342ab3d119e1aa80fa,
+        type: 3}
+      propertyPath: speed
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 1616844255354988672, guid: 7431391d494f86342ab3d119e1aa80fa,
         type: 3}
