@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e631c3b9947b54c823c6853a05529c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playOnStart: 1
+  _playOnStart: 0
   _cueName: SE_Gate
   _cueSheet: allStageGimmick
   _use3dPositioning: 1
@@ -66,6 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dccc5ba1536692e4991f6519edd64daf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  conversationController: {fileID: 0}
 --- !u!61 &8867523229899771906
 BoxCollider2D:
   m_ObjectHideFlags: 0

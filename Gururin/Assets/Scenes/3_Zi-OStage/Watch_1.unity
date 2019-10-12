@@ -11168,7 +11168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e631c3b9947b54c823c6853a05529c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playOnStart: 1
+  _playOnStart: 0
   _cueName: SE_Gate
   _cueSheet: allStageGimmick
   _use3dPositioning: 1
