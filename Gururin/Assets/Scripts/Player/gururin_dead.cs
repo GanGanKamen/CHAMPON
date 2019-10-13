@@ -71,12 +71,14 @@ public class gururin_dead : MonoBehaviour
             {
                 if (_SEPlay == false)
                 {
+                    _flagManager.returnGravity = true;
                     _gameOverSE.Play();
                     _SEPlay = true;
                 }
             }
             else if(RemainingLife.life == 0)
             {
+                _flagManager.returnGravity = true;
                 //残機が0ならGameOverを表示
                 _gameOver.alpha = 1.0f;
 

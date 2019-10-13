@@ -27,11 +27,32 @@ public class VariableGravity : MonoBehaviour
         flagManager = GameObject.Find("FlagManager").GetComponent<FlagManager>();
     }
 
+    //なぜかメソッド化すると動かなくなる、誰かHELP
+    /*
+    void Gravity(float gravityX, float gravityY, float speedX, float speedY)
+    {
+        //重力変化
+        Physics2D.gravity = new Vector2(gravityX, gravityY);
+        flagManager.isStick = true;
+
+        //速度再設定
+        playerMove.speed[0] = speedX;
+        playerMove.speed[1] = speedY;
+        //PlayerMoveによる移動を止める
+        playerMove.isMove = false;
+        playerMove.isJump = false;
+
+        flagManager.returnGravity = false;
+    }
+    */
+
     void OnTriggerStay2D(Collider2D other)
     {
         //上方向に張り付き
         if (other.CompareTag("Wall_U"))
         {
+            //Gravity(0.0f, 9.81f, 5.0f, 0.0f);
+
             //重力変化
             Physics2D.gravity = new Vector2(0.0f, 9.81f);
             flagManager.isStick = true;
@@ -44,6 +65,7 @@ public class VariableGravity : MonoBehaviour
             playerMove.isJump = false;
 
             flagManager.returnGravity = false;
+
             //上向きの重力がある状態
             flagManager.isMove_VG[0] = true;
         }
@@ -51,6 +73,8 @@ public class VariableGravity : MonoBehaviour
         //右方向に張り付き
         if (other.CompareTag("Wall_R"))
         {
+            //Gravity(9.81f, 0.0f, 0.0f, 5.0f);
+
             Physics2D.gravity = new Vector2(9.81f, 0.0f);
             flagManager.isStick = true;
 
@@ -62,6 +86,7 @@ public class VariableGravity : MonoBehaviour
             playerMove.isJump = false;
 
             flagManager.returnGravity = false;
+
             //右向きの重力がある状態
             flagManager.isMove_VG[1] = true;
         }
@@ -69,6 +94,8 @@ public class VariableGravity : MonoBehaviour
         //左方向に張り付き
         if (other.CompareTag("Wall_L"))
         {
+            //Gravity(-9.81f, 0.0f, 0.0f, 5.0f);
+
             Physics2D.gravity = new Vector2(-9.81f, 0.0f);
             flagManager.isStick = true;
 
@@ -79,6 +106,7 @@ public class VariableGravity : MonoBehaviour
             playerMove.isJump = false;
 
             flagManager.returnGravity = false;
+
             //左向きの重力がある状態
             flagManager.isMove_VG[2] = true;
         }

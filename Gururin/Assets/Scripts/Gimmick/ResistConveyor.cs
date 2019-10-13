@@ -13,7 +13,8 @@ public class ResistConveyor : MonoBehaviour
     private Gamecontroller _gameController;
     private FlagManager _flagManager;
 
-    public bool[] resistDirection; //抵抗方向、0が左方向、1が右方向
+    public bool[] resistDirection; //抵抗する方向、0にTrueで左方向、1にTrueで右方向
+    private bool _nowResist;
     [SerializeField] private float defaultSpeed; //ベルトコンベアの速度
     private float resistSpeed; //抵抗速度
 
@@ -27,7 +28,19 @@ public class ResistConveyor : MonoBehaviour
         //resistSpeedはdefaultSpeedの半分
         resistSpeed = -defaultSpeed / 2.0f;
 
+        _nowResist = false;
         _surfaceEffector2D.useFriction = false;
+
+        if(resistDirection[0] && resistDirection[1])
+        {
+            for(int i = 0; i < 2; i++)
+            {
+                resistDirection[i] = false;
+
+                //メッセージ表示
+                Debug.Log("Resist Directionのどちら一方にチェックを入れてください");
+            }
+        }
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -35,6 +48,8 @@ public class ResistConveyor : MonoBehaviour
         //ベルトコンベアに接触時かつコントローラーがアクティブ時
         if (other.CompareTag("Player") && _gameController.controllerObject.activeInHierarchy)
         {
+
+            _nowResist = true;
             _surfaceEffector2D.useFriction = true;
 
             //左方向に抵抗
@@ -87,9 +102,10 @@ public class ResistConveyor : MonoBehaviour
     void Update()
     {
         //コントローラーが非アクティブ時にベルトコンベアの速度をDefaultSpeedにする
-        if (_gameController.controllerObject.activeInHierarchy == false)
+        if (_gameController.controllerObject.activeInHierarchy == false && _nowResist)
         {
             _surfaceEffector2D.speed = defaultSpeed;
+            _nowResist = false;
             _surfaceEffector2D.useFriction = false;
 
             //踏ん張り顔(抵抗)時
@@ -108,6 +124,7 @@ public class ResistConveyor : MonoBehaviour
         yield return null;
 
         _flagManager.surprise_Face = true;
+        Debug.Log("Face");
 
         yield return new WaitForSeconds(0.5f);
 
