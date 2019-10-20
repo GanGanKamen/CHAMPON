@@ -18,6 +18,8 @@ public class UpDownGimmick : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameController = GameObject.Find("GameController").GetComponent<Gamecontroller>();
+
         if (speed == false)
         {
             _rotSpeed = gearGimmick.rotSpeed / 100.0f;

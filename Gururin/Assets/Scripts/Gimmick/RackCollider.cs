@@ -6,17 +6,18 @@ public class RackCollider : MonoBehaviour
 {
 
     private FlagManager flagManager;
+    private BoxCollider2D _rackCol;
 
     // Start is called before the first frame update
     void Start()
     {
         flagManager = GameObject.Find("FlagManager").GetComponent<FlagManager>();
+        _rackCol = GetComponent<BoxCollider2D>();
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Player")){
-            //traFixed.SetActive(false);
             //TransformFixedのタグを取得、タグを持つオブジェクトを非表示にする
             GameObject[] traFixeds = GameObject.FindGameObjectsWithTag("TransformFixed");
 
@@ -24,7 +25,6 @@ public class RackCollider : MonoBehaviour
             {
                 traFixed.GetComponent<CapsuleCollider2D>().enabled = false;
             }
-            Debug.Log("false");
         }
     }
 
@@ -39,14 +39,12 @@ public class RackCollider : MonoBehaviour
 
     void Regene()
     {
-        //traFixed.SetActive(true);
         GameObject[] traFixeds = GameObject.FindGameObjectsWithTag("TransformFixed");
 
         foreach (GameObject traFixed in traFixeds)
         {
             traFixed.GetComponent<CapsuleCollider2D>().enabled = true;
         }
-        Debug.Log("true");
     }
 
     // Update is called once per frame
@@ -54,7 +52,7 @@ public class RackCollider : MonoBehaviour
     {
         if (flagManager.VGcol)
         {
-            GetComponent<BoxCollider2D>().enabled = true;
+            _rackCol.enabled = true;
         }
     }
 }

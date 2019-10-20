@@ -10,6 +10,7 @@ using UnityEngine;
 public class VariableGravity : MonoBehaviour
 {
 
+    private float speed;　//張り付きラックに張り付いたときの移動速度
     private Rigidbody2D _rb2d;
 
     private PlayerMove playerMove;
@@ -27,9 +28,7 @@ public class VariableGravity : MonoBehaviour
         flagManager = GameObject.Find("FlagManager").GetComponent<FlagManager>();
     }
 
-    //なぜかメソッド化すると動かなくなる、誰かHELP
-    /*
-    void Gravity(float gravityX, float gravityY, float speedX, float speedY)
+    void Gravity(float gravityX, float gravityY, float speedX, float speedY, int VGNUM)
     {
         //重力変化
         Physics2D.gravity = new Vector2(gravityX, gravityY);
@@ -43,72 +42,35 @@ public class VariableGravity : MonoBehaviour
         playerMove.isJump = false;
 
         flagManager.returnGravity = false;
+
+        //重力方向の状態、0は上方向、1は右方向、2は左方向
+        flagManager.isMove_VG[VGNUM] = true;
     }
-    */
 
     void OnTriggerStay2D(Collider2D other)
     {
         //上方向に張り付き
         if (other.CompareTag("Wall_U"))
         {
-            //Gravity(0.0f, 9.81f, 5.0f, 0.0f);
-
-            //重力変化
-            Physics2D.gravity = new Vector2(0.0f, 9.81f);
-            flagManager.isStick = true;
-
-            //速度再設定
-            playerMove.speed[0] = 5.0f;
-            playerMove.speed[1] = 0.0f;
-            //PlayerMoveによる移動を止める
-            playerMove.isMove = false;
-            playerMove.isJump = false;
-
-            flagManager.returnGravity = false;
-
-            //上向きの重力がある状態
-            flagManager.isMove_VG[0] = true;
+            Gravity(0.0f, 9.81f, 5.0f, 0.0f, 0);
         }
 
         //右方向に張り付き
         if (other.CompareTag("Wall_R"))
         {
-            //Gravity(9.81f, 0.0f, 0.0f, 5.0f);
-
-            Physics2D.gravity = new Vector2(9.81f, 0.0f);
-            flagManager.isStick = true;
-
             //速度の更新を止める
             playerMove.setSpeed = false;
-            playerMove.speed[0] = 0.0f;
-            playerMove.speed[1] = 5.0f;
-            playerMove.isMove = false;
-            playerMove.isJump = false;
 
-            flagManager.returnGravity = false;
-
-            //右向きの重力がある状態
-            flagManager.isMove_VG[1] = true;
+            Gravity(9.81f, 0.0f, 0.0f, speed, 1);
         }
 
         //左方向に張り付き
         if (other.CompareTag("Wall_L"))
         {
-            //Gravity(-9.81f, 0.0f, 0.0f, 5.0f);
-
-            Physics2D.gravity = new Vector2(-9.81f, 0.0f);
-            flagManager.isStick = true;
-
+            //速度の更新を止める
             playerMove.setSpeed = false;
-            playerMove.speed[0] = 0.0f;
-            playerMove.speed[1] = 5.0f;
-            playerMove.isMove = false;
-            playerMove.isJump = false;
 
-            flagManager.returnGravity = false;
-
-            //左向きの重力がある状態
-            flagManager.isMove_VG[2] = true;
+            Gravity(-9.81f, 0.0f, 0.0f, speed, 2);
         }
     }
 
@@ -131,6 +93,18 @@ public class VariableGravity : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (playerMove.setSpeed == false)
+        {
+            //初速を追加
+            //初速は通常時よりも速めに設定、プロペラ2の電流ゾーンが難しくなるかも要デバッグ
+            speed = gameController.angle * gameController.sensitivity * 0.5f;
+
+            if (speed >= 10.0f)
+            {
+                speed = 10.0f;
+            }
+        }
+
         //重力を戻す
         if (flagManager.returnGravity)
         {

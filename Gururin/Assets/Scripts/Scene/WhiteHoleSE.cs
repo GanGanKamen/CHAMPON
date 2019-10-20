@@ -6,58 +6,55 @@ public class WhiteHoleSE : MonoBehaviour
 {
 
     private CriAtomSource _source;
-    [SerializeField] ConversationController conversationController;
-    AnimatorStateInfo stateInfo;
-    private bool _volume;
+    private GameObject _gururin;
+    private float _distance;
+    //[SerializeField] ConversationController conversationController;
+    //AnimatorStateInfo stateInfo;
+    //private bool _volume;
 
     // Start is called before the first frame update
     void Start()
     {
         _source = GetComponent<CriAtomSource>();
+        _gururin = GameObject.Find("Gururin");
         _source.volume = 0.0f;
-        _volume = false;
+        _source.Play();
+        //_volume = false;
     }
 
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            _source.volume += 0.01f;
-            if(_source.volume >= 1.0f)
-            {
-                _source.volume = 1.0f;
-            }
-            _volume = false;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            _volume = true;
-        }
-    }
 
     private void Update()
     {
-        if (_volume)
-        {
-            _source.volume -= 0.01f;
-            if (_source.volume <= 0.0f)
-            {
-                _source.volume = 0.0f;
-            }
-        }
+        var gururinPos = _gururin.transform.position;
 
-        if (conversationController != null && conversationController.IsConversation)
+        //ぐるりんと扉の距離を取得
+        _distance = Vector3.Distance(gururinPos, transform.position);
+        //Debug.Log(_distance);
+
+        //距離に応じて音量を変化
+        if (6.0f >= _distance)
         {
-            _volume = true;
-            _source.volume = 0.0f;
+            _source.volume = 0.5f;
         }
-        else if(conversationController != null && conversationController.IsConversation == false)
+        else if (7.0f >= _distance)
         {
-            _volume = false;
+            _source.volume = 0.4f;
+        }
+        else if (8.0f >= _distance)
+        {
+            _source.volume = 0.3f;
+        }
+        else if (9.0f >= _distance)
+        {
+            _source.volume = 0.2f;
+        }
+        else if (10.0f >= _distance)
+        {
+            _source.volume = 0.1f;
+        }
+        else
+        {
+            _source.volume = 0.0f;
         }
     }
 }
