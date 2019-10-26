@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GearGimmick : MonoBehaviour {
+public class GearGimmick : MonoBehaviour
+{
     public enum Categoly
     {
         normal,
@@ -46,7 +47,8 @@ public class GearGimmick : MonoBehaviour {
     [Header("回転方向")] [Tooltip("1:時計回り 2:反時計回り 3:両方")] [Range(1, 3)] public int turnCategory;
     [SerializeField] private GearTurnUI turnUI;
     // Start is called before the first frame update
-    void Start() {
+    void Start()
+    {
         source = GetComponent<CriAtomSource>();
         _gururinRb2d = GameObject.Find("Gururin").GetComponent<Rigidbody2D>();
         playerMove = GameObject.Find("Gururin").GetComponent<PlayerMove>();
@@ -55,7 +57,7 @@ public class GearGimmick : MonoBehaviour {
 
         _gpQuaternion = gearPos.transform.rotation;
 
-        for(int i = 0; i < moveGear.Length; i++)
+        for (int i = 0; i < moveGear.Length; i++)
         {
             moveGear[i] = true;
         }
@@ -110,16 +112,16 @@ public class GearGimmick : MonoBehaviour {
 
             if (bossHand != null) bossHand.AttachPlayer();
 
-            turnUI.AttachPlayer(turnCategory);
+            if (turnUI != null) turnUI.AttachPlayer(turnCategory);
         }
     }
-    
+
     void OnTriggerStay2D(Collider2D other)
     {
-        if (other.CompareTag("Player")&& rotParm == false)
+        if (other.CompareTag("Player") && rotParm == false)
         {
             //ぐるりんの位置を固定
-           if(GetComponent<GanGanKamen.BossHand>()==null) _gururinRb2d.MovePosition(gearPos.transform.position);
+            if (GetComponent<GanGanKamen.BossHand>() == null) _gururinRb2d.MovePosition(gearPos.transform.position);
             //ぐるりんの角度を固定
             _gururinRb2d.rotation = _gpQuaternion.eulerAngles.z;
 
@@ -173,7 +175,7 @@ public class GearGimmick : MonoBehaviour {
         playerMove.nowGearGimiick = null;
         if (bossHand != null) bossHand.Separate();
 
-        turnUI.SeparatePlayer();
+        if (turnUI != null) turnUI.SeparatePlayer();
     }
 
     private void PropellerAction()//プロペラの場合
