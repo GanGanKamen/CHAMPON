@@ -15,7 +15,8 @@ public class NeoConfig : MonoBehaviour
     public Slider textSpeedSlider;
     static public bool isToutchToJump;
     public Slider touchSlider;
-    
+
+    private GameObject tapGUI;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +36,29 @@ public class NeoConfig : MonoBehaviour
         else
         {
             backButton.SetActive(true);
+        }
+
+        CtrlUI();
+    }
+
+    private void CtrlUI()
+    {
+        if (Input.GetMouseButtonDown(0) && tapGUI == null)
+        {
+            tapGUI = Instantiate(ResourcesMng.ResourcesLoad("TAP_1"), Vector3.zero, Quaternion.identity);
+        }
+
+        if(tapGUI != null)
+        {
+            Vector3 tapPosition = Input.mousePosition;
+            tapPosition.z = 10f;
+            tapGUI.transform.position = Camera.main.ScreenToWorldPoint(tapPosition);
+        }
+
+        if(tapGUI != null && Input.GetMouseButtonUp(0))
+        {
+            Destroy(tapGUI.gameObject);
+            tapGUI = null;
         }
     }
 

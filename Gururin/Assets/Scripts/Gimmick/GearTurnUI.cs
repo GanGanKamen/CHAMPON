@@ -61,6 +61,7 @@ public class GearTurnUI : MonoBehaviour
 
     public void AttachPlayer(int _turnNum)
     {
+        rotateCount = 90;
         startAnimation = true;
         sprite.gameObject.SetActive(true);
         turnNum = _turnNum;
@@ -72,6 +73,7 @@ public class GearTurnUI : MonoBehaviour
 
     public void SeparatePlayer()
     {
+        rotateCount = 0;
         startAnimation = false;
         sprite.flipX = false;
         turnNum = 0;
