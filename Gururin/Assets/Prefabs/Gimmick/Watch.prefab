@@ -337,6 +337,9 @@ MonoBehaviour:
   shakeWidth: 0.5
   fallSpeed: 10
   startShakeWaitTime: 3
+  colliders:
+  - {fileID: 1616844254870869329}
+  - {fileID: 1616844256169744021}
   status: 0
 --- !u!1 &1616844255368705012
 GameObject:

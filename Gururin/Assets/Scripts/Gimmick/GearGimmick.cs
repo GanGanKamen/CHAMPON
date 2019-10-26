@@ -43,6 +43,8 @@ public class GearGimmick : MonoBehaviour {
 
     public WatchGimick watch; //時計ギミック
 
+    [Header("回転方向")] [Tooltip("1:時計回り 2:反時計回り 3:両方")] [Range(1, 3)] public int turnCategory;
+    [SerializeField] private GearTurnUI turnUI;
     // Start is called before the first frame update
     void Start() {
         source = GetComponent<CriAtomSource>();
@@ -107,6 +109,8 @@ public class GearGimmick : MonoBehaviour {
             flagManager.moveStop = true;
 
             if (bossHand != null) bossHand.AttachPlayer();
+
+            turnUI.AttachPlayer(turnCategory);
         }
     }
     
@@ -168,6 +172,8 @@ public class GearGimmick : MonoBehaviour {
         playerMove.nowBossHand = null;
         playerMove.nowGearGimiick = null;
         if (bossHand != null) bossHand.Separate();
+
+        turnUI.SeparatePlayer();
     }
 
     private void PropellerAction()//プロペラの場合

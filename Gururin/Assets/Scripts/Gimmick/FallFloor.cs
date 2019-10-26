@@ -12,9 +12,13 @@ public class FallFloor : MonoBehaviour
 
     private float[] startPosx;
     private float[] direction;
+    private Vector3[] startPos;
 
     [SerializeField] private float startShakeWaitTime;
     private float startShakeCount;
+    [SerializeField] private Collider2D[] colliders;
+    private float recovery;
+
     public enum Status
     {
         Normal,
@@ -29,11 +33,14 @@ public class FallFloor : MonoBehaviour
         status = Status.Normal;
         startPosx = new float[targets.Length];
         direction = new float[targets.Length];
+        startPos = new Vector3[targets.Length];
         for (int i = 0; i < targets.Length; i++)
         {
             startPosx[i] = targets[i].transform.localPosition.x;
             direction[i] = -1;
+            startPos[i] = targets[i].transform.position;
         }
+        recovery = 0;
     }
 
     // Update is called once per frame
@@ -57,12 +64,26 @@ public class FallFloor : MonoBehaviour
         if(endurance <= 0)
         {
             status = Status.Fall;
+            for(int i= 0; i < colliders.Length; i++)
+            {
+                colliders[i].enabled = false;
+            }
         }
 
         if(startShakeCount >= startShakeWaitTime && status == Status.Ready)
         {
             status = Status.Shake;
             startShakeCount = 0;
+        }
+
+        if(recovery >= 5f)
+        {
+            for (int i = 0; i < targets.Length; i++)
+            {
+                colliders[i].enabled = true;
+                targets[i].transform.position = startPos[i];
+            }
+            status = Status.Normal;
         }
     }
 
@@ -104,6 +125,7 @@ public class FallFloor : MonoBehaviour
         {
             targets[i].transform.localPosition -= new Vector3(0, speed * Time.deltaTime, 0);
         }
+        recovery += Time.deltaTime;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -122,6 +144,7 @@ public class FallFloor : MonoBehaviour
         }
     }
 
+    /*
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.CompareTag("Died") && status == Status.Fall)
@@ -132,5 +155,5 @@ public class FallFloor : MonoBehaviour
             }
             Destroy(this);
         }
-    }
+    }*/
 }

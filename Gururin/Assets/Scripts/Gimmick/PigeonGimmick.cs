@@ -14,6 +14,7 @@ public class PigeonGimmick : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private GameObject Pigeon;
     private int direction;
+    [SerializeField] private GameObject nextCamera;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,11 +45,25 @@ public class PigeonGimmick : MonoBehaviour
 
     private void TriggerOn()
     {
-        if(watch.hours == hoursGOAL && watch.minminutes == minsGOAL && trigger == false)
+        if(watch.hours == hoursGOAL && watch.minminutes == minsGOAL && trigger == false && watch.canRotate == true)
         {
-            trigger = true;
-            watch.canRotate = false;
+            StartCoroutine(PigeonEvent());
         }
+    }
+
+    private IEnumerator PigeonEvent()
+    {
+        
+        watch.canRotate = false;
+        if (nextCamera != null) nextCamera.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        trigger = true;
+        while(direction != 0)
+        {
+            yield return null;
+        }
+        if (nextCamera != null) nextCamera.SetActive(false);
+        yield break;
     }
 
     private void FloorsMove()
