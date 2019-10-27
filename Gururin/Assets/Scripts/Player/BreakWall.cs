@@ -20,7 +20,7 @@ public class BreakWall : MonoBehaviour
     void Update()
     {
         MaskTranslate();
-        BreakUp();
+        //BreakUp();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -36,17 +36,35 @@ public class BreakWall : MonoBehaviour
 
     private void MaskTranslate()
     {
-        if(maskPosY > mask.transform.position.y)
+        // hpが0以下なら即壁を破壊
+        if(hp <= 0)
+        {
+            StartCoroutine(BreakUp());
+        }
+        else if(hp >= 0 && maskPosY > mask.transform.position.y)
         {
             mask.localPosition += new Vector3(0, maskTranslateSpeed * Time.deltaTime, 0);
         }
     }
 
+    /*
     private void BreakUp()
     {
         if(hp <= 0 && maskPosY <= mask.transform.position.y)
         {
             gameObject.SetActive(false);
         }
+    }
+    */
+
+    IEnumerator BreakUp()
+    {
+        mask.localPosition += new Vector3(0, maskTranslateSpeed * 5.0f * Time.deltaTime, 0);
+
+        yield return new WaitForSeconds(0.1f);
+
+        gameObject.SetActive(false);
+
+        yield break;
     }
 }
