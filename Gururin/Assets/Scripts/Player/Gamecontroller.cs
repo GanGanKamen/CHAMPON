@@ -12,7 +12,8 @@ public class Gamecontroller : MonoBehaviour
     public GameObject camera; //カメラオブジェクト
     public Vector2 mousePosition1, poslimit, prepos, pos, vecA, vecB; //マウスの初期位置 フリック判定範囲制限 1フレーム前のマウス位置 現在のコントローラー位置 マウス位置の2ベクトル
     public Vector2 initialpos1, initialpos2, initialpos3; //jampcountの初期化のための位置取得
-    public float jampcount, jamp; //フレーム毎のカウント　ジャンプ出来るまでのカウント数
+    public Vector2 mousePosition2, mousePosition3, mousePosition4, mousePosition5;
+    public float jumpcount, jump; //フレーム毎のカウント　ジャンプ出来るまでのカウント数
     public int initialcount, initial; //jampcount初期化のフレーム毎のカウント　初期化までのカウント数
     public int timercount; //押してから離れるまでのフレーム毎のカウント
     public float angle, flick, area; //角度　フリックできる距離の値　フリック初期化の範囲の値
@@ -23,11 +24,12 @@ public class Gamecontroller : MonoBehaviour
     public int arrowcount;
 
     public bool isCon, isDes;
+    public bool touch;
 
     public Configuration config;
-    public float sensitivity, flickdistance;
+    public float sensitivity;
     public int controllerfixed, controllerposition;
-    Touch[] touch;
+    
 
     [SerializeField] FlagManager flagManager;
 
@@ -45,17 +47,17 @@ public class Gamecontroller : MonoBehaviour
         Arrow_LB.SetActive(false);*/
         poslimit.x = 0.12f;
         poslimit.y = 0.15f;
-        jamp = 0.5f;
+        jump = 0.5f;
         initial = 10;
         area = 0.2f;
         isFlick = false;
+        touch = false;
 
         sensitivity = config.sensitivity;
-        flickdistance = config.flickdistance;
         controllerfixed = config.controllerfixed;
         controllerposition = config.controllerposition;
 
-        flick = 0.1f + flickdistance;
+        flick = 0.1f;
     }
 
     // Update is called once per frame
@@ -71,24 +73,33 @@ public class Gamecontroller : MonoBehaviour
         }
 
         sensitivity = config.sensitivity;
-        flickdistance = config.flickdistance;
         controllerfixed = config.controllerfixed;
         controllerposition = config.controllerposition;
-        flick = 0.1f + flickdistance;
+        flick = 0.1f;
 
-
-        if (flagManager.pressParm && Input.touchCount > 0)
+        
+        if (flagManager.pressParm)
         {
-            for(int i = 0; i < Input.touchCount; i++)
+            if(Input.touchCount > 0)
             {
-                touch[i] = Input.GetTouch(i);
+                touch = true;
             }
             
-
-            if (touch[0].phase == TouchPhase.Began)
+            if (Input.GetMouseButtonDown(0) /*Input.GetTouch(0).phase == TouchPhase.Began*/)
             {
-                //jampcountの初期化
-                jampcount = 0;
+                Debug.Log("touch 0.1 :");
+                switch (controllerfixed)
+                {
+                    case 0:
+                        //jampcountの初期化
+                        jumpcount = 0;
+                        break;
+                    case 1:
+                        break;
+                    default:
+                        break;
+                }
+                
                 //initialcountの初期化
                 initialcount = 0;
                 //timercountの初期化
@@ -98,7 +109,15 @@ public class Gamecontroller : MonoBehaviour
                 controller.transform.rotation = Quaternion.identity;
 
                 //コントローラーの位置取得
-                mousePosition1 = Camera.main.ScreenToViewportPoint(touch[0].position);
+                if(touch)
+                {
+                    mousePosition1 = Camera.main.ScreenToViewportPoint(Input.GetTouch(0).position);
+                }
+                else if(!touch)
+                {
+                    mousePosition1 = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+                }
+                
                 /*if (mousePosition1.x > 0.94f && mousePosition1.y > 0.91f ||
                     mousePosition1.x < 0.19f && mousePosition1.y < 0.09f)
                 {
@@ -118,6 +137,7 @@ public class Gamecontroller : MonoBehaviour
                             mousePosition1.y = mousePosition1.y + 0.1f;
                             controller.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 180f);
                         }
+
                         if (mousePosition1.x < poslimit.x)
                         {
                             mousePosition1.x = poslimit.x;
@@ -126,6 +146,7 @@ public class Gamecontroller : MonoBehaviour
                         {
                             mousePosition1.x = 1 - poslimit.x;
                         }
+
                         if (mousePosition1.y < poslimit.y)
                         {
                             mousePosition1.y = poslimit.y;
@@ -161,14 +182,33 @@ public class Gamecontroller : MonoBehaviour
                 isFlick = false;
             }
 
-            if (touch[0].phase == TouchPhase.Moved && isPress)
+            if (Input.GetMouseButton(0)/*(Input.GetTouch(0).phase == TouchPhase.Moved || Input.GetTouch(0).phase == TouchPhase.Stationary)*/
+                 && isPress)
             {
-                //フレーム毎にjampcount, timercountをカウントする 
-                jampcount+=Time.deltaTime;
+                Debug.Log("touch 0.2 :");
+                switch (controllerfixed)
+                {
+                    case 0:
+                        //フレーム毎にjampcount, timercountをカウントする 
+                        jumpcount += Time.deltaTime;
+                        
+                        break;
+                    case 1:
+                        break;
+                    default:
+                        break;
+                }
                 timercount++;
-
                 //現在のマウス位置を取得しmousePosition2に代入
-                Vector2 mousePosition2 = Camera.main.ScreenToViewportPoint(touch[0].position);
+                if(touch)
+                {
+                    mousePosition2 = Camera.main.ScreenToViewportPoint(Input.GetTouch(0).position);
+                }
+                else if(!touch)
+                {
+                    mousePosition2 = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+                }
+                
 
                 //コントローラーの位置をposに代入しpreposと現在のマウス位置のそれぞれからベクトルを求める
                 pos = mousePosition1;
@@ -195,64 +235,92 @@ public class Gamecontroller : MonoBehaviour
 
                 //preposにこの時点でのマウス位置を代入 camerapos2にこの時点でのカメラ位置を再代入
                 prepos = mousePosition2;
+                
+            }
 
-                if(controllerfixed == 1)
-                {
-                    if (touch[1].phase == TouchPhase.Began)
+            switch (controllerfixed)
+            {
+                case 0:
+                    break;
+                case 1:
+                    if (Input.GetTouch(1).phase == TouchPhase.Began)
                     {
-                        Vector2 mousePosition3 = Camera.main.ScreenToViewportPoint(touch[1].position);
+                        Debug.Log("touch 1.1 :" + Input.GetTouch(1).position);
+                        jumpcount = 0;
+                        mousePosition3 = Camera.main.ScreenToViewportPoint(Input.GetTouch(1).position);
+                    }
+                    if (Input.GetTouch(1).phase == TouchPhase.Moved || Input.GetTouch(1).phase == TouchPhase.Stationary)
+                    {
+                        Debug.Log("touch 1.2 :" + Input.GetTouch(1).position);
+                        jumpcount += Time.deltaTime;
+                    }
+                    if (Input.GetTouch(1).phase == TouchPhase.Ended || Input.GetTouch(1).phase == TouchPhase.Canceled)
+                    {
+                        Debug.Log("touch 1.3 :" + Input.GetTouch(1).position);
+                        mousePosition4 = Camera.main.ScreenToViewportPoint(Input.GetTouch(1).position);
+                        Vector2 flickpos = mousePosition4 - mousePosition3;
 
-                        if (touch[1].phase == TouchPhase.Moved)
+                        if (jumpcount <= jump)
                         {
-                            Vector2 mousePosition4 = Camera.main.ScreenToViewportPoint(touch[1].position);
-
-                            if (touch[1].phase == TouchPhase.Ended)
+                            if (flickpos.x > flick)
                             {
-                                Vector2 flickpos = mousePosition4 - mousePosition3;
-
-                                if (jampcount <= jamp)
-                                {
-                                    if (flickpos.x > flick)
-                                    {
-                                        flick_right = true;
-                                        isFlick = true;
-                                    }
-                                    else if (flickpos.x < -flick)
-                                    {
-                                        flick_left = true;
-                                        isFlick = true;
-                                    }
-                                    if (flickpos.y > flick)
-                                    {
-                                        flick_up = true;
-                                        isFlick = true;
-                                    }
-                                    else if (flickpos.y < -flick)
-                                    {
-                                        flick_down = true;
-                                        isFlick = true;
-                                    }
-                                }
+                                flick_right = true;
+                                isFlick = true;
+                            }
+                            else if (flickpos.x < -flick)
+                            {
+                                flick_left = true;
+                                isFlick = true;
+                            }
+                            if (flickpos.y > flick)
+                            {
+                                flick_up = true;
+                                isFlick = true;
+                            }
+                            else if (flickpos.y < -flick)
+                            {
+                                flick_down = true;
+                                isFlick = true;
                             }
                         }
                     }
-                      
                     playerMove.isPress = true;
-                }
+                    break;
+                default:
+                    break;
+            }
+            if (touch && Input.touchCount == 0)
+            {
+                Debug.Log("Touch End");
+                //angleの値を初期化
+                angle = 0;
+                //コントローラーの非活性化
+                controllerObject.SetActive(false);
+                isPress = false;
+                jumpcount = 0;
             }
 
-            if (touch[0].phase == TouchPhase.Ended)
+            if (Input.GetMouseButtonUp(0)/*Input.GetTouch(0).phase == TouchPhase.Ended || Input.GetTouch(0).phase == TouchPhase.Canceled*/)
             {
-                switch(controllerfixed)
+                Debug.Log("touch 0.3 :");
+                switch (controllerfixed)
                 {
                     case 0:
                         if (!NeoConfig.isToutchToJump)
                         {
-                            Vector2 mousePosition3 = Camera.main.ScreenToViewportPoint(touch[0].position);
-                            Vector2 flickpos = mousePosition3 - pos;
+                            if(touch)
+                            {
+                                mousePosition5 = Camera.main.ScreenToViewportPoint(Input.GetTouch(0).position);
+                            }
+                            else if(!touch)
+                            {
+                                mousePosition5 = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+                            }
+                            
+                            Vector2 flickpos = mousePosition5 - pos;
 
 
-                            if (jampcount <= jamp)
+                            if (jumpcount <= jump)
                             {
                                 if (flickpos.x > flick)
                                 {
@@ -282,20 +350,27 @@ public class Gamecontroller : MonoBehaviour
 
                         else
                         {
-                            Vector2 mousePosition3 = Camera.main.ScreenToWorldPoint(touch[0].position);
-                            var playerPos = new Vector2(playerMove.transform.position.x, playerMove.transform.position.y);
-                            Debug.Log(mousePosition3.y);
-                            Debug.Log(playerPos.y);
-                            if (jampcount <= jamp)
+                            if (touch)
                             {
-                                if (mousePosition3.y >= playerPos.y + 0.5f)
+                                Vector2 mousePosition5 = Camera.main.ScreenToViewportPoint(Input.GetTouch(0).position);
+                            }
+                            else if(!touch)
+                            {
+                                Vector2 mousePosition5 = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+                            }
+                            var playerPos = new Vector2(playerMove.transform.position.x, playerMove.transform.position.y);
+                            Debug.Log(mousePosition5.y);
+                            Debug.Log(playerPos.y);
+                            if (jumpcount <= jump)
+                            {
+                                if (mousePosition5.y >= playerPos.y + 0.5f)
                                 {
                                     flick_up = true;
                                     isFlick = true;
                                 }
                                 else
                                 {
-                                    if (mousePosition3.x > playerPos.x)
+                                    if (mousePosition5.x > playerPos.x)
                                     {
                                         flick_right = true;
                                         isFlick = true;
@@ -311,8 +386,8 @@ public class Gamecontroller : MonoBehaviour
                         }
                         break;
                     case 1:
-
                         break;
+
                     default:
                         break;
                 }
@@ -340,8 +415,10 @@ public class Gamecontroller : MonoBehaviour
                 //コントローラーの非活性化
                 controllerObject.SetActive(false);
                 isPress = false;
-                jampcount = 0;
+                jumpcount = 0;
             }
+            
+            
         }
         else
         {
