@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class DefaultButton : MonoBehaviour
 {
     public Sensitivity sensitivity;
-    public ControllerFixed controllerFixed;
+    public FlickDistance flickDistance;
     public ControllerPosition controllerPosition;
     public NeoConfig NeoConfig;
 
@@ -17,12 +17,11 @@ public class DefaultButton : MonoBehaviour
         {
             sensitivity = GameObject.Find("Sensitivity").GetComponent<Sensitivity>();
         }
-        
-        if(controllerFixed == null)
+        /*
+        if(flickDistance == null)
         {
-            controllerFixed = GameObject.Find("ControllerFixed").GetComponent<ControllerFixed>();
-        }
-
+            flickDistance = GameObject.Find("FlickDistance").GetComponent<FlickDistance>();
+        }*/
         if(controllerPosition == null)
         {
             controllerPosition = GameObject.Find("ControllerPosition").GetComponent<ControllerPosition>();
@@ -37,11 +36,11 @@ public class DefaultButton : MonoBehaviour
     public void OnClick()
     {
         sensitivity.OnClick();
-        controllerFixed.OnClick();
+        //flickDistance.OnClick();
         controllerPosition.OnClick();
         NeoConfig.BGMSlider.value = 8;
         NeoConfig.SESlider.value = 8;
         NeoConfig.textSpeedSlider.value = 0;
-        NeoConfig.touchScrollbar.value = 1;
+        NeoConfig.touchSlider.value = 1;
     }
 }
